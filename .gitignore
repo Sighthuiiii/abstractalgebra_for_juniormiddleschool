@@ -24,3 +24,6 @@
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# 临时草稿（试 tikz 用的小文件夹）
+_t/

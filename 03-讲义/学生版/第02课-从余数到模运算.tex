@@ -1,0 +1,149 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 2 课　从余数到模运算：单位元与逆元　—— 学生版讲义
+%  与 02-课件/第02课-从余数到模运算/第02课-从余数到模运算.tex 同步
+% ============================================================================
+
+\xhlesson{2}{从余数到模运算：单位元与逆元}{}
+
+\begin{mubiao}
+  \begin{itemize}
+    \item 会取余数，会写同余的记号 \(a\equiv b\pmod n\)。
+    \item 能找到模 \(12\) 加法的单位元，以及每个元素的逆元。
+    \item 能说出有理数加法、有理数乘法里的单位元和逆元。
+  \end{itemize}
+\end{mubiao}
+
+\section*{一、从余数说起}
+
+\begin{sikao}[今天是星期三，100 天以后是星期几？]
+  先自己算一算，把算式写在下面：
+  \liukong{3}
+  答案：\underline{\hspace{5em}}
+\end{sikao}
+
+\begin{example}
+  \[
+    100 = \underbrace{7}_{\text{除数}}\times\underbrace{14}_{\text{商}}+\underbrace{2}_{\text{余数}} .
+  \]
+  以前我们盯着\textbf{商}；从今天起，只盯\textbf{余数}。
+\end{example}
+
+\section*{二、同余的记号}
+
+\begin{definition}[同余]
+  如果两个整数 \(a,b\) 除以 \(n\) 之后的余数相同，就记作
+  \[
+    a\equiv b \pmod n,
+  \]
+  读作「\(a\) 与 \(b\) 对模 \(n\) 同余」。
+\end{definition}
+
+\begin{example}
+  \[
+    100\equiv2 \pmod 7,
+  \]
+  因为 \(100\) 除以 \(7\) 的余数是 \(2\)。
+\end{example}
+
+\begin{dongshou}
+  算一算，填一填：
+  \[
+    365\equiv \underline{\hspace{2.5em}} \pmod 7, \qquad
+    1000\equiv \underline{\hspace{2.5em}} \pmod 7 .
+  \]
+\end{dongshou}
+
+\section*{三、模 12 的加法}
+
+\noindent 把 \(0,1,2,\dots,11\) 顺时针写成一圈，走满 \(12\) 格就回到原地。
+（单页上印好了这个圆盘，可以拿出来对着看。）
+
+\begin{example}
+  \(8+7=15\)，走满一圈回到原点，所以 \(8+7\equiv3\pmod{12}\)。
+
+  \(11+1=12\equiv0\pmod{12}\)——从 \(11\) 再走一格，正好回到 \(0\)。
+\end{example}
+
+\begin{dongshou}[用手指回答]
+  老师报式子，全班同时举手指数表示结果（模 \(12\)）：
+  \begin{center}
+  \begin{tabular}{@{}lcccc@{}}
+    \toprule
+    \(10+5\) & \(7+7\) & \(9+4\) & \(6+6\) & \(3+3+3+3+3\) \\
+    \midrule
+    \hspace{2em} & \hspace{2em} & \hspace{2em} & \hspace{2em} & \hspace{2em} \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+\end{dongshou}
+
+\section*{四、单位元}
+
+\begin{sikao}
+  在模 \(12\) 的加法里，哪一个数 \(e\) 满足「加进去等于没加」，
+  也就是对每个 \(a\) 都有 \(a+e=a\)？\\[4pt]
+  我猜这个数是 \underline{\hspace{4em}}。理由是：
+  \liukong{2}
+\end{sikao}
+
+\begin{definition}[单位元]
+  设 \(*\) 是集合 \(S\) 上的一个运算。如果存在 \(e\in S\)，使得
+  \[
+    a*e=e*a=a
+  \]
+  对集合里\textbf{每一个}元素 \(a\) 都成立，就称 \(e\) 是这种运算的\textbf{单位元}。
+\end{definition}
+
+\section*{五、逆元}
+
+\begin{sikao}
+  每个数要走几格，才能回到 \(0\)？把搭档填在下表里：
+\end{sikao}
+
+\begin{center}
+{\small
+\begin{tabular}{@{}l*{12}{c}@{}}
+  \toprule
+  \(a\) & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\
+  \midrule
+  搭档 & \hspace{0.6em} & \hspace{0.6em} & \hspace{0.6em} & \hspace{0.6em} & \hspace{0.6em} & \hspace{0.6em} & \hspace{0.6em} & \hspace{0.6em} & \hspace{0.6em} & \hspace{0.6em} & \hspace{0.6em} & \hspace{0.6em} \\
+  \bottomrule
+\end{tabular}}
+\end{center}
+
+\begin{sikao}
+  有没有哪个数，它的搭档是它自己？
+  \liukong{2}
+\end{sikao}
+
+\begin{definition}[逆元]
+  设 \(e\) 是运算 \(*\) 的单位元。如果对元素 \(a\) 能找到一个元素 \(b\)，使得
+  \[
+    a*b=b*a=e,
+  \]
+  就称 \(b\) 是 \(a\) 的\textbf{逆元}，也说 \(a\) 与 \(b\) \textbf{互逆}。
+\end{definition}
+
+\section*{六、和有理数对上}
+
+\begin{example}[把这张表补完整]
+  \begin{center}
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+     & \textbf{单位元} & \textbf{逆元} \\
+    \midrule
+    有理数加法 & \hspace{1.6em} & \hspace{3.2em} \\
+    有理数乘法 & \hspace{1.6em} & \hspace{3.2em} \\
+    模 \(12\) 加法 & \hspace{1.6em} & \hspace{3.2em} \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+\end{example}
+
+\begin{xiaojie}
+  用你自己的话说说今天学到的三件事：
+  \liukong{4}
+\end{xiaojie}
+
+\noindent\textbf{下节课}：换一个运算试试——乘法还能不能找到逆元？

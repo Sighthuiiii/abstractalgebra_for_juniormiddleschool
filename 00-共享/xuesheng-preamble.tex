@@ -8,7 +8,8 @@
 %  编译：XeLaTeX，编译两遍（目录需要第二遍才正确）
 % ----------------------------------------------------------------------------
 %  设计原则：留足空白，能写能画。
-%    方框： mubiao 本课目标 / example 例 / sikao 想一想 / dongshou 动手做 / xiaojie 我学到了什么
+%    方框： mubiao 本课目标 / definition 定义 / dingli 定理 / example 例
+%           sikao 想一想 / dongshou 动手做 / xiaojie 我学到了什么
 %    留白： \liukong{行数} 画几道横线，给学生写字
 % ============================================================================
 
@@ -69,6 +70,7 @@
 \definecolor{xhorange}{RGB}{214,126,0}
 \definecolor{xhpurple}{RGB}{118,84,168}
 \definecolor{xhgreen}{RGB}{46,139,87}
+\definecolor{xhdeep}{RGB}{0,105,92}
 \definecolor{xhgray}{RGB}{110,110,110}
 \definecolor{xhline}{RGB}{150,160,172}
 
@@ -168,6 +170,10 @@
   colback=xhblue!7!white, colframe=xhblue!7!white, coltitle=xhblue!65!black,
   title={定义\xhsub{#1}},
   overlay={\draw[line width=3pt, xhblue] (frame.north west) -- (frame.south west);}}
+\newtcolorbox{dingli}[1][]{xhbase,
+  colback=xhdeep!7!white, colframe=xhdeep!7!white, coltitle=xhdeep!65!black,
+  title={定理\xhsub{#1}},
+  overlay={\draw[line width=3pt, xhdeep] (frame.north west) -- (frame.south west);}}
 \newtcolorbox{example}[1][]{xhbase,
   colback=xhteal!7!white, colframe=xhteal!7!white, coltitle=xhteal!65!black,
   title={例\xhsub{#1}},
@@ -210,6 +216,9 @@
   \end{tikzpicture}%
   \end{center}%
 }
+
+% ---------------- 表格行高（学生要往里写字，行抬高一些）----------------
+\renewcommand{\arraystretch}{1.5}
 
 % ---------------- 列表与行距 ----------------
 \setlist[itemize]{itemsep=3pt,topsep=4pt,parsep=0pt,leftmargin=1.6em}

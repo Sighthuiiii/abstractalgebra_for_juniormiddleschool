@@ -1,0 +1,93 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 2 课　课堂单页（学生用，单独打印一张 A4）
+%  编译：XeLaTeX，两遍即可
+%  说明：12 格圆盘的位置先用虚线框占位，换图时把 \dantucircle 那一段替换掉。
+% ============================================================================
+
+\documentclass[11pt]{ctexart}
+\usepackage[a4paper,left=1.8cm,right=1.8cm,top=1.6cm,bottom=1.6cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+
+\setCJKmainfont{SimSun}[BoldFont=SimHei,ItalicFont=KaiTi]
+\IfFontExistsTF{TeX Gyre Pagella}{\setmainfont{TeX Gyre Pagella}}{\setmainfont{Latin Modern Roman}}
+
+\definecolor{pagegreen}{RGB}{34,139,34}
+\definecolor{pagelight}{RGB}{240,255,240}
+\renewcommand{\arraystretch}{1.6}
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+% 虚线占位框：\tuzhan{高度}{说明}
+\newcommand{\tuzhan}[2]{%
+  \begin{center}
+  \begin{tikzpicture}
+    \node[draw=pagegreen, densely dashed, line width=1pt, rounded corners=4pt,
+          fill=pagelight, inner sep=8pt, align=center, text width=0.68\textwidth,
+          minimum height=#1, font=\small]
+      {\textcolor{pagegreen}{\bfseries 【图片位置】}\\[4pt] #2};
+  \end{tikzpicture}
+  \end{center}
+}
+
+\newcommand{\biaoti}[2]{%
+  {\color{pagegreen}\rule{\textwidth}{1.2pt}}\\[6pt]
+  {\heiti\Large 第 #1 课\quad #2}\hfill{\small\songti 课堂单页}\\[6pt]
+  {\color{pagegreen}\rule{\textwidth}{0.5pt}}\\[4pt]
+  {\small 姓名\underline{\hspace{3.2cm}}\qquad 班级\underline{\hspace{2.4cm}}\qquad 座号\underline{\hspace{1.6cm}}}
+  \vspace{0.5em}
+}
+
+\begin{document}
+
+\biaoti{2}{从余数到模运算：单位元与逆元}
+
+\section*{一、模 12 的圆盘}
+
+\tuzhan{5.2cm}{12 格圆盘：\(0,1,2,\dots,11\) 顺时针排一圈\\（上课时对着它数格子）}
+
+\section*{二、练一练（模 12）}
+
+\begin{center}
+\begin{tabular}{@{}lcccc@{}}
+  \toprule
+  \(10+5\) & \(7+7\) & \(9+4\) & \(6+6\) & \(3+3+3+3+3\) \\
+  \midrule
+  \hspace{2.2em} & \hspace{2.2em} & \hspace{2.2em} & \hspace{2.2em} & \hspace{2.2em} \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+\section*{三、每个数的搭档（逆元）}
+
+\begin{center}
+\begin{tabular}{@{}l*{12}{w{c}{1.05cm}}@{}}
+  \toprule
+  \(a\) & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\
+  \midrule
+  \rule{0pt}{2.6ex}搭档 & & & & & & & & & & & & \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+\noindent 特别记一下：谁的搭档是它自己？\underline{\hspace{2.4cm}} 和 \underline{\hspace{2.4cm}}。
+
+\section*{四、和有理数对上}
+
+\begin{center}
+\begin{tabular}{@{}lcc@{}}
+  \toprule
+   & \textbf{单位元} & \textbf{逆元} \\
+  \midrule
+  \rule{0pt}{2.6ex}有理数加法 & \hspace{2.6em} & \hspace{4.6em} \\
+  \rule{0pt}{2.6ex}有理数乘法 & \hspace{2.6em} & \hspace{4.6em} \\
+  \rule{0pt}{2.6ex}模 \(12\) 加法 & \hspace{2.6em} & \hspace{4.6em} \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+\end{document}

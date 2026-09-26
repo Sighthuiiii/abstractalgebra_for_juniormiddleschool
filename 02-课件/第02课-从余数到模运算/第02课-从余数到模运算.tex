@@ -1,0 +1,240 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 2 课　从余数到模运算：单位元与逆元
+% ----------------------------------------------------------------------------
+%  编译        XeLaTeX，编译两遍
+%  样式        ../../00-共享/preamble.tex
+%  说明        本节配发一页单页（见 04-单页/）
+%  图片        圆盘类插图一律 \imgph 占位，不要在这里手画 tikz
+% ============================================================================
+
+\documentclass[10pt]{beamer}
+\input{../../00-共享/preamble.tex}
+
+% ==================== 每份课件只改这一段 ====================
+\title{从数数开始的抽象代数生活}
+\subtitle{第 2 课　从余数到模运算：单位元与逆元}
+\author{姜博瀚}
+\institute{厦门大学附属实验中学}
+\date{\today}
+% ============================================================
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ============================================================================
+\section{取余数}
+
+\begin{frame}{今天是星期三，100 天后是星期几？}
+  \pause
+  \begin{block}{先做一次除法}
+    \[
+      100 = 7 \times 14 + 2
+    \]
+  \end{block}
+  \pause
+  7 天一循环。14 个整星期可以整块扔掉，剩下 2 天。\pause 所以是\textbf{星期五}。
+\end{frame}
+
+\begin{frame}{带余除法，你们早就会了}
+  \begin{block}{被除数 = 除数 × 商 + 余数}
+    \[
+      \underbrace{100}_{\text{被除数}} = \underbrace{7}_{\text{除数}} \times \underbrace{14}_{\text{商}} + \underbrace{2}_{\text{余数}}
+    \]
+  \end{block}
+  \pause
+  以前我们关心\textbf{商}。\pause 从今天起，我们只关心\textbf{余数}。
+\end{frame}
+
+% ============================================================================
+\section{模记号}
+
+\begin{frame}{给「余数」一个记号：mod}
+  \[
+    100 \equiv 2 \pmod 7
+  \]
+  读作「100 与 2 对模 7 同余」。
+  \pause
+  \begin{block}{它的意思就是一句话}
+    \(100\) 除以 \(7\) 的余数是 \(2\)。
+  \end{block}
+\end{frame}
+
+\begin{frame}{马上用一下}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{itemize}
+        \item \(365 \equiv \text{?} \pmod 7\)
+        \item \(1000 \equiv \text{?} \pmod 7\)
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \pause
+      \begin{itemize}
+        \item \(365 = 7\times 52 + 1 \Rightarrow 1\)
+        \item \(1000 = 7\times 142 + 6 \Rightarrow 6\)
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \pause
+  \vspace{0.6em}
+  这两个余数，就是「过 365 天是星期几」和「过 1000 天是星期几」。
+\end{frame}
+
+% ============================================================================
+\section{模 12 的加法}
+
+\begin{frame}{把 12 个数摆成一个圈}
+  \imgph[4.2cm]{12 格圆盘：\(0,1,2,\dots,11\) 顺时针排一圈\\（这张图全课反复用，建议做成一页单页）}
+  \begin{center}
+    模 \(12\) 的世界：\(0,1,2,\dots,11\)，走满 12 格回到原地。
+  \end{center}
+\end{frame}
+
+\begin{frame}{算一算：\(8+7=\) ?}
+  \imgph[4.2cm]{12 格圆盘：高亮 \(8\)，从 \(8\) 顺时针画一道弧，走过 7 格到 \(3\)}
+  \pause
+  \begin{center}
+    {\large \(8+7=15\)，但走满一圈就回到原点，所以 \textbf{\(8+7\equiv 3 \pmod{12}\)}}
+  \end{center}
+\end{frame}
+
+\begin{frame}{再算一个：\(11+1=\) ?}
+  \imgph[4.2cm]{12 格圆盘：高亮 \(11\)，再走一格到 \(0\)（经过 12 点的位置）}
+  \pause
+  \begin{center}
+    {\large \(11+1\equiv 0 \pmod{12}\)}\quad —— 从 11 再走一格，正好回到 0。
+  \end{center}
+\end{frame}
+
+\begin{frame}{用手指回答}
+  报出下面每个式子的结果（模 12）：
+  \begin{itemize}
+    \item \(10+5\)
+    \item \(7+7\)
+    \item \(9+4\)
+    \item \(6+6\)
+    \item \(3+3+3+3+3\)
+  \end{itemize}
+  \pause
+  \begin{block}{答案}
+    \(3\)；\quad \(2\)；\quad \(1\)；\quad \(0\)；\quad \(3\)
+  \end{block}
+\end{frame}
+
+% ============================================================================
+\section{单位元}
+
+\begin{frame}{哪个数加进去，等于没加？}
+  在模 12 的加法里，哪一个数 \(e\) 满足：
+  \[
+    a + e = a \quad\text{对每个 } a \text{ 都成立}
+  \]
+  \pause
+  \begin{center}
+    {\large 是 \textbf{0}。}\quad 因为 \(a+0 = a\)，走 0 格就是不动。
+  \end{center}
+\end{frame}
+
+\begin{frame}{给它一个正式的名字}
+  \begin{definition}[单位元]
+    设 \(*\) 是集合 \(S\) 上的一个运算。如果存在 \(e \in S\)，使得
+    \[
+      a * e = e * a = a
+    \]
+    对集合里\textbf{每一个}元素 \(a\) 都成立，就称 \(e\) 是这种运算的\textbf{单位元}。
+  \end{definition}
+  \pause
+  \begin{att}
+    「单位」是「一个」的意思：它不改变任何东西。
+  \end{att}
+\end{frame}
+
+% ============================================================================
+\section{逆元}
+
+\begin{frame}{每个数要走几格，才能回到 0？}
+  把 12 个数两两配起来：
+  \pause
+  \begin{center}
+  \begin{tabular}{@{}l*{12}{c}@{}}
+    \toprule
+    \(a\) & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\
+    \midrule
+    \(\text{搭档}\) & 0 & 11 & 10 & 9 & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 1 \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  \(1\) 配 \(11\)（\(1+11=12\equiv 0\)），\(2\) 配 \(10\)，\(3\) 配 \(9\)，\(\dots\)
+  \pause
+  \begin{att}
+    有两个人只配自己：\textbf{\(0\)}（\(0+0=0\)）和 \textbf{\(6\)}（\(6+6=12\equiv 0\)）。
+  \end{att}
+\end{frame}
+
+\begin{frame}{正式的名字：逆元}
+  \begin{definition}[逆元]
+    设 \(e\) 是运算 \(*\) 的单位元。如果对元素 \(a\) 能找到一个元素 \(b\)，使得
+    \[
+      a * b = b * a = e
+    \]
+    就称 \(b\) 是 \(a\) 的\textbf{逆元}，也说 \(a\) 与 \(b\) \textbf{互逆}。
+  \end{definition}
+  \pause
+  \begin{block}{模 12 加法里}
+    每个数的逆元都存在，就是它的「搭档」。
+  \end{block}
+\end{frame}
+
+% ============================================================================
+\section{和有理数对上}
+
+\begin{frame}{这两样东西，你们早就在用了}
+  \begin{center}
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+     & \textbf{单位元} & \textbf{逆元} \\
+    \midrule
+    有理数加法 & \(0\) & 相反数 \(-a\) \\
+    有理数乘法 & \(1\) & 倒数 \(\dfrac{1}{a}\ (a\neq 0)\) \\
+    模 12 加法 & \(0\) & 搭档（\(a\) 配 \(12-a\)） \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  \begin{att}
+    只是以前没这么叫过。\pause 负数是为了「加法能走回头路」才被造出来的：
+    \(5\) 加上 \(-5\) 得到单位元 \(0\)。
+  \end{att}
+\end{frame}
+
+\begin{frame}{这节课要带走的两句话}
+  \begin{block}{一}
+    取余数是有名字的算术：模 \(n\) 的加法。
+  \end{block}
+  \begin{block}{二}
+    每一套这样的算术里，都有\textbf{单位元}和\textbf{逆元}——
+    有理数加法、有理数乘法、模 12 加法，都有。
+  \end{block}
+  \pause
+  \begin{center}
+    {\large\textcolor{textgreen}{\bfseries 下节课换个运算试试：乘法还能不能找到逆元？}}
+  \end{center}
+\end{frame}
+
+% ---------------- 结尾页 ----------------
+\begin{frame}
+  \begin{center}
+    \vspace{1.6cm}
+    {\Large\textcolor{textgreen}{\bfseries 下课}}
+
+    \vspace{1.0cm}
+    {\large\textcolor{accentgreen}{下节课：撤回一步——逆元}}
+  \end{center}
+\end{frame}
+
+\end{document}

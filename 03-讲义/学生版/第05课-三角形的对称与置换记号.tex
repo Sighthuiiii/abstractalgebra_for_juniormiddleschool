@@ -1,0 +1,123 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 5 课　三角形的对称与置换记号　—— 学生版讲义
+%  与 02-课件/第05课-三角形的对称与置换记号/第05课-三角形的对称与置换记号.tex 同步
+%  约定：顶点 A 在上、B 在右下、C 在左下；转 120° 指顺时针
+% ============================================================================
+
+\xhlesson{5}{三角形的对称与置换记号}{}
+
+\begin{mubiao}
+  \begin{itemize}
+    \item 能说出正三角形的 \(6\) 个对称动作。
+    \item 会把每个动作写成一张两行式（置换记号）。
+    \item 知道两行式的作用：不画图也能说清谁去了哪。
+  \end{itemize}
+\end{mubiao}
+
+\section*{一、回顾}
+
+\begin{sikao}
+  上节课的两个动作：甲 \(=\) 乘 \(2\)，乙 \(=\) 加 \(1\)。取 \(x=1\)，先甲后乙得 \underline{\hspace{2em}}；
+  先乙后甲得 \underline{\hspace{2em}}。一样吗？\underline{\hspace{2em}}
+\end{sikao}
+
+\section*{二、三角形的六个动作}
+
+\noindent 老师手里有一张正三角形纸片：正面三个顶点写着 \(A,B,C\)，背面是另一种颜色。
+约定位置：\(A\) 在上，\(B\) 在右下，\(C\) 在左下。
+
+\begin{definition}[对称动作]
+  做完一次动作，图形要和原来的位置\textbf{完全重合}——顶点对准顶点，边对准边。
+\end{definition}
+
+\begin{dongshou}[边看边记]
+  老师每做一个动作，就把三角形贴回原位。把顶点的新位置记下来：
+
+  \begin{center}
+  \begin{tabular}{@{}lc@{}}
+    \toprule
+    动作 & 顶点去了哪 \\
+    \midrule
+    不动 & \(A\to\ \), \(B\to\ \), \(C\to\ \) \\
+    顺时针转 \(120^\circ\) & \(A\to\ \), \(B\to\ \), \(C\to\ \) \\
+    顺时针转 \(240^\circ\) & \(A\to\ \), \(B\to\ \), \(C\to\ \) \\
+    沿过 \(A\) 的轴翻 & \(A\to\ \), \(B\to\ \), \(C\to\ \) \\
+    沿过 \(B\) 的轴翻 & \(A\to\ \), \(B\to\ \), \(C\to\ \) \\
+    沿过 \(C\) 的轴翻 & \(A\to\ \), \(B\to\ \), \(C\to\ \) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+\end{dongshou}
+
+\begin{sikao}
+  一共数出了几个动作？\underline{\hspace{2em}} 个。其中转动几个、翻折几个？
+  \liukong{2}
+\end{sikao}
+
+\section*{三、置换记号}
+
+\begin{definition}[置换的双行记号]
+  上排写原来的位置，下排写这个位置上的东西\textbf{去了哪}。两张表合在一起，
+  写成一对括号里的两行，就记下了整个动作。
+\end{definition}
+
+\begin{example}
+  「顺时针转 \(120^\circ\)」写成
+  \[
+    \begin{pmatrix}
+      A & B & C\\
+      B & C & A
+    \end{pmatrix},
+  \]
+  读作「\(A\) 去 \(B\)，\(B\) 去 \(C\)，\(C\) 去 \(A\)」。
+\end{example}
+
+\begin{dongshou}[跟做，写在下面]
+  \begin{enumerate}
+    \item 顺时针转 \(240^\circ\)：
+      \[
+        \begin{pmatrix}
+          A & B & C\\[2pt]
+          \hspace{1.5em} & \hspace{1.5em} & \hspace{1.5em}
+        \end{pmatrix}
+      \]
+    \item 沿过 \(B\) 的轴翻折：
+      \[
+        \begin{pmatrix}
+          A & B & C\\[2pt]
+          \hspace{1.5em} & \hspace{1.5em} & \hspace{1.5em}
+        \end{pmatrix}
+      \]
+  \end{enumerate}
+  提示：先问「\(A\) 去哪了」，再问「\(B\) 去哪了」，最后问「\(C\) 去哪了」。
+\end{dongshou}
+
+\begin{example}[对一下答案]
+  \begin{center}
+  \begin{tabular}{@{}lc@{}}
+    \toprule
+    动作 & 两行式 \\
+    \midrule
+    不动 & \(\begin{pmatrix}A&B&C\\A&B&C\end{pmatrix}\) \\[8pt]
+    顺时针转 \(120^\circ\) & \(\begin{pmatrix}A&B&C\\B&C&A\end{pmatrix}\) \\[8pt]
+    顺时针转 \(240^\circ\) & \(\begin{pmatrix}A&B&C\\C&A&B\end{pmatrix}\) \\[8pt]
+    沿过 \(A\) 的轴翻 & \(\begin{pmatrix}A&B&C\\A&C&B\end{pmatrix}\) \\[8pt]
+    沿过 \(B\) 的轴翻 & \(\begin{pmatrix}A&B&C\\C&B&A\end{pmatrix}\) \\[8pt]
+    沿过 \(C\) 的轴翻 & \(\begin{pmatrix}A&B&C\\B&A&C\end{pmatrix}\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+\end{example}
+
+\begin{sikao}
+  六张两行式里，哪一张的下排和上排一模一样？它表示哪个动作？
+  \liukong{2}
+\end{sikao}
+
+\begin{xiaojie}
+  用自己的话说说：两行式是用来干什么的？
+  \liukong{4}
+\end{xiaojie}
+
+\noindent\textbf{下节课}：把「先做这个，再做那个」当成一种运算，看看这 \(6\) 个动作能不能凑成一个群。

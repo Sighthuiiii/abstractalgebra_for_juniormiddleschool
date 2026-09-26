@@ -1,0 +1,119 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 3 课　撤回一步：逆元　—— 学生版讲义
+%  与 02-课件/第03课-撤回一步逆元/第03课-撤回一步逆元.tex 同步
+% ============================================================================
+
+\xhlesson{3}{撤回一步：逆元}{}
+
+\begin{mubiao}
+  \begin{itemize}
+    \item 知道逆元就是能把动作\textbf{撤回}的那一步。
+    \item 会算模 \(7\) 乘法里的逆元。
+    \item 知道模 \(7\) 乘法里人人有逆元，模 \(6\) 乘法里不是。
+  \end{itemize}
+\end{mubiao}
+
+\section*{一、回顾}
+
+\begin{sikao}
+  在模 \(12\) 的加法里，下面每个数的搭档（逆元）是谁？
+  \[
+    3 \to \underline{\hspace{2.5em}}, \qquad
+    7 \to \underline{\hspace{2.5em}}, \qquad
+    5 \to \underline{\hspace{2.5em}} .
+  \]
+\end{sikao}
+
+\section*{二、乘 3 的转盘}
+
+\noindent 在模 \(7\) 的世界里做乘法，只看 \(1,2,3,4,5,6\)。
+（想一想：为什么把 \(0\) 放在一边？）
+
+\begin{dongshou}[自己算一遍，把表填满]
+  \begin{center}
+  \begin{tabular}{@{}lcccccc@{}}
+    \toprule
+    原来的数 & \(1\) & \(2\) & \(3\) & \(4\) & \(5\) & \(6\) \\
+    \midrule
+    乘 \(3\) 之后 & \hspace{1.2em} & \hspace{1.2em} & \hspace{1.2em} & \hspace{1.2em} & \hspace{1.2em} & \hspace{1.2em} \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  参考算式：\(3\times1=3\)，\(3\times2=6\)，\(3\times3=9\equiv2\)，……
+\end{dongshou}
+
+\begin{sikao}
+  第二行里有没有两个数字是同一个？
+  \liukong{2}
+  所以「乘 \(3\)」这个动作，把六个位置\underline{\hspace{6em}}。
+\end{sikao}
+
+\section*{三、找回头的路}
+
+\begin{sikao}[谁是 3 的逆元？]
+  也就是，什么数 \(x\) 满足 \(3x\equiv1\pmod7\)？把 \(x\) 从 \(1\) 试到 \(6\)：
+  \begin{center}
+  \begin{tabular}{@{}lcccccc@{}}
+    \toprule
+    \(x\) & \(1\) & \(2\) & \(3\) & \(4\) & \(5\) & \(6\) \\
+    \midrule
+    \(3x \bmod 7\) & \hspace{1.2em} & \hspace{1.2em} & \hspace{1.2em} & \hspace{1.2em} & \hspace{1.2em} & \hspace{1.2em} \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  我找到 \(x=\underline{\hspace{3em}}\)。
+\end{sikao}
+
+\begin{example}
+  \(3\times5=15=2\times7+1\equiv1\pmod7\)。
+  所以 \(3\) 的逆元是 \(5\)：乘 \(3\) 的逆动作，就是乘 \(5\)。
+\end{example}
+
+\begin{definition}[可逆]
+  设 \(e\) 是运算 \(*\) 的单位元。如果元素 \(a\) 有逆元，
+  就说 \(a\) 在这种运算下是\textbf{可逆的}。
+\end{definition}
+
+\begin{dongshou}[再换一个：模 6]
+  解 \(2x\equiv1\pmod6\)，把 \(x\) 从 \(1\) 试到 \(6\)：
+  \begin{center}
+  \begin{tabular}{@{}lcccccc@{}}
+    \toprule
+    \(x\) & \(1\) & \(2\) & \(3\) & \(4\) & \(5\) & \(6\) \\
+    \midrule
+    \(2x \bmod 6\) & \hspace{1.2em} & \hspace{1.2em} & \hspace{1.2em} & \hspace{1.2em} & \hspace{1.2em} & \hspace{1.2em} \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  找得到 \(1\) 吗？\underline{\hspace{3em}}\quad 为什么要紧的：
+  \liukong{2}
+\end{dongshou}
+
+\section*{四、把表补完整}
+
+\begin{example}
+  \begin{center}
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+     & \textbf{单位元} & \textbf{逆元} \\
+    \midrule
+    有理数加法 & \hspace{1.6em} & \hspace{3.6em} \\
+    有理数乘法 & \hspace{1.6em} & \hspace{3.6em} \\
+    模 \(7\) 乘法 & \hspace{1.6em} & \hspace{3.6em} \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+\end{example}
+
+\begin{sikao}
+  模 \(7\) 乘法里，\(6\) 的逆元是谁？它有什么特别之处？
+  \liukong{2}
+\end{sikao}
+
+\begin{xiaojie}
+  用一句话说清今天的界线：
+  \liukong{3}
+\end{xiaojie}
+
+\noindent\textbf{下节课}：把这几套共同遵守的规矩装进一个定义——群。

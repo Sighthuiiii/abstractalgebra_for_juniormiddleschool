@@ -1,0 +1,268 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 3 课　撤回一步：逆元
+% ----------------------------------------------------------------------------
+%  编译        XeLaTeX，编译两遍
+%  样式        ../../00-共享/preamble.tex
+%  说明        本课不发单页
+%  图片        一律 \imgph 占位，不要在这里手画 tikz
+% ============================================================================
+
+\documentclass[10pt]{beamer}
+\input{../../00-共享/preamble.tex}
+
+% ==================== 每份课件只改这一段 ====================
+\title{从数数开始的抽象代数生活}
+\subtitle{第 3 课　撤回一步：逆元}
+\author{姜博瀚}
+\institute{厦门大学附属实验中学}
+\date{\today}
+% ============================================================
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ============================================================================
+\section{回顾}
+
+\begin{frame}{上节课的两个词}
+  \begin{block}{单位元}
+    和它运算，等于什么都没做。模 \(12\) 加法里是 \textbf{\(0\)}。
+  \end{block}
+  \pause
+  \begin{block}{逆元}
+    能把 \(a\) 送回单位元的那个东西。模 \(12\) 加法里，\(a\) 的搭档是 \(12-a\)。
+  \end{block}
+  \pause
+  \begin{center}
+    {\large 换一个运算试试：把加法换成\textbf{乘法}。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{用手指回答}
+  在模 \(12\) 加法里，下面每个数的搭档（逆元）是谁？
+  \begin{itemize}
+    \item \(3\)
+    \item \(7\)
+    \item \(5\)
+  \end{itemize}
+  \pause
+  \begin{block}{答案}
+    \(9\)；\quad \(5\)；\quad \(7\)。
+  \end{block}
+\end{frame}
+
+% ============================================================================
+\section{乘 3 的转盘}
+
+\begin{frame}{模 7 的乘法：只看 1 到 6}
+  在模 \(7\) 的世界里做乘法，我们只看
+  \[
+    1,\ 2,\ 3,\ 4,\ 5,\ 6 .
+  \]
+  \pause
+  \begin{block}{为什么把 0 放在一边}
+    \(0\) 乘任何数都得 \(0\)，永远回不到 \(1\)——它没有逆元。
+    今天要研究的正是逆元，所以先把它请出去。
+  \end{block}
+\end{frame}
+
+\begin{frame}{乘 3，再取余数}
+  把 \(1,2,3,4,5,6\) 每一个都乘 \(3\)，再对 \(7\) 取余：
+  \[
+    3\times1=3,\quad 3\times2=6,\quad 3\times3=9\equiv2,\quad
+    3\times4=12\equiv5,\quad 3\times5=15\equiv1,\quad 3\times6=18\equiv4 .
+  \]
+  \pause
+  \begin{center}
+  \begin{tabular}{@{}lcccccc@{}}
+    \toprule
+    原来的数 & \(1\) & \(2\) & \(3\) & \(4\) & \(5\) & \(6\) \\
+    \midrule
+    乘 \(3\) 之后 & \(3\) & \(6\) & \(2\) & \(5\) & \(1\) & \(4\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}{全班一起念}
+  \begin{center}
+    {\large \(1\) 变成 \(3\)；\(2\) 变成 \(6\)；\(3\) 变成 \(2\)；\(4\) 变成 \(5\)；\(5\) 变成 \(1\)；\(6\) 变成 \(4\)。}
+  \end{center}
+  \pause
+  \begin{center}
+    {\large 下排还是 \(1,2,3,4,5,6\) 这六个数，只是换了个次序。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{有没有两个数变成同一个？}
+  对着上表的第二行看一眼：
+  \pause
+  \begin{itemize}
+    \item \(3,6,2,5,1,4\) —— 六个数字，一个不多，一个不少。
+    \item 没有两个数被挤到同一个位置上去。
+  \end{itemize}
+  \pause
+  \begin{block}{所以我们说}
+    「乘 \(3\)」这个动作，把 \(1,2,\dots,6\) 六个位置\textbf{重新排了一遍}。
+  \end{block}
+\end{frame}
+
+\begin{frame}{用手指回答}
+  只看那张表，回答问题：
+  \begin{itemize}
+    \item 谁乘 \(3\) 之后变成 \(6\)？
+    \item 谁乘 \(3\) 之后变成 \(1\)？
+    \item \(5\) 乘 \(3\) 之后变成几？
+  \end{itemize}
+  \pause
+  \begin{block}{答案}
+    \(2\)；\quad \(5\)；\quad \(1\)。
+  \end{block}
+\end{frame}
+
+% ============================================================================
+\section{找回头的路}
+
+\begin{frame}{找回头的路}
+  现在问一个反向的问题：
+  \begin{block}{问题}
+    谁是 \(3\) 的逆元？也就是，什么数 \(x\) 满足
+    \[
+      3\times x\equiv 1 \pmod 7 \ ?
+    \]
+  \end{block}
+  \pause
+  在模 \(12\) 加法里，「回头」是加上相反数。\pause
+  在乘法里，「回头」就是乘一个数，让结果回到单位元 \(1\)。
+\end{frame}
+
+\begin{frame}{一个一个试}
+  把 \(x\) 从 \(1\) 试到 \(6\)：
+  \begin{center}
+  \begin{tabular}{@{}lcccccc@{}}
+    \toprule
+    \(x\) & \(1\) & \(2\) & \(3\) & \(4\) & \(5\) & \(6\) \\
+    \midrule
+    \(3x \bmod 7\) & \(3\) & \(6\) & \(2\) & \(5\) & \textbf{\(1\)} & \(4\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  \begin{center}
+    {\large \(x=5\) 时，\(3\times5=15=2\times7+1\equiv1\pmod7\)。}
+  \end{center}
+  \pause
+  \begin{center}
+    {\large 所以 \(3\) 的逆元是 \(\mathbf{5}\)：乘 \(3\) 的逆动作，就是乘 \(5\)。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{换一个：模 6}
+  同样的问题，把 \(7\) 换成 \(6\)。先看 \(2\) 的逆元：
+  \[
+    2x\equiv1 \pmod 6
+  \]
+  \pause
+  一个一个试：
+  \begin{center}
+  \begin{tabular}{@{}lcccccc@{}}
+    \toprule
+    \(x\) & \(1\) & \(2\) & \(3\) & \(4\) & \(5\) & \(6\) \\
+    \midrule
+    \(2x \bmod 6\) & \(2\) & \(4\) & \(0\) & \(2\) & \(4\) & \(0\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  \begin{att}
+    \(2x\) 永远是偶数，永远不可能是 \(1\)。试遍 \(1\) 到 \(6\)，也找不到。
+  \end{att}
+\end{frame}
+
+\begin{frame}{模 7 和模 6，差在哪？}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{模 7}
+        \(7\) 是\textbf{素数}。\\
+        \(1,2,3,4,5,6\) 里每一个都有逆元。
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{模 6}
+        \(6\) 不是素数。\\
+        \(2\) 和 \(6\) 有公因数 \(2\)，于是 \(2\) 没有逆元。
+      \end{block}
+    \end{column}
+  \end{columns}
+  \pause
+  \begin{center}
+    {\large 这条界线，后面几节课会越说越清楚。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{模 7 乘法里，每个人都有逆元}
+  \begin{center}
+  \begin{tabular}{@{}lcccccc@{}}
+    \toprule
+    \(a\) & \(1\) & \(2\) & \(3\) & \(4\) & \(5\) & \(6\) \\
+    \midrule
+    \(a\) 的逆元 & \(1\) & \(4\) & \(5\) & \(2\) & \(3\) & \(6\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  \begin{center}
+    验一下：\(2\times4=8\equiv1\)，\(3\times5=15\equiv1\)，\(6\times6=36\equiv1\)。
+  \end{center}
+\end{frame}
+
+% ============================================================================
+\section{和有理数对上}
+
+\begin{frame}{还是那两样东西}
+  \begin{center}
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+     & \textbf{单位元} & \textbf{逆元} \\
+    \midrule
+    有理数加法 & \(0\) & 相反数 \(-a\) \\
+    有理数乘法 & \(1\) & 倒数 \(\dfrac1a\ (a\neq0)\) \\
+    模 \(7\) 乘法 & \(1\) & \(a\) 的逆元（表里的搭档） \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  \begin{att}
+    有理数乘法里 \(0\) 没有倒数——和模 \(6\) 里的 \(2\) 一样，被同一件事挡在门外。
+  \end{att}
+\end{frame}
+
+\begin{frame}{这节课要带走的两句话}
+  \begin{block}{一}
+    逆元就是能把动作\textbf{撤回}的那一步：加上 \(a\) 要用 \(-a\) 撤回，乘上 \(3\) 要用乘 \(5\) 撤回。
+  \end{block}
+  \begin{block}{二}
+    加法里人人都有搭档；乘法里不一定——模 \(7\) 有，模 \(6\) 没有。
+  \end{block}
+  \pause
+  \begin{center}
+    {\large\textcolor{textgreen}{\bfseries 下节课：把这套规矩装进一个定义——群。}}
+  \end{center}
+\end{frame}
+
+% ---------------- 结尾页 ----------------
+\begin{frame}
+  \begin{center}
+    \vspace{1.6cm}
+    {\Large\textcolor{textgreen}{\bfseries 下课}}
+
+    \vspace{1.0cm}
+    {\large\textcolor{accentgreen}{下节课：群的四条规则}}
+  \end{center}
+\end{frame}
+
+\end{document}

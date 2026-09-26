@@ -8,8 +8,8 @@
 %  编译：XeLaTeX，编译两遍（目录需要第二遍才正确）
 % ----------------------------------------------------------------------------
 %  设计原则：务实，少加不必要的框。
-%    只保留 4 个方框：mubiao 本课目标 / definition 定义 / example 例 / xiaojie 本课小结
-%    其余一律排成普通段落：caozuo 讲台操作 / zhu 注 / jielun 结论
+%    方框： mubiao 本课目标 / definition 定义 / dingli 定理 / example 例 / xiaojie 本课小结
+%    其余一律排成普通段落：caozuo 讲台操作 / zhu 注
 % ============================================================================
 
 % ---------------- 字体（跨平台自动选）----------------
@@ -67,6 +67,7 @@
 \definecolor{jyblue}{RGB}{0,90,160}
 \definecolor{jygreen}{RGB}{0,100,0}
 \definecolor{jyteal}{RGB}{0,121,107}
+\definecolor{jyolive}{RGB}{85,107,47}
 \definecolor{jygray}{RGB}{85,85,85}
 \definecolor{jydark}{RGB}{20,90,20}
 
@@ -163,16 +164,19 @@
   colback=jyteal!6!white, colframe=jyteal!6!white, coltitle=jyteal!60!black,
   title={例\jysub{#1}},
   overlay={\draw[line width=2.6pt, jyteal] (frame.north west) -- (frame.south west);}}
-\newtcolorbox{xiaojie}[1][]{jybase,
+\newtcolorbox{dingli}[1][]{jybase,
   colback=jydark!7!white, colframe=jydark!7!white, coltitle=jydark!60!black,
-  title={本课小结\jysub{#1}},
+  title={定理\jysub{#1}},
   overlay={\draw[line width=2.6pt, jydark] (frame.north west) -- (frame.south west);}}
+\newtcolorbox{xiaojie}[1][]{jybase,
+  colback=jyolive!7!white, colframe=jyolive!7!white, coltitle=jyolive!60!black,
+  title={本课小结\jysub{#1}},
+  overlay={\draw[line width=2.6pt, jyolive] (frame.north west) -- (frame.south west);}}
 
-% ---------------- 不加框的三类段落 ----------------
-% 讲台操作、注、结论：只留文本本身，不加框、不上色
+% ---------------- 不加框的两类段落 ----------------
+% 讲台操作、注：只留文本本身，不加框、不上色
 \newenvironment{caozuo}[1][]{\par\vspace{1pt}\ignorespaces}{\par\vspace{1pt}}
 \newenvironment{zhu}[1][]{\par\vspace{1pt}\ignorespaces}{\par\vspace{1pt}}
-\newenvironment{jielun}[1][]{\par\vspace{1pt}\ignorespaces}{\par\vspace{1pt}}
 
 % ---------------- 图片占位符 ----------------
 \newcommand{\imgph}[2][4cm]{%

@@ -1,0 +1,293 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 4 课　群的四条规则
+% ----------------------------------------------------------------------------
+%  编译        XeLaTeX，编译两遍
+%  样式        ../../00-共享/preamble.tex
+%  说明        本课不发单页
+%  图片        一律 \imgph 占位，不要在这里手画 tikz
+%  记号        新定义运算统一写作 \oplus（避免在数学模式里排中文符号）
+% ============================================================================
+
+\documentclass[10pt]{beamer}
+\input{../../00-共享/preamble.tex}
+
+% ==================== 每份课件只改这一段 ====================
+\title{从数数开始的抽象代数生活}
+\subtitle{第 4 课　群的四条规则}
+\author{姜博瀚}
+\institute{厦门大学附属实验中学}
+\date{\today}
+% ============================================================
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ============================================================================
+\section{回顾}
+
+\begin{frame}{回顾：我们已经见过两个运算}
+  \begin{center}
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+     & \textbf{单位元} & \textbf{逆元} \\
+    \midrule
+    模 \(12\) 加法 & \(0\) & \(12-a\) \\
+    有理数加法 & \(0\) & \(-a\) \\
+    有理数乘法 & \(1\) & \(1/a\ (a\neq0)\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  \begin{center}
+    {\large 这三套运算，看上去很像。\pause 像在哪儿？}
+  \end{center}
+\end{frame}
+
+% ============================================================================
+\section{四条规则}
+
+\begin{frame}{先把「运算」说清楚}
+  \begin{definition}[运算]
+    设 \(S\) 是一个集合。如果有一种办法，把 \(S\) 里任意两个元素 \(a,b\) 合起来，
+    得到 \(S\) 里\textbf{唯一确定}的一个元素，记作 \(a*b\)，
+    就说 \(*\) 是 \(S\) 上的一个\textbf{运算}。
+  \end{definition}
+  \pause
+  \begin{example}
+    有理数加法 \(+\)、有理数乘法 \(\times\)、模 \(12\) 加法，都是运算。
+
+    「取两个数里较大的那一个」也是运算——比如 \(3*5=5\)。
+    运算不是数数才有的东西。
+  \end{example}
+\end{frame}
+
+\begin{frame}{群：四条规则}
+  \begin{definition}[群]
+    设 \(*\) 是集合 \(G\) 上的一个运算。如果下面四条都成立，
+    就说 \((G,*)\) 是一个\textbf{群}：
+    \begin{enumerate}
+      \item \textbf{封闭}：任取 \(a,b\in G\)，\(a*b\) 仍然属于 \(G\)；
+      \item \textbf{结合}：\((a*b)*c=a*(b*c)\)；
+      \item \textbf{单位元}：存在 \(e\in G\)，对每个 \(a\) 都有 \(a*e=e*a=a\)；
+      \item \textbf{逆元}：每个 \(a\in G\) 都有 \(b\in G\)，使 \(a*b=b*a=e\)。
+    \end{enumerate}
+  \end{definition}
+  \pause
+  \begin{att}
+    看清楚：\textbf{交换律不在里面}。\(a*b=b*a\) 不要求成立。
+  \end{att}
+\end{frame}
+
+% ============================================================================
+\section{四个例子}
+
+\begin{frame}{拿四个东西来对一对}
+  \begin{center}
+  \begin{tabular}{@{}lcccc@{}}
+    \toprule
+     & 封闭 & 结合 & 单位元 & 逆元 \\
+    \midrule
+    模 \(12\) 加法 & \(\checkmark\) & \(\checkmark\) & \(0\) & \(12-a\) \\
+    有理数加法 & \(\checkmark\) & \(\checkmark\) & \(0\) & \(-a\) \\
+    有理数乘法 & \(\checkmark\) & \(\checkmark\) & \(1\) & \(1/a\ (a\neq0)\) \\
+    \(a\oplus b=a+b+1\) & ? & ? & ? & ? \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  \begin{att}
+    第三行请特别看一眼：\(a=0\) 的时候，\(1/a\) 是什么？—— 没有。
+  \end{att}
+\end{frame}
+
+\begin{frame}{有理数乘法：卡在 0 上}
+  \begin{block}{\(0\) 没有倒数}
+    要找 \(0\) 的逆元，就是要找一个数 \(b\)，使
+    \[
+      0\times b=1 .
+    \]
+    可是左边永远是 \(0\)。这样的 \(b\) 根本不存在。
+  \end{block}
+  \pause
+  \begin{center}
+    {\large 少了一个逆元，四条规则就凑不齐。}\\[0.5em]
+    \pause
+    {\large 所以：\textbf{有理数乘法不构成群}。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{自己定制一个运算}
+  在有理数上规定一个新运算：
+  \[
+    a\oplus b = a+b+1 .
+  \]
+  \pause
+  \begin{example}
+    \(3\oplus5=3+5+1=9\)；\quad \((-2)\oplus0=-2+0+1=-1\)。
+  \end{example}
+  \pause
+  有的题目就爱这样出新定义运算。\pause 今天，我们自己当出题人，一条一条验给它看。
+\end{frame}
+
+\begin{frame}{验一验：前两条}
+  \begin{block}{封闭}
+    \(a\oplus b=a+b+1\) 是两个有理数相加、再加 \(1\)，结果还是有理数。\quad \(\checkmark\)
+  \end{block}
+  \pause
+  \begin{block}{结合律}
+    \begin{align*}
+      (a\oplus b)\oplus c &= (a+b+1)+c+1 = a+b+c+2,\\
+      a\oplus(b\oplus c) &= a+(b+c+1)+1 = a+b+c+2 .
+    \end{align*}
+    两边一样。\quad \(\checkmark\)
+  \end{block}
+\end{frame}
+
+\begin{frame}{单位元是谁？}
+  设单位元是 \(e\)，它要满足 \(a\oplus e=a\)：
+  \[
+    a+e+1=a \quad\Longrightarrow\quad e=-1 .
+  \]
+  \pause
+  \begin{center}
+    {\large 单位元是 \(\mathbf{-1}\)，\textbf{不是 \(0\)}。}
+  \end{center}
+  \pause
+  \begin{block}{验证}
+    \(a\oplus(-1)=a+(-1)+1=a\)，对每个 \(a\) 都对。\quad \(\checkmark\)
+  \end{block}
+\end{frame}
+
+\begin{frame}{每个数的搭档}
+  要找 \(a\) 的逆元，就是解 \(a\oplus b=-1\)：
+  \[
+    a+b+1=-1 \quad\Longrightarrow\quad b=-a-2 .
+  \]
+  \pause
+  \begin{center}
+    {\large \(a\) 的逆元是 \(-a-2\)。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{用手指回答}
+  在 \(a\oplus b=a+b+1\) 里，报出下面每个数的逆元：
+  \begin{itemize}
+    \item \(0\)
+    \item \(1\)
+    \item \(-3\)
+  \end{itemize}
+  \pause
+  \begin{block}{答案}
+    \(-2\)；\quad \(-3\)；\quad \(1\)。\quad（都等于 \(-a-2\)）
+  \end{block}
+\end{frame}
+
+\begin{frame}{四条都齐了}
+  \begin{center}
+  \begin{tabular}{@{}lcccc@{}}
+    \toprule
+     & 封闭 & 结合 & 单位元 & 逆元 \\
+    \midrule
+    模 \(12\) 加法 & \(\checkmark\) & \(\checkmark\) & \(0\) & \(12-a\) \\
+    有理数加法 & \(\checkmark\) & \(\checkmark\) & \(0\) & \(-a\) \\
+    有理数乘法 & \(\checkmark\) & \(\checkmark\) & \(1\) & 缺 \(0\) 的 \\
+    \(a\oplus b=a+b+1\) & \(\checkmark\) & \(\checkmark\) & \(-1\) & \(-a-2\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  \begin{center}
+    {\large 换了单位元，换了逆元，四条规则照样能凑齐。}
+  \end{center}
+\end{frame}
+
+% ============================================================================
+\section{结合律不是废话}
+
+\begin{frame}{结合律不是废话}
+  再换一个运算：
+  \[
+    a\oplus b=\frac{a+b}{2} .
+  \]
+  \pause
+  算 \((1\oplus3)\oplus5\) 和 \(1\oplus(3\oplus5)\)：
+  \pause
+  \begin{align*}
+    (1\oplus3)\oplus5 &= 2\oplus5 = \frac{2+5}{2} = 3.5,\\
+    1\oplus(3\oplus5) &= 1\oplus4 = \frac{1+4}{2} = 2.5 .
+  \end{align*}
+  \pause
+  \begin{att}
+    结果不一样。所以这个运算\textbf{不满足结合律}，凑不成群。
+  \end{att}
+\end{frame}
+
+% ============================================================================
+\section{交换律不是必要的}
+
+\begin{frame}{交换律不是必要的}
+  看两个动作：
+  \begin{block}{}
+    动作甲：把数\textbf{乘 \(2\)}。\qquad 动作乙：把数\textbf{加 \(1\)}。
+  \end{block}
+  \pause
+  取 \(x=1\)，先甲后乙：
+  \[
+    1 \xrightarrow{\ \text{甲}\ } 2 \xrightarrow{\ \text{乙}\ } 3 .
+  \]
+  \pause
+  先乙后甲：
+  \[
+    1 \xrightarrow{\ \text{乙}\ } 2 \xrightarrow{\ \text{甲}\ } 4 .
+  \]
+  \pause
+  \begin{center}
+    {\large \(3\neq4\)：先做哪个，结果不一样。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{但结合律还在}
+  三个动作连着做：甲、乙、甲。
+  \begin{itemize}
+    \item 先合前两个：把（甲，乙）看成一个动作，再接着做甲；
+    \item 先合后两个：先做甲，再把（乙，甲）看成一个动作。
+  \end{itemize}
+  \pause
+  \begin{center}
+    {\large 两条路都是「甲、乙、甲」连着做，结果当然一样。}
+  \end{center}
+  \pause
+  \begin{att}
+    动作的复合天生满足结合律，却不一定满足交换律。
+    这一组动作，连同它们复合出来的所有动作，构成一个\textbf{不交换的群}。
+  \end{att}
+\end{frame}
+
+\begin{frame}{这节课要带走的三句话}
+  \begin{itemize}
+    \item 群 \(=\) 一个集合 \(+\) 一个运算 \(+\) 四条规则：封闭、结合、单位元、逆元。
+    \item 单位元不一定是 \(0\)——在 \(a\oplus b=a+b+1\) 里它是 \(-1\)。
+    \item 交换律\textbf{不在}群的规则里。
+  \end{itemize}
+  \pause
+  \begin{center}
+    {\large\textcolor{textgreen}{\bfseries 下节课：去看三角形。它的动作也不交换。}}
+  \end{center}
+\end{frame}
+
+% ---------------- 结尾页 ----------------
+\begin{frame}
+  \begin{center}
+    \vspace{1.6cm}
+    {\Large\textcolor{textgreen}{\bfseries 下课}}
+
+    \vspace{1.0cm}
+    {\large\textcolor{accentgreen}{下节课：三角形的对称与置换记号}}
+  \end{center}
+\end{frame}
+
+\end{document}

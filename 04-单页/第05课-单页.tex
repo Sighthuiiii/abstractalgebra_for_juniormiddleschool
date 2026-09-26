@@ -1,0 +1,92 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 5 课　课堂单页（学生用，单独打印一张 A4）
+%  编译：XeLaTeX，两遍即可
+%  约定：顶点 A 在上、B 在右下、C 在左下；转 120° 指顺时针
+% ============================================================================
+
+\documentclass[11pt]{ctexart}
+\usepackage[a4paper,left=1.7cm,right=1.7cm,top=1.4cm,bottom=1.4cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+
+\setCJKmainfont{SimSun}[BoldFont=SimHei,ItalicFont=KaiTi]
+\IfFontExistsTF{TeX Gyre Pagella}{\setmainfont{TeX Gyre Pagella}}{\setmainfont{Latin Modern Roman}}
+
+\definecolor{pagegreen}{RGB}{34,139,34}
+\definecolor{pagelight}{RGB}{240,255,240}
+\renewcommand{\arraystretch}{1.35}
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+\newcommand{\biaoti}[2]{%
+  {\color{pagegreen}\rule{\textwidth}{1.2pt}}\\[6pt]
+  {\heiti\Large 第 #1 课\quad #2}\hfill{\small\songti 课堂单页}\\[6pt]
+  {\color{pagegreen}\rule{\textwidth}{0.5pt}}\\[4pt]
+  {\small 姓名\underline{\hspace{3.2cm}}\qquad 班级\underline{\hspace{2.4cm}}\qquad 座号\underline{\hspace{1.6cm}}}
+  \vspace{0.4em}
+}
+
+% 空的两行式
+\newcommand{\kongshi}{%
+  $\begin{pmatrix}
+     A & B & C\\[2pt]
+     \hspace{1.3em} & \hspace{1.3em} & \hspace{1.3em}
+   \end{pmatrix}$%
+}
+
+\begin{document}
+
+\biaoti{5}{三角形的对称与置换记号}
+
+\noindent 老师手里的正三角形纸片：正面写 \(A,B,C\)（\(A\) 在上、\(B\) 在右下、\(C\) 在左下），背面是另一种颜色。
+
+\section*{一、顶点去了哪}
+
+\noindent 老师每做一个动作，就把三角形贴回原位。把顶点的新位置填进下表：
+
+\begin{center}
+\begin{tabular}{@{}lccl@{}}
+  \toprule
+  动作 & \multicolumn{3}{c}{顶点去了哪} \\
+  \midrule
+  \rule{0pt}{2.4ex}不动 & & & \\
+  \rule{0pt}{2.4ex}顺时针转 \(120^\circ\) & & & \\
+  \rule{0pt}{2.4ex}顺时针转 \(240^\circ\) & & & \\
+  \rule{0pt}{2.4ex}沿过 \(A\) 的轴翻 & & & \\
+  \rule{0pt}{2.4ex}沿过 \(B\) 的轴翻 & & & \\
+  \rule{0pt}{2.4ex}沿过 \(C\) 的轴翻 & & & \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+\noindent 一共数出 \underline{\hspace{1.8cm}} 个动作：转动 \underline{\hspace{1.2cm}} 个，翻折 \underline{\hspace{1.2cm}} 个。
+
+\section*{二、写出两行式}
+
+\noindent 上排写原来的位置，下排写它去了哪。提示：先问「\(A\) 去哪了」，再问「\(B\) 去哪了」，最后问「\(C\) 去哪了」。
+
+\begin{center}
+\begin{tabular}{@{}ccc@{}}
+  \rule{0pt}{2.6ex}顺时针转 \(240^\circ\) & 沿过 \(B\) 的轴翻折 & 沿过 \(C\) 的轴翻折 \\[8pt]
+  \kongshi & \kongshi & \kongshi \\
+\end{tabular}
+\end{center}
+
+\section*{三、自己判断}
+
+\noindent 下面这张两行式表示哪个动作？做的时候纸片要不要翻面？
+
+\begin{center}
+{\large
+$\begin{pmatrix}A&B&C\\B&A&C\end{pmatrix}$ \quad 表示：\underline{\hspace{5.6cm}} \quad 翻面？\underline{\hspace{2.2cm}}
+}
+\end{center}
+
+\vspace{0.2em}
+\noindent 白纸动手：拿一张纸剪一个正三角形，自己折一折，看看能不能折出这 \(6\) 个动作。
+
+\end{document}

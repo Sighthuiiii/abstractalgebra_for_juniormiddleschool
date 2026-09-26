@@ -1,0 +1,139 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 5 课　三角形的对称与置换记号　—— 教师版讲义
+%  与 02-课件/第05课-三角形的对称与置换记号/第05课-三角形的对称与置换记号.tex 同步
+%  约定：顶点 A 在上、B 在右下、C 在左下；转 120° 指顺时针
+% ============================================================================
+
+\jhlesson{5}{三角形的对称与置换记号}{时长 45 分钟\quad·\quad 教具：正三角形纸片（正面写 \(A,B,C\)，背面涂另一色）\quad·\quad 本课发单页}
+
+\begin{mubiao}
+  \begin{itemize}
+    \item 能说出正三角形的 \(6\) 个对称动作。
+    \item 会把每个动作写成一张两行式（置换记号）。
+    \item 知道两行式的作用：\textbf{不画图也能说清谁去了哪}。
+  \end{itemize}
+\end{mubiao}
+
+\noindent{\small 本课节奏：0—6 回顾｜6—28 六个动作｜28—40 置换记号（发单页，跟做）｜40—45 收尾。全程至少 4 次「用手指回答」。}
+
+\section*{一、回顾（0—6 分钟）}
+
+先回看上一课那组不交换的动作：甲 \(=\) 乘 \(2\)，乙 \(=\) 加 \(1\)。
+\[
+  1 \xrightarrow{\ \text{甲}\ } 2 \xrightarrow{\ \text{乙}\ } 3,
+  \qquad
+  1 \xrightarrow{\ \text{乙}\ } 2 \xrightarrow{\ \text{甲}\ } 4 .
+\]
+一句话过渡：今天换一批动作——三角形在桌上的动作。
+
+\section*{二、三角形的六个动作（6—28 分钟）}
+
+先亮出教具：一张正三角形纸片，正面三个顶点写 \(A,B,C\)，背面涂成另一个颜色。
+约定位置：\(A\) 在上，\(B\) 在右下，\(C\) 在左下。
+
+\begin{definition}[对称动作]
+  做完一次动作，图形要和原来的位置\textbf{完全重合}——顶点对准顶点，边对准边。
+\end{definition}
+
+\begin{zhu}
+  「随手挪一下让它歪着」「用尺子量着挪一点点」都不算——要的是能整整齐齐重合的动作。
+\end{zhu}
+
+\begin{caozuo}
+  按顺序做给学生看，每做完一个就贴回原位，让全班看清顶点去了哪里：
+  \begin{itemize}
+    \item 三个转动：不动；顺时针转 \(120^\circ\)；顺时针转 \(240^\circ\)；
+    \item 三个翻折：沿过 \(A\) 的轴翻；沿过 \(B\) 的轴翻；沿过 \(C\) 的轴翻。
+  \end{itemize}
+  \textbf{翻折的时候要让纸片翻面，把背面的颜色露出来}——后排才看得清"翻了"和"没翻"的区别。
+  做完把 \(6\) 个动作在黑板上排成一排，写清 \(3+3=6\)。
+\end{caozuo}
+
+\begin{dingli}[正三角形的对称动作]
+  正三角形恰好有 \(6\) 个对称动作：\(3\) 个转动加 \(3\) 个翻折，没有第七个。
+\end{dingli}
+
+\begin{zhu}
+  「没有第七个」先不要证明，只让学生看着这 \(6\) 个动作点头。为什么只有 \(6\) 个，
+  等他们能心算顶点去向之后再回头说也不迟。
+\end{zhu}
+
+\section*{三、置换记号（28—40 分钟）}
+
+\begin{caozuo}
+  \textbf{先发单页。}拿「顺时针转 \(120^\circ\)」做例子，问全班：\(A\) 去哪了？\(B\) 去哪了？\(C\) 去哪了？
+  他们把答案报出来（\(A\to B\)，\(B\to C\)，\(C\to A\)）之后，再板书两行式：
+\end{caozuo}
+
+\[
+  \begin{pmatrix}
+    A & B & C\\
+    B & C & A
+  \end{pmatrix}
+\]
+
+读作「\(A\) 去 \(B\)，\(B\) 去 \(C\)，\(C\) 去 \(A\)」。
+
+\begin{definition}[置换的双行记号]
+  上排写原来的位置，下排写这个位置上的东西\textbf{去了哪}。两张表合在一起，
+  写成一对括号里的两行，就记下了整个动作。
+\end{definition}
+
+\begin{zhu}
+  这只是把刚才那句话写短，不是新东西。学生不需要画图，只需要会读、会照着写。
+\end{zhu}
+
+再给一个翻折的例子（沿过 \(A\) 的轴翻）：\(A\) 在自己那条轴上，所以不动；\(B\) 和 \(C\) 对调：
+
+\[
+  \begin{pmatrix}
+    A & B & C\\
+    A & C & B
+  \end{pmatrix}
+\]
+
+\begin{caozuo}
+  跟做：让全班在单页上自己写出下面两个动作的两行式，走一圈看几个人卡住——
+  \begin{enumerate}
+    \item 顺时针转 \(240^\circ\)，答案是 \(\begin{pmatrix}A&B&C\\C&A&B\end{pmatrix}\)；
+    \item 沿过 \(B\) 的轴翻折，答案是 \(\begin{pmatrix}A&B&C\\C&B&A\end{pmatrix}\)。
+  \end{enumerate}
+  提问的顺序固定下来：先问「\(A\) 去哪了」，再问「\(B\) 去哪了」，最后问「\(C\) 去哪了」。
+\end{caozuo}
+
+\noindent 六个动作，六张两行式：
+
+\begin{center}
+\begin{tabular}{@{}lc@{}}
+  \toprule
+  动作 & 两行式 \\
+  \midrule
+  不动 & \(\begin{pmatrix}A&B&C\\A&B&C\end{pmatrix}\) \\[8pt]
+  顺时针转 \(120^\circ\) & \(\begin{pmatrix}A&B&C\\B&C&A\end{pmatrix}\) \\[8pt]
+  顺时针转 \(240^\circ\) & \(\begin{pmatrix}A&B&C\\C&A&B\end{pmatrix}\) \\[8pt]
+  沿过 \(A\) 的轴翻 & \(\begin{pmatrix}A&B&C\\A&C&B\end{pmatrix}\) \\[8pt]
+  沿过 \(B\) 的轴翻 & \(\begin{pmatrix}A&B&C\\C&B&A\end{pmatrix}\) \\[8pt]
+  沿过 \(C\) 的轴翻 & \(\begin{pmatrix}A&B&C\\B&A&C\end{pmatrix}\) \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+\begin{caozuo}
+  手指回答：哪几张两行式的下排和上排一模一样？（只有「不动」那一张）
+  \(\begin{pmatrix}A&B&C\\B&C&A\end{pmatrix}\) 是哪个动作？（顺时针转 \(120^\circ\)）
+\end{caozuo}
+
+\section*{四、收尾（40—45 分钟）}
+
+板书两句话：正三角形一共 \(6\) 个对称动作；\(6\) 个动作对应 \(6\) 张两行式，没有两张一样。
+
+预告：下节课把「先做这个，再做那个」当成一种运算，看看这 \(6\) 个动作能不能凑成一个群。
+
+\begin{xiaojie}
+  \begin{itemize}
+    \item 正三角形有 \(6\) 个对称动作：\(3\) 个转动加 \(3\) 个翻折。
+    \item 每个动作写成一个两行式：上排原位置，下排它去了哪。
+    \item \(6\) 个动作对应 \(6\) 张两行式，没有任何两张一样。
+  \end{itemize}
+\end{xiaojie}

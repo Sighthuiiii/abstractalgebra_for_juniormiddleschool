@@ -1,0 +1,254 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 5 课　三角形的对称与置换记号
+% ----------------------------------------------------------------------------
+%  编译        XeLaTeX，编译两遍
+%  样式        ../../00-共享/preamble.tex
+%  说明        本节发一页单页（见 04-单页/）
+%  图片        三角形一律 \imgph 占位，不要在这里手画 tikz
+%  约定        顶点 A 在上、B 在右下、C 在左下；转 120° 指顺时针
+% ============================================================================
+
+\documentclass[10pt]{beamer}
+\input{../../00-共享/preamble.tex}
+
+% ==================== 每份课件只改这一段 ====================
+\title{从数数开始的抽象代数生活}
+\subtitle{第 5 课　三角形的对称与置换记号}
+\author{姜博瀚}
+\institute{厦门大学附属实验中学}
+\date{\today}
+% ============================================================
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ============================================================================
+\section{回顾}
+
+\begin{frame}{回顾：两个不交换的动作}
+  上节课的两个动作：\quad 甲 \(=\) 乘 \(2\)，\quad 乙 \(=\) 加 \(1\)。
+  \[
+    1 \xrightarrow{\ \text{甲}\ } 2 \xrightarrow{\ \text{乙}\ } 3,
+    \qquad
+    1 \xrightarrow{\ \text{乙}\ } 2 \xrightarrow{\ \text{甲}\ } 4 .
+  \]
+  \pause
+  \begin{center}
+    {\large 今天换一批动作——三角形在桌上的动作。}
+  \end{center}
+\end{frame}
+
+% ============================================================================
+\section{三角形的六个动作}
+
+\begin{frame}{一张三角形纸片}
+  正三角形，三个顶点写上 \(A,B,C\)。\quad 背面涂成另一个颜色。
+  \imgph[3.2cm]{正三角形纸片：正面写 \(A\)（上）、\(B\)（右下）、\(C\)（左下），背面涂成另一种颜色}
+  我们在桌上做动作，让三角形和原来的位置重合。
+\end{frame}
+
+\begin{frame}{什么样的动作算数？}
+  \begin{block}{对称动作}
+    做完一次动作，三角形要和原来的位置\textbf{完全重合}——顶点对准顶点，边对准边。
+  \end{block}
+  \pause
+  \begin{itemize}
+    \item 随手挪一下，让它歪着？不行，不重合。
+    \item 用尺子量着挪一点点？也不行——要的是能整整齐齐重合的动作。
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{一共只有六个}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{转动}
+        \begin{itemize}
+          \item 不动
+          \item 顺时针转 \(120^\circ\)
+          \item 顺时针转 \(240^\circ\)
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{翻折}
+        \begin{itemize}
+          \item 沿过 \(A\) 的轴翻
+          \item 沿过 \(B\) 的轴翻
+          \item 沿过 \(C\) 的轴翻
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+  \pause
+  \begin{center}
+    \(3+3=6\)。\quad 没有第七个。
+  \end{center}
+\end{frame}
+
+\begin{frame}{做一个，看一个}
+  \imgph[4.8cm]{六个动作的可视化：六个正三角形排成两行，每个标出 \(A,B,C\) 的去向；\\三个翻折的用背面颜色区分}
+  \pause
+  \begin{center}
+    {\large 每做一个动作，顶点就换一次位置。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{先看「顺时针转 \(120^\circ\)」}
+  \pause
+  \begin{center}
+  \begin{tabular}{@{}lccc@{}}
+    \toprule
+    原来在 & \(A\) & \(B\) & \(C\) \\
+    \midrule
+    现在到了 & \(B\) & \(C\) & \(A\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  \begin{center}
+    {\large \(A\) 去 \(B\)，\(B\) 去 \(C\)，\(C\) 去 \(A\)。}
+  \end{center}
+\end{frame}
+
+% ============================================================================
+\section{置换记号}
+
+\begin{frame}{把这张表写短一点}
+  上排写原位置，下排写它去了哪：
+  \[
+  \begin{pmatrix}
+    A & B & C\\
+    B & C & A
+  \end{pmatrix}
+  \]
+  \pause
+  读作「\(A\) 去 \(B\)，\(B\) 去 \(C\)，\(C\) 去 \(A\)」。
+  \pause
+  \begin{att}
+    这只是把刚才那句话写短，不是新东西。
+  \end{att}
+\end{frame}
+
+\begin{frame}{再看「沿过 \(A\) 的轴翻折」}
+  \(A\) 在自己那条轴上，所以 \(A\) \textbf{不动}；\(B\) 和 \(C\) 对调。
+  \pause
+  \[
+  \begin{pmatrix}
+    A & B & C\\
+    A & C & B
+  \end{pmatrix}
+  \]
+  \pause
+  \begin{center}
+    翻折时纸片会翻面——所以背面那个颜色会露出来，后排也能看清。
+  \end{center}
+\end{frame}
+
+\begin{frame}{跟做：在单页上写两个}
+  请在单页上写出下面两个动作的两行式：
+  \begin{enumerate}
+    \item 顺时针转 \(240^\circ\)
+    \item 沿过 \(B\) 的轴翻折
+  \end{enumerate}
+  \pause
+  \begin{center}
+    提示：先问「\(A\) 去哪了」，再问「\(B\) 去哪了」，最后问「\(C\) 去哪了」。
+  \end{center}
+\end{frame}
+
+\begin{frame}{对一下答案}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{顺时针转 \(240^\circ\)}
+        \[
+        \begin{pmatrix}
+          A & B & C\\
+          C & A & B
+        \end{pmatrix}
+        \]
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{沿过 \(B\) 的轴翻}
+        \[
+        \begin{pmatrix}
+          A & B & C\\
+          C & B & A
+        \end{pmatrix}
+        \]
+      \end{block}
+    \end{column}
+  \end{columns}
+  \pause
+  \begin{center}
+    检查：下排是不是还让 \(A,B,C\) 各出现一次？
+  \end{center}
+\end{frame}
+
+\begin{frame}{六个动作，六张两行式}
+  \begin{center}
+  \begin{tabular}{@{}lc@{}}
+    \toprule
+    动作 & 两行式 \\
+    \midrule
+    不动 & \(\begin{pmatrix}A&B&C\\A&B&C\end{pmatrix}\) \\[8pt]
+    顺时针转 \(120^\circ\) & \(\begin{pmatrix}A&B&C\\B&C&A\end{pmatrix}\) \\[8pt]
+    顺时针转 \(240^\circ\) & \(\begin{pmatrix}A&B&C\\C&A&B\end{pmatrix}\) \\[8pt]
+    \bottomrule
+  \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}{六个动作，六张两行式（接着看）}
+  \begin{center}
+  \begin{tabular}{@{}lc@{}}
+    \toprule
+    动作 & 两行式 \\
+    \midrule
+    沿过 \(A\) 的轴翻 & \(\begin{pmatrix}A&B&C\\A&C&B\end{pmatrix}\) \\[8pt]
+    沿过 \(B\) 的轴翻 & \(\begin{pmatrix}A&B&C\\C&B&A\end{pmatrix}\) \\[8pt]
+    沿过 \(C\) 的轴翻 & \(\begin{pmatrix}A&B&C\\B&A&C\end{pmatrix}\) \\[8pt]
+    \bottomrule
+  \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}{用手指回答}
+  看这两张表，回答问题：
+  \begin{itemize}
+    \item 哪几张两行式的\textbf{下排}和上排一模一样？
+    \item \(\begin{pmatrix}A&B&C\\B&C&A\end{pmatrix}\) 是哪个动作？
+  \end{itemize}
+  \pause
+  \begin{block}{答案}
+    只有「不动」那一张。\qquad \(\begin{pmatrix}A&B&C\\B&C&A\end{pmatrix}\) 是「顺时针转 \(120^\circ\)」。
+  \end{block}
+\end{frame}
+
+\begin{frame}{这节课要带走的两句话}
+  \begin{itemize}
+    \item 正三角形一共 \(6\) 个对称动作：\(3\) 个转动加 \(3\) 个翻折。
+    \item 每个动作对应一张两行式；\(6\) 个动作对应 \(6\) 张，没有任何两张一样。
+  \end{itemize}
+  \pause
+  \begin{center}
+    {\large\textcolor{textgreen}{\bfseries 下节课：把「先做这个，再做那个」当成一种运算。}}
+  \end{center}
+\end{frame}
+
+% ---------------- 结尾页 ----------------
+\begin{frame}
+  \begin{center}
+    \vspace{1.6cm}
+    {\Large\textcolor{textgreen}{\bfseries 下课}}
+
+    \vspace{1.0cm}
+    {\large\textcolor{accentgreen}{下节课：复合作为运算}}
+  \end{center}
+\end{frame}
+
+\end{document}
