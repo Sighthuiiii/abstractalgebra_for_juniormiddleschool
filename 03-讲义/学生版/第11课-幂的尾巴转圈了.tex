@@ -1,0 +1,99 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 11 课　幂的尾巴转圈了：从现象到猜想　—— 学生版讲义（原 14+15 合并）
+%  与 02-课件/第11课-幂的尾巴转圈了/第11课-幂的尾巴转圈了.tex 同步
+% ============================================================================
+
+\xhlesson{11}{幂的尾巴转圈了：从现象到猜想}{}
+
+\begin{mubiao}
+  \begin{itemize}
+    \item 会算 \(a\) 的幂除以 \(p\) 的余数，并发现它在循环。
+    \item 能自己归纳出猜想：\(a^{p-1}\equiv1\pmod p\)。
+  \end{itemize}
+\end{mubiao}
+
+\section*{一、先看一个怪现象}
+
+\begin{example}[\(2\) 的幂除以 \(7\)]
+  \begin{center}
+  \begin{tabular}{@{}lcccccc@{}}
+    \toprule
+    \(n\) & \(1\) & \(2\) & \(3\) & \(4\) & \(5\) & \(6\) \\
+    \midrule
+    \(2^n\) & \(2\) & \(4\) & \(8\) & \(16\) & \(32\) & \(64\) \\
+    除以 \(7\) 的余数 & \(2\) & \(4\) & \(1\) & \(2\) & \(4\) & \(1\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  余数在 \(2,4,1\) 里打转，从第 \(4\) 个开始原样重复。
+\end{example}
+
+\begin{sikao}
+  一眼看出：余数在重复。那么第 \(7\) 个余数是多少？第 \(2026\) 个呢？
+  \liukong{2}
+\end{sikao}
+
+\section*{二、自己算几组}
+
+\begin{dongshou}[每组只算到第一次出现 \(1\) 为止]
+  \begin{enumerate}
+    \item \(2^n\) 除以 \(5\)：
+      \(2,\ 4,\ \underline{\hspace{1.4em}},\ \underline{\hspace{1.4em}}\)
+      \quad 第 \underline{\hspace{1.2em}} 步第一次到 \(1\)。
+    \item \(3^n\) 除以 \(5\)：
+      \(3,\ \underline{\hspace{1.4em}},\ \underline{\hspace{1.4em}},\ \underline{\hspace{1.4em}}\)
+      \quad 第 \underline{\hspace{1.2em}} 步第一次到 \(1\)。
+    \item \(3^n\) 除以 \(7\)：
+      \(3,\ \underline{\hspace{1.4em}},\ \underline{\hspace{1.4em}},\ \underline{\hspace{1.4em}},
+        \ \underline{\hspace{1.4em}},\ \underline{\hspace{1.4em}}\)
+      \quad 第 \underline{\hspace{1.2em}} 步第一次到 \(1\)。
+  \end{enumerate}
+  小提示：每一步只用上一步的\emph{余数}去乘，数字永远不超过 \(p\)。
+\end{dongshou}
+
+\section*{三、归纳}
+
+\begin{example}[把结果摆在一起]
+  \begin{center}
+  \begin{tabular}{@{}ccc@{}}
+    \toprule
+    \(p\) & \(a\) & 第几步第一次回到 \(1\) \\
+    \midrule
+    \(7\) & \(2\) & \(3\) \\
+    \(7\) & \(3\) & \(6\) \\
+    \(5\) & \(2\) & \(4\) \\
+    \(5\) & \(3\) & \(4\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+\end{example}
+
+\begin{sikao}
+  \begin{enumerate}
+    \item 每一列的步数，和 \(p-1\) 有什么关系？\\
+      （\(p=7\) 时 \(p-1=6\)，\(p=5\) 时 \(p-1=4\)。）
+    \item 那么在 \(p=7\) 时，\(2^6\) 除以 \(7\) 余几？\(3^6\) 呢？\\
+      在 \(p=5\) 时，\(2^4\) 和 \(3^4\) 各余几？
+  \end{enumerate}
+  \liukong{3}
+\end{sikao}
+
+\begin{dingli}[猜想]
+  设 \(p\) 是素数，\(a\) 不是 \(p\) 的倍数，那么
+  \[
+    a^{\,p-1}\equiv1 \pmod p .
+  \]
+\end{dingli}
+
+\begin{sikao}
+  上面这些例子都对。可是「试出来的」算不算数？为什么？
+  \liukong{3}
+\end{sikao}
+
+\begin{xiaojie}
+  用一句话写下今天的猜想，并说明它是在哪些例子里被「看」出来的。
+  \liukong{4}
+\end{xiaojie}
+
+\noindent\textbf{下节课}：把「猜」换成「证」——费马小定理的证明。

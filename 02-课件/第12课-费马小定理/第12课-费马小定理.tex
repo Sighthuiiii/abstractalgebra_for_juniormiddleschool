@@ -1,0 +1,252 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 12 课　费马小定理的证明
+% ----------------------------------------------------------------------------
+%  编译        XeLaTeX，编译两遍
+%  样式        ../../00-共享/preamble.tex
+%  说明        本节发一页单页（见 04-单页/）
+%  图片        一律 \imgph 占位，不要在这里手画 tikz
+% ============================================================================
+
+\documentclass[10pt]{beamer}
+\input{../../00-共享/preamble.tex}
+
+% ==================== 每份课件只改这一段 ====================
+\title{从数数开始的抽象代数生活}
+\subtitle{第 12 课　费马小定理的证明}
+\author{姜博瀚}
+\institute{厦门大学附属实验中学}
+\date{\today}
+% ============================================================
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ============================================================================
+\section{回到上节课的猜想}
+
+\begin{frame}{上节课我们「猜」了一件事}
+  \begin{theorem}[猜想]
+    设 \(p\) 是素数，\(a\) 不是 \(p\) 的倍数，那么
+    \[
+      a^{\,p-1}\equiv1 \pmod p .
+    \]
+  \end{theorem}
+  \pause
+  \begin{center}
+    {\large 试了 \(10\) 个例子都对。\pause 可是「试出来的」不算数。}
+  \end{center}
+  \pause
+  \begin{center}
+    {\Large\textcolor{textgreen}{\bfseries 今天证明它。}}
+  \end{center}
+\end{frame}
+
+% ============================================================================
+\section{从一组数字开始}
+
+\begin{frame}{取 \(p=7\)，\(a=3\)}
+  把 \(1,2,3,4,5,6\) 每个都乘 \(3\)：
+  \begin{center}
+  \begin{tabular}{@{}lcccccc@{}}
+    \toprule
+    原来的数 & \(1\) & \(2\) & \(3\) & \(4\) & \(5\) & \(6\) \\
+    \midrule
+    乘 \(3\) 之后 & \(3\) & \(6\) & \(9\) & \(12\) & \(15\) & \(18\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  别急着算乘积——先看\textbf{余数}：
+  \begin{center}
+  \begin{tabular}{@{}lcccccc@{}}
+    \toprule
+    原来的数 & \(1\) & \(2\) & \(3\) & \(4\) & \(5\) & \(6\) \\
+    \midrule
+    乘 \(3\) 之后的余数 & \(3\) & \(6\) & \(2\) & \(5\) & \(1\) & \(4\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}{余数正好是一个重排}
+  把两行念一遍：
+  \begin{itemize}
+    \item 上排：\(1,2,3,4,5,6\)；
+    \item 下排：\(3,6,2,5,1,4\)。
+  \end{itemize}
+  \pause
+  \begin{center}
+    {\large 一个不多，一个不少——下排又是 \(1\) 到 \(6\) 六个数字的\textbf{一次重排}。}
+  \end{center}
+  \pause
+  \begin{zhu}
+    第 3 课我们就见过这件事：「乘 \(3\)」把 \(1\) 到 \(6\) 六个位置重新排了一遍。
+    今天它变成了证明的第一块砖。
+  \end{zhu}
+\end{frame}
+
+% ============================================================================
+\section{两边相乘}
+
+\begin{frame}{把两行各自乘起来}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{block}{上排乘起来}
+        \[
+          1\times2\times3\times4\times5\times6=6!
+        \]
+      \end{block}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{block}{下排乘起来}
+        \[
+          3\times6\times2\times5\times1\times4=6!
+        \]
+      \end{block}
+    \end{column}
+  \end{columns}
+  \pause
+  \begin{center}
+    因为下排只是上排的重排，两个乘积\textbf{一模一样}。
+  \end{center}
+\end{frame}
+
+\begin{frame}{换一个角度乘}
+  可是下排的 \(3,6,2,5,1,4\)，正是 \(3\times1,3\times2,\dots,3\times6\) 的余数。
+  \pause
+  所以反过来看：
+  \[
+    \underbrace{3\times6\times9\times12\times15\times18}_{\text{把 }3\text{ 都提出来}}
+    \;=\;
+    3^{6}\times(1\times2\times3\times4\times5\times6)
+    \;=\;
+    3^{6}\times 6! .
+  \]
+  \pause
+  而它除以 \(7\) 的余数，就是下排的乘积：
+  \[
+    3^{6}\times6!\equiv 6! \pmod 7 .
+  \]
+\end{frame}
+
+\begin{frame}{把两边都有的划掉}
+  \[
+    3^{6}\times6!\equiv 6! \pmod 7
+  \]
+  \pause
+  两边都有 \(6!=1\times2\times3\times4\times5\times6\)，能不能划掉？
+  \pause
+  \begin{block}{能}
+    模 \(7\) 里，只要不是 \(7\) 的倍数，就一定有逆元（第 3 课学的）。\\
+    \(6!\) 里没有一个因数是 \(7\)，所以它可逆，两边可以同时划掉。
+  \end{block}
+  \pause
+  \begin{center}
+    {\Large \(3^{6}\equiv 1 \pmod 7\).}
+  \end{center}
+\end{frame}
+
+\begin{frame}{用手指回答}
+  \begin{itemize}
+    \item 我们把 \(6!\) 划掉，靠的是它的什么？
+    \item \(3^6\) 到底等于多少？除以 \(7\) 余几？
+  \end{itemize}
+  \pause
+  \begin{block}{答案}
+    靠它有逆元（它不含因数 \(7\)，和 \(7\) 只有公因数 \(1\)）；\quad
+    \(3^6=729=104\times7+1\)，余 \(1\)。
+  \end{block}
+\end{frame}
+
+% ============================================================================
+\section{换成字母再写一遍}
+
+\begin{frame}{从数字换成字母}
+  左边一栏是刚才的具体数字，右边一栏把 \(7\) 换成 \(p\)、把 \(3\) 换成 \(a\)：
+  \begin{center}
+  \begin{tabular}{@{}ll@{}}
+    \toprule
+    \textbf{具体}（\(p=7\)，\(a=3\)） & \textbf{一般} \\
+    \midrule
+    \(3,\ 6,\ 9,\ \dots,\ 18\) & \(a,\ 2a,\ 3a,\ \dots,\ (p-1)a\) \\
+    余数是 \(1\text{—}6\) 的重排 & 余数是 \(1\text{—}(p-1)\) 的重排 \\
+    \(3^{6}\times6!\equiv6!\) & \(a^{\,p-1}\times(p-1)!\equiv(p-1)!\) \\
+    \(3^{6}\equiv1 \pmod 7\) & \(a^{\,p-1}\equiv1 \pmod p\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  \begin{center}
+    {\large 从数字换成字母，就是「\textbf{抽象}」这两个字的实际意思。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{两块砖，撑起整个证明}
+  \begin{block}{砖一：余数是重排}
+    \(a,2a,\dots,(p-1)a\) 的余数，正好是 \(1,2,\dots,p-1\) 的一次重排。
+  \end{block}
+  \pause
+  \begin{block}{砖二：可以划掉}
+    模 \(p\) 里，只要不是 \(p\) 的倍数，就有逆元，可以两边同时划掉。
+  \end{block}
+  \pause
+  \begin{center}
+    {\large 两块砖都来自前面的课——这就是「同一个群」的好处。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{费马小定理}
+  \begin{theorem}[费马小定理]
+    设 \(p\) 是素数，\(a\) 是不被 \(p\) 整除的整数。那么
+    \[
+      a^{\,p-1}\equiv1 \pmod p .
+    \]
+  \end{theorem}
+  \pause
+  \begin{itemize}
+    \item 三百多年前，费马记下了它；
+    \item 今天，你们是用自己的话把它证出来的。
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{下课之前，看一眼黑板右边}
+  \begin{center}
+    {\large 第 1 课上，我们在黑板最右边写下了一行字：}
+    \[
+      999999\div7=?\qquad\text{「第 13 课回来回答」}
+    \]
+  \end{center}
+  \pause
+  \begin{center}
+    {\Large\textcolor{textgreen}{\bfseries 下节课，我们去回答它。}}
+  \end{center}
+\end{frame}
+
+\begin{frame}{这节课要带走的三句话}
+  \begin{itemize}
+    \item 证明的第一步：乘 \(a\) 之后取余，只是把 \(1,\dots,p-1\) 重排了一遍。
+    \item 两边相乘，再划掉都有的 \((p-1)!\)。
+    \item 得到费马小定理：\(a^{p-1}\equiv1\pmod p\)。
+  \end{itemize}
+  \pause
+  \begin{center}
+    {\large\textcolor{textgreen}{\bfseries 下节课：它有什么用。}}
+  \end{center}
+\end{frame}
+
+% ---------------- 结尾页 ----------------
+\begin{frame}
+  \begin{center}
+    \vspace{1.6cm}
+    {\Large\textcolor{textgreen}{\bfseries 下课}}
+
+    \vspace{1.0cm}
+    {\large\textcolor{accentgreen}{下节课：它有什么用——\(999999\) 与身份证}}
+  \end{center}
+\end{frame}
+
+\end{document}

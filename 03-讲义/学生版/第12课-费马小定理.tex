@@ -1,0 +1,101 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 12 课　费马小定理的证明　—— 学生版讲义
+%  与 02-课件/第12课-费马小定理/第12课-费马小定理.tex 同步
+% ============================================================================
+
+\xhlesson{12}{费马小定理的证明}{}
+
+\begin{mubiao}
+  \begin{itemize}
+    \item 能说清为什么两边可以划掉相同的部分。
+    \item 能从具体数字过渡到用字母写的一般形式。
+    \item 能写出 \(a^{\,p-1}\equiv1\pmod p\)。
+  \end{itemize}
+\end{mubiao}
+
+\section*{一、从一组数字开始}
+
+\begin{dongshou}[取 \(p=7\)，\(a=3\)，把表填满]
+  \begin{center}
+  \begin{tabular}{@{}lcccccc@{}}
+    \toprule
+    原来的数 & \(1\) & \(2\) & \(3\) & \(4\) & \(5\) & \(6\) \\
+    \midrule
+    乘 \(3\) 之后 & \(3\) & \(6\) & \(9\) & \(12\) & \(15\) & \(18\) \\
+    取余数 & & & & & & \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+\end{dongshou}
+
+\begin{sikao}
+  看最后一行：它是 \(1,2,3,4,5,6\) 的一次\underline{\hspace{5em}}？\\
+  有没有哪个数字出现了两次？有没有哪个没出现？
+  \liukong{2}
+\end{sikao}
+
+\begin{example}[把两行各自乘起来]
+  \[
+    1\times2\times3\times4\times5\times6=6!, \qquad
+    3\times6\times2\times5\times1\times4=6! .
+  \]
+  因为下排只是上排的重排，两个乘积一模一样。
+\end{example}
+
+\section*{二、换一个角度乘}
+
+\begin{dongshou}
+  \[
+    3\times6\times9\times12\times15\times18
+    =\underline{\hspace{2.4em}}\times(1\times2\times3\times4\times5\times6)
+    =\underline{\hspace{2.4em}}\times 6! .
+  \]
+  所以两边取模 \(7\) 得到：
+  \[
+    3^{6}\times6!\equiv6! \pmod 7 .
+  \]
+\end{dongshou}
+
+\begin{sikao}[为什么能把 \(6!\) 划掉？]
+  提示：模 \(7\) 里，什么样的数才有逆元？（想想第 3 课。）
+  \liukong{2}
+  因为 \(6!\) 里没有一个因数是 \(7\)，所以它\underline{\hspace{3em}}，两边可以同时划掉。\\[4pt]
+  划完得到：\(3^{6}\equiv\underline{\hspace{3em}}\pmod 7\)。
+\end{sikao}
+
+\section*{三、换成字母再写一遍}
+
+\begin{example}
+  \begin{center}
+  \begin{tabular}{@{}ll@{}}
+    \toprule
+    \textbf{具体}（\(p=7\)，\(a=3\)） & \textbf{一般} \\
+    \midrule
+    \(3,\ 6,\ 9,\ \dots,\ 18\) & \(a,\ 2a,\ 3a,\ \dots,\ (p-1)a\) \\
+    余数是 \(1\text{—}6\) 的重排 & 余数是 \underline{\hspace{3.4em}} 的重排 \\
+    \(3^{6}\times6!\equiv6!\) & \underline{\hspace{5.4em}} \\
+    \(3^{6}\equiv1 \pmod 7\) & \underline{\hspace{5.4em}} \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+\end{example}
+
+\begin{dingli}[费马小定理]
+  设 \(p\) 是素数，\(a\) 是不被 \(p\) 整除的整数，那么
+  \[
+    a^{\,p-1}\equiv1 \pmod p .
+  \]
+\end{dingli}
+
+\begin{sikao}
+  整个证明用了两块砖，各是什么？
+  \liukong{3}
+\end{sikao}
+
+\begin{xiaojie}
+  不看上面的内容，凭记忆把证明的四个步骤写一遍：
+  \liukong{5}
+\end{xiaojie}
+
+\noindent\textbf{下节课}：它有什么用——先去回答第 1 课黑板右边那个问题。

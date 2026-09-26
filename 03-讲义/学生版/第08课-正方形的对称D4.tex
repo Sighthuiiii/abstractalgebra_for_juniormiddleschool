@@ -1,0 +1,109 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 8 课　正方形对称：D₄ 的 8 个元素　—— 学生版讲义
+%  与 02-课件/第08课-正方形的对称D4/第08课-正方形的对称D4.tex 同步
+% ============================================================================
+
+\xhlesson{8}{正方形的对称：\texorpdfstring{\(D_4\)}{D4} 的 \texorpdfstring{\(8\)}{8} 个元素}{}
+
+\begin{mubiao}
+  \begin{itemize}
+    \item 能说出正方形的 \(8\) 个对称动作。
+    \item 会把这 \(8\) 个动作写成两行式。
+    \item 会填乘法表里的 \(r\) 行与 \(f\) 行。
+  \end{itemize}
+\end{mubiao}
+
+\section*{一、八个动作}
+
+\noindent 正方形四个顶点写 \(1,2,3,4\)：\quad \(1\) 左上，\(2\) 右上，\(3\) 右下，\(4\) 左下。
+
+\begin{dongshou}[边看边记]
+  老师每做一个动作就贴回原位。把顶点的新位置记下来：
+
+  \begin{center}
+  {\small
+  \begin{tabular}{@{}lc@{}}
+    \toprule
+    动作 & 顶点去了哪 \\
+    \midrule
+    \rule{0pt}{2.6ex}不动 & \(1\to\ \), \(2\to\ \), \(3\to\ \), \(4\to\ \) \\
+    \rule{0pt}{2.6ex}顺时针转 \(90^\circ\) & \(1\to\ \), \(2\to\ \), \(3\to\ \), \(4\to\ \) \\
+    \rule{0pt}{2.6ex}顺时针转 \(180^\circ\) & \(1\to\ \), \(2\to\ \), \(3\to\ \), \(4\to\ \) \\
+    \rule{0pt}{2.6ex}顺时针转 \(270^\circ\) & \(1\to\ \), \(2\to\ \), \(3\to\ \), \(4\to\ \) \\
+    \rule{0pt}{2.6ex}沿对角线 \(1\text{—}3\) 翻 & \(1\to\ \), \(2\to\ \), \(3\to\ \), \(4\to\ \) \\
+    \rule{0pt}{2.6ex}沿对角线 \(2\text{—}4\) 翻 & \(1\to\ \), \(2\to\ \), \(3\to\ \), \(4\to\ \) \\
+    \rule{0pt}{2.6ex}沿竖直中线翻 & \(1\to\ \), \(2\to\ \), \(3\to\ \), \(4\to\ \) \\
+    \rule{0pt}{2.6ex}沿水平中线翻 & \(1\to\ \), \(2\to\ \), \(3\to\ \), \(4\to\ \) \\
+    \bottomrule
+  \end{tabular}}
+  \end{center}
+\end{dongshou}
+
+\begin{sikao}
+  一边数一边答：正方形一共有 \underline{\hspace{1.6em}} 个动作；
+  其中转动 \underline{\hspace{1.2em}} 个，翻折 \underline{\hspace{1.2em}} 个。\\[4pt]
+  转 \(90^\circ\) 要连做几次才回到原位？\underline{\hspace{1.6em}} 次。
+  三角形里转 \(120^\circ\) 呢？\underline{\hspace{1.6em}} 次。
+\end{sikao}
+
+\section*{二、八张两行式}
+
+\begin{example}
+  取名字：\(r\) 是「顺时针转 \(90^\circ\)」，\(f\) 是「沿对角线 \(1\text{—}3\) 翻折」。
+  \begin{center}
+  {\small
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+    名字 & 动作 & 两行式 \\
+    \midrule
+    \(e\) & 不动 & \(\begin{pmatrix}1&2&3&4\\1&2&3&4\end{pmatrix}\) \\[5pt]
+    \(r\) & 转 \(90^\circ\) & \(\begin{pmatrix}1&2&3&4\\2&3&4&1\end{pmatrix}\) \\[5pt]
+    \(r^2\) & 转 \(180^\circ\) & \(\begin{pmatrix}1&2&3&4\\3&4&1&2\end{pmatrix}\) \\[5pt]
+    \(r^3\) & 转 \(270^\circ\) & \(\begin{pmatrix}1&2&3&4\\4&1&2&3\end{pmatrix}\) \\[5pt]
+    \(f\) & 沿对角线 \(1\text{—}3\) 翻 & \(\begin{pmatrix}1&2&3&4\\1&4&3&2\end{pmatrix}\) \\[5pt]
+    \(rf\) & 沿水平中线翻 & \(\begin{pmatrix}1&2&3&4\\4&3&2&1\end{pmatrix}\) \\[5pt]
+    \(r^2f\) & 沿对角线 \(2\text{—}4\) 翻 & \(\begin{pmatrix}1&2&3&4\\3&2&1&4\end{pmatrix}\) \\[5pt]
+    \(r^3f\) & 沿竖直中线翻 & \(\begin{pmatrix}1&2&3&4\\2&1&4&3\end{pmatrix}\) \\
+    \bottomrule
+  \end{tabular}}
+  \end{center}
+\end{example}
+
+\section*{三、填乘法表}
+
+\begin{dongshou}[只填 \(r\) 行与 \(f\) 行]
+  格子里的动作是「先横排的，再做竖排的」。
+
+  \begin{center}
+  {\small
+  \begin{tabular}{@{}l|cccccccc@{}}
+    \toprule
+     & \(e\) & \(r\) & \(r^2\) & \(r^3\) & \(f\) & \(rf\) & \(r^2f\) & \(r^3f\) \\
+    \midrule
+    \rule{0pt}{2.8ex}先 \(r\) & & & & & & & & \\
+    \rule{0pt}{2.8ex}先 \(f\) & & & & & & & & \\
+    \bottomrule
+  \end{tabular}}
+  \end{center}
+\end{dongshou}
+
+\begin{sikao}
+  \(r\) 那一行里，有没有哪个动作出现了两次？\underline{\hspace{3em}}\\
+  所以这一行是 \(8\) 个动作的\underline{\hspace{6em}}。
+\end{sikao}
+
+\begin{example}
+  从 \(f\) 行的第二个格子读出一条关系：
+  \[
+    fr=r^3f .
+  \]
+  和三角形的 \(fr=r^2f\) 比一比：两边都是「先翻后转，等于先\textbf{倒着}转再翻」。
+\end{example}
+
+\begin{xiaojie}
+  列一张小对照表：三角形的动作群与正方形的动作群，各有多少个动作？基本转动各转多少度？
+  \liukong{3}
+\end{xiaojie}
+
+\noindent\textbf{下节课}：在正方形里找小群（子群），再看旋转与翻折那条关系。

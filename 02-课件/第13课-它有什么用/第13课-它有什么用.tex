@@ -1,0 +1,261 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 13 课　它有什么用
+% ----------------------------------------------------------------------------
+%  编译        XeLaTeX，编译两遍
+%  样式        ../../00-共享/preamble.tex
+%  说明        本课不发单页
+%  图片        一律 \imgph 占位，不要在这里手画 tikz
+% ============================================================================
+
+\documentclass[10pt]{beamer}
+\input{../../00-共享/preamble.tex}
+
+% ==================== 每份课件只改这一段 ====================
+\title{从数数开始的抽象代数生活}
+\subtitle{第 13 课　它有什么用}
+\author{姜博瀚}
+\institute{厦门大学附属实验中学}
+\date{\today}
+% ============================================================
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ============================================================================
+\section{先回答第 1 课的问题}
+
+\begin{frame}{费马小定理}
+  \begin{theorem}[费马小定理]
+    设 \(p\) 是素数，\(a\) 是不被 \(p\) 整除的整数，那么
+    \[
+      a^{\,p-1}\equiv1 \pmod p .
+    \]
+  \end{theorem}
+  \pause
+  \begin{center}
+    {\large 工具已经磨好了。\pause 今天先拿它去解决一件旧事。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{黑板右边那行字}
+  \begin{center}
+    {\large 第 1 课上，我们在黑板最右边写下：}
+    \[
+      999999\div7=?\qquad\text{「第 13 课回来回答」}
+    \]
+  \end{center}
+  \pause
+  \begin{center}
+    {\large 今天，把它划掉。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{\(999999\) 为什么能被 \(7\) 整除}
+  第一步，改写：
+  \[
+    999999=1000000-1=10^{6}-1 .
+  \]
+  \pause
+  第二步，用定理：\(7\) 是素数，\(10\) 不是 \(7\) 的倍数，取 \(p=7\)、\(a=10\)，于是
+  \[
+    10^{\,7-1}=10^{6}\equiv1 \pmod 7 .
+  \]
+  \pause
+  第三步，代回去：
+  \[
+    10^{6}-1\equiv1-1=0 \pmod 7 .
+  \]
+  \pause
+  \begin{center}
+    {\large 余数是 \(0\)，所以 \(7\) \textbf{整除} \(999999\)。}\\[0.4em]
+    {\large 证完。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{顺手把黑板右边那行字划掉}
+  \begin{center}
+    {\Large 第 1 课留下的问题：\quad \(\checkmark\)\quad 已解决}
+  \end{center}
+  \pause
+  \begin{center}
+    {\large 我们用了 \(13\) 节课，一次也没有用到计算器。}
+  \end{center}
+\end{frame}
+
+% ============================================================================
+\section{快速求大幂的余数}
+
+\begin{frame}{\(2^{100}\) 除以 \(7\) 余几}
+  不用算 \(2^{100}\)。看指数：
+  \[
+    100=6\times16+4 .
+  \]
+  \pause
+  由费马小定理 \(2^{6}\equiv1\pmod 7\)，于是
+  \[
+    2^{100}=2^{6\times16+4}=(2^{6})^{16}\times2^{4}\equiv1^{16}\times16\equiv16\equiv2 \pmod 7 .
+  \]
+  \pause
+  \begin{center}
+    {\large \(2^{100}\) 除以 \(7\) 余 \(2\)。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{再练一道：\(3^{200}\) 除以 \(11\)}
+  \[
+    3^{10}\equiv1 \pmod{11}\quad(\text{费马小定理，}11\text{ 是素数}) .
+  \]
+  \pause
+  \[
+    200=10\times20 \quad\Longrightarrow\quad
+    3^{200}=(3^{10})^{20}\equiv1^{20}=1 \pmod{11} .
+  \]
+  \pause
+  \begin{center}
+    {\large \(3^{200}\) 除以 \(11\) 余 \(1\)。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{用手指回答}
+  \begin{itemize}
+    \item \(2^{100}\) 除以 \(7\) 的余数是多少？
+    \item 求 \(5^{2026}\) 除以 \(7\) 的余数，第一步应该看什么？
+  \end{itemize}
+  \pause
+  \begin{block}{答案}
+    \(2\)；\quad 先把 \(2026\) 除以 \(6\)（因为 \(5^6\equiv1\pmod 7\)），
+    \(2026=6\times337+4\)，所以答案与 \(5^4\equiv4\) 相同。
+  \end{block}
+\end{frame}
+
+% ============================================================================
+\section{身份证上的那一位}
+
+\begin{frame}{身份证最后一位，是怎么算出来的}
+  身份证前 \(17\) 位，每一位乘一个固定的「权重」，加起来，再除以 \(11\) 取余。
+  \begin{center}
+  \begin{tabular}{@{}lc*{17}{c}@{}}
+    \toprule
+    位数 & \(1\) & \(2\) & \(3\) & \(4\) & \(5\) & \(6\) & \(7\) & \(8\) & \(9\) & \(10\) & \(11\) & \(12\) & \(13\) & \(14\) & \(15\) & \(16\) & \(17\) \\
+    \midrule
+    权重 & \(7\) & \(9\) & \(10\) & \(5\) & \(8\) & \(4\) & \(2\) & \(1\) & \(6\) & \(3\) & \(7\) & \(9\) & \(10\) & \(5\) & \(8\) & \(4\) & \(2\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  算出来的余数，按一张表换成最后一位：
+  \begin{center}
+  \begin{tabular}{@{}l*{11}{c}@{}}
+    \toprule
+    余数 & \(0\) & \(1\) & \(2\) & \(3\) & \(4\) & \(5\) & \(6\) & \(7\) & \(8\) & \(9\) & \(10\) \\
+    \midrule
+    校验码 & \(1\) & \(0\) & X & \(9\) & \(8\) & \(7\) & \(6\) & \(5\) & \(4\) & \(3\) & \(2\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}{算一个给你看}
+  取一个例子编号的前 \(17\) 位：
+  \[
+    3\ 5\ 0\ 1\ 0\ 2\ 1\ 9\ 9\ 0\ 0\ 3\ 0\ 7\ 0\ 0\ 1
+  \]
+  每一位乘上对应的权重，加起来：
+  \[
+    21+45+0+5+0+8+2+9+54+0+0+27+0+35+0+0+2=208 .
+  \]
+  \pause
+  \[
+    208=11\times18+10 \quad\Longrightarrow\quad \text{余数 }10 \;\longrightarrow\; \text{校验码 }2 .
+  \]
+  \pause
+  \begin{center}
+    所以完整的编号是 \quad \(\mathbf{350102199003070012}\)。
+  \end{center}
+\end{frame}
+
+\begin{frame}{为什么这一位能防错}
+  \begin{itemize}
+    \item 前 \(17\) 位里改掉任意一位，加权和几乎一定会变；
+    \item 余数变了，校验码就对不上，机器立刻知道「这个号不对」。
+  \end{itemize}
+  \pause
+  \begin{att}
+    这背后全是「取余」——和我们课上算的模 \(11\) 是同一件事。
+  \end{att}
+\end{frame}
+
+% ============================================================================
+\section{RSA：一个极小的例子}
+
+\begin{frame}{怎么「锁」，怎么「开」}
+  取两个素数 \(p=3\)、\(q=11\)，令 \(n=3\times11=33\)。
+  \pause
+  \begin{block}{公钥（谁都能拿）}
+    \(n=33\) 和加密钥匙 \(e=3\)。\quad 加密规则：把数 \(x\) 变成 \(x^{3}\) 除以 \(33\) 的余数。
+  \end{block}
+  \pause
+  \begin{block}{私钥（只有收信人有）}
+    解密钥匙 \(d=7\)。\quad 解密规则：把收到的数 \(y\) 变成 \(y^{7}\) 除以 \(33\) 的余数。
+  \end{block}
+\end{frame}
+
+\begin{frame}{把 5 加密，再解开}
+  \begin{center}
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+    步骤 & 算法 & 结果 \\
+    \midrule
+    要送出去的数 & \(x\) & \(5\) \\
+    加密 & \(5^{3}=125\)，再除以 \(33\) 取余 & \(26\) \\
+    传过去 & & \(26\) \\
+    解密 & \(26^{7}\) 除以 \(33\) 取余 & \(5\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  \begin{center}
+    {\large 收到的又是 \(5\)。锁上、打开，都对。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{这门课为什么讲得到它}
+  \begin{itemize}
+    \item 「锁」和「开」用的都是\textbf{取余}；
+    \item 为什么 \(d=7\) 就对、别人猜不出来？——这里藏着费马小定理的推广；
+    \item 真正在用的 \(n\) 有几百度长，靠的是「拆开容易、合起来难」。
+  \end{itemize}
+  \pause
+  \begin{center}
+    {\large 手机里、网页上，每一次「https」用的都是这类\textbf{绕圈的算术}。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{这节课要带走的三句话}
+  \begin{itemize}
+    \item 费马小定理能回答 \(999999\div7\)：\(10^{6}\equiv1\pmod 7\)，所以整除。
+    \item 它还能把巨大的幂快速地「缩」小：\(2^{100}\equiv2\pmod 7\)。
+    \item 身份证校验码、手机里的加密，用的都是这套「取余」的算术。
+  \end{itemize}
+  \pause
+  \begin{center}
+    {\large\textcolor{textgreen}{\bfseries 下节课：把整门课串成一条线。}}
+  \end{center}
+\end{frame}
+
+% ---------------- 结尾页 ----------------
+\begin{frame}
+  \begin{center}
+    \vspace{1.6cm}
+    {\Large\textcolor{textgreen}{\bfseries 下课}}
+
+    \vspace{1.0cm}
+    {\large\textcolor{accentgreen}{下节课：复习、总结与展望}}
+  \end{center}
+\end{frame}
+
+\end{document}

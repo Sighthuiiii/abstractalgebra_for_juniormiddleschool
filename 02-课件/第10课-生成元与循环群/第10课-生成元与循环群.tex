@@ -1,0 +1,221 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 10 课　生成元、循环群与循环群的子群
+% ----------------------------------------------------------------------------
+%  编译        XeLaTeX，编译两遍
+%  样式        ../../00-共享/preamble.tex
+%  说明        本课不发单页（原 12+13 合并）
+%  图片        圆盘类插图一律 \imgph 占位，不要在这里手画 tikz
+% ============================================================================
+
+\documentclass[10pt]{beamer}
+\input{../../00-共享/preamble.tex}
+
+% ==================== 每份课件只改这一段 ====================
+\title{从数数开始的抽象代数生活}
+\subtitle{第 10 课　生成元、循环群与循环群的子群}
+\author{姜博瀚}
+\institute{厦门大学附属实验中学}
+\date{\today}
+% ============================================================
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ============================================================================
+\section{什么是生成}
+
+\begin{frame}{回顾：八个动作，两个就够}
+  上节课的最后一句：\(D_4\) 的 \(8\) 个动作，只要 \(r\)（转 \(90^\circ\)）和 \(f\)（翻一次）就够。
+  \pause
+  \begin{center}
+    其余六个怎么来？\pause 用 \(r\) 和 \(f\) 反复复合出来：
+    \[
+      r^2=rr,\qquad r^3=rrr,\qquad rf,\qquad r^2f,\qquad r^3f .
+    \]
+  \end{center}
+  \pause
+  \begin{center}
+    {\large 今天把这个「够用」，说成一个定义。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{由 a 生成的子群}
+  \begin{definition}[由 \(a\) 生成的子群]
+    在群 \(G\) 里，把元素 \(a\) 和它反复做出来的所有结果放在一起，
+    得到的那个小群，叫做\textbf{由 \(a\) 生成的子群}，记作 \(\langle a\rangle\)。
+  \end{definition}
+  \pause
+  \begin{definition}[生成元、循环群]
+    如果整个群 \(G\) 能由一个元素 \(a\) 生成，也就是 \(G=\langle a\rangle\)，
+    就说 \(a\) 是 \(G\) 的一个\textbf{生成元}，而 \(G\) 是一个\textbf{循环群}。
+  \end{definition}
+\end{frame}
+
+% ============================================================================
+\section{模 12 加法里的生成元}
+
+\begin{frame}{从 0 开始，一直加 3}
+  \[
+    0 \to 3 \to 6 \to 9 \to 12 \to \cdots
+  \]
+  \pause
+  走到 \(12\) 就等于回到 \(0\)。所以一直加 \(3\) 只能圈住这几个：
+  \[
+    \langle 3\rangle=\{0,\ 3,\ 6,\ 9\} .
+  \]
+  \pause
+  \begin{center}
+    一共 \(4\) 个。\quad 它跑不出这 \(4\) 个。
+  \end{center}
+\end{frame}
+
+\begin{frame}{换 5 试试}
+  \[
+    0 \to 5 \to 10 \to 3 \to 8 \to 1 \to 6 \to 11 \to 4 \to 9 \to 2 \to 7 \to 0
+  \]
+  \pause
+  \begin{center}
+    {\large 一直加 \(5\)，把 \(12\) 个数一个不落地全走了一遍。}
+  \end{center}
+  \pause
+  \begin{center}
+    {\large 所以 \(5\) 是模 \(12\) 加法的一个生成元，\\
+    这个群 \(\langle 5\rangle=\{0,1,2,\dots,11\}\) 是循环群。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{为什么 3 只圈住 4 个，5 却圈住 12 个？}
+  \begin{center}
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+     & \(3\) 和 \(12\) 的公因数 & 圈住几个 \\
+    \midrule
+    \(3\) & \(1,3\)（最大的是 \(3\)） & \(12\div3=4\) \\
+    \(5\) & 只有 \(1\) & \(12\div1=12\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  \begin{center}
+    {\large 公因数越大，圈住的越少。\quad 只有公因数 \(1\) 时，整整一圈都被圈住。}
+  \end{center}
+  \pause
+  \begin{att}
+    和第 3 课对上了：模 \(12\) 乘法里「和 \(12\) 只有公因数 \(1\)」的数才有逆元。
+    这里说的是同一件事。
+  \end{att}
+\end{frame}
+
+\begin{frame}{用手指回答}
+  \begin{itemize}
+    \item \(\langle 2\rangle\) 里有几个数？是哪几个？
+    \item \(\langle 6\rangle\) 里有几个数？是哪几个？
+    \item \(7\) 是模 \(12\) 加法的生成元吗？
+  \end{itemize}
+  \pause
+  \begin{block}{答案}
+    \(6\) 个：\(\{0,2,4,6,8,10\}\)；\quad \(2\) 个：\(\{0,6\}\)；\quad 是（\(\gcd(7,12)=1\)）。
+  \end{block}
+\end{frame}
+
+% ============================================================================
+\section{元素的阶，就是生成子群的大小}
+
+\begin{frame}{每个数反复加自己，几次回到 0}
+  \begin{center}
+  \begin{tabular}{@{}l*{12}{c}@{}}
+    \toprule
+    \(a\) & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 0 \\
+    \midrule
+    阶 & 12 & 6 & 4 & 3 & 12 & 2 & 12 & 3 & 4 & 6 & 12 & 1 \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  \begin{center}
+    {\large 全班一起报，老师填表。}
+  \end{center}
+  \pause
+  \begin{theorem}[阶与生成子群]
+    元素 \(a\) 的阶，正好等于由它生成的子群 \(\langle a\rangle\) 的大小。
+  \end{theorem}
+\end{frame}
+
+\begin{frame}{用手指回答}
+  \begin{itemize}
+    \item \(4\) 的阶是多少？\(\langle 4\rangle\) 里有几个数？
+    \item \(8\) 的阶是多少？\(\langle 8\rangle\) 和 \(\langle 4\rangle\) 是同一个子群吗？
+  \end{itemize}
+  \pause
+  \begin{block}{答案}
+    \(3\) 个：\(\{0,4,8\}\)；\quad 也是 \(3\)，\(\langle 8\rangle=\{0,8,4\}\)，和 \(\langle 4\rangle\) 一模一样。
+  \end{block}
+\end{frame}
+
+% ============================================================================
+\section{循环群里的所有小圈}
+
+\begin{frame}{把能自成一体的小圈都圈出来}
+  \begin{center}
+  \begin{tabular}{@{}clc@{}}
+    \toprule
+    子群 & 是谁 & 大小 \\
+    \midrule
+    \(\{0\}\) & 只有 \(0\) & \(1\) \\
+    \(\{0,6\}\) & 加 \(6\) 来回走 & \(2\) \\
+    \(\{0,4,8\}\) & 由 \(4\) 生成 & \(3\) \\
+    \(\{0,3,6,9\}\) & 由 \(3\) 生成 & \(4\) \\
+    \(\{0,2,4,6,8,10\}\) & 由 \(2\) 生成 & \(6\) \\
+    \(\{0,1,2,\dots,11\}\) & 全部十二个 & \(12\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  \begin{center}
+    {\large 没有别的小圈了——一共就这 \(6\) 个。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{大小都是 12 的因数}
+  \begin{center}
+    {\Large \(1,\ 2,\ 3,\ 4,\ 6,\ 12\)}
+  \end{center}
+  \pause
+  \begin{center}
+    {\large 每一个都能整除 \(12\)——一个例外都没有。}
+  \end{center}
+  \pause
+  \begin{att}
+    \(S_3\) 里是 \(1,2,3,6\) 整除 \(6\)；\(D_4\) 里是 \(1,2,4,8\) 整除 \(8\)；
+    这里是 \(1,2,3,4,6,12\) 整除 \(12\)。三张纸上，同一句话。
+  \end{att}
+\end{frame}
+
+\begin{frame}{这节课要带走的三句话}
+  \begin{itemize}
+    \item \textbf{生成元}：一个元素反复做，能造出整个群，就叫生成元；这样的群叫\textbf{循环群}。
+    \item 元素的\textbf{阶} \(=\) 由它生成的子群的大小。
+    \item 循环群的子群大小，一定能整除整个群的大小。
+  \end{itemize}
+  \pause
+  \begin{center}
+    {\large\textcolor{textgreen}{\bfseries 下节课：回头去看幂的尾巴——它会转圈。}}
+  \end{center}
+\end{frame}
+
+% ---------------- 结尾页 ----------------
+\begin{frame}
+  \begin{center}
+    \vspace{1.6cm}
+    {\Large\textcolor{textgreen}{\bfseries 下课}}
+
+    \vspace{1.0cm}
+    {\large\textcolor{accentgreen}{下节课：幂的尾巴转圈了——从现象到猜想}}
+  \end{center}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,174 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 14 课　复习、总结与展望
+% ----------------------------------------------------------------------------
+%  编译        XeLaTeX，编译两遍
+%  样式        ../../00-共享/preamble.tex
+%  说明        本课不发单页；不学新知识，只把全课串成一条线
+%  图片        一律 \imgph 占位，不要在这里手画 tikz
+% ============================================================================
+
+\documentclass[10pt]{beamer}
+\input{../../00-共享/preamble.tex}
+
+% ==================== 每份课件只改这一段 ====================
+\title{从数数开始的抽象代数生活}
+\subtitle{第 14 课　复习、总结与展望}
+\author{姜博瀚}
+\institute{厦门大学附属实验中学}
+\date{\today}
+% ============================================================
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ============================================================================
+\section{把 14 节课串成一条线}
+
+\begin{frame}{今天不学新东西}
+  \begin{center}
+    {\large 把 14 节课串成一条线。}
+  \end{center}
+  \pause
+  \begin{center}
+    {\large 所有内容你都见过，只是散着放。}\\[0.9em]
+    \begin{tabular}{@{}r@{\quad}l@{}}
+      \textcolor{textgreen}{\bfseries 左边} & 数着数着，就绕回来了 \\
+      \textcolor{textgreen}{\bfseries 右边} & 位置换一换，还是那几个样子 \\
+      \textcolor{textgreen}{\bfseries 下方} & 幂的尾巴，也绕圈 \\
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}{左边：数着数着，就绕回来了}
+  \begin{itemize}
+    \item 模 \(12\) 加法：\(8+7=3\)，走 \(7\) 格，绕回来了；
+    \item 单位元 \(0\)：加上它等于没加；
+    \item 逆元：\(1\) 与 \(11\) 配对、\(2\) 与 \(10\) 配对、\(6\) 与自己配对；
+    \item 由 \(3\) 生成的 \(\{0,3,6,9\}\)：只走 \(4\) 步就回到 \(0\)。
+  \end{itemize}
+  \pause
+  \begin{center}
+    {\large 数没有变，变的只是「绕圈」的走法。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{右边：位置换一换，还是那几个样子}
+  \begin{itemize}
+    \item 正三角形：\(6\) 个对称动作，记作 \(S_3\)；
+    \item 正方形：\(8\) 个对称动作，记作 \(D_4\)；
+    \item 把复合当作运算：先 \(r\) 后 \(f\)，与先 \(f\) 后 \(r\) 不一样，\(rf\neq fr\)；
+    \item 阶与子群：小世界嵌在大世界里，子群的大小整除群的大小。
+  \end{itemize}
+  \pause
+  \begin{center}
+    {\large 图形没有变，只是「换个位置摆放」。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{下方：幂的尾巴，也绕圈}
+  \begin{itemize}
+    \item \(2^n\) 除以 \(7\)，余数在 \(2,4,1\) 里打转；
+    \item 试过许多小素数，归纳出猜想：\(a^{\,p-1}\equiv1\pmod p\)；
+    \item 用「余数是重排」把它证出来——费马小定理；
+    \item 回头回答第 1 课：\(10^{6}\equiv1\pmod 7\)，所以 \(7\mid999999\)。
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{三条线汇到一句}
+  \begin{theorem}[群]
+    一个集合配上一种运算，如果满足下面四条，就叫\textbf{群}：
+    \begin{enumerate}
+      \item \textbf{封闭}：任意两个元素运算的结果，还在这个集合里；
+      \item \textbf{单位元}：存在 \(e\)，使 \(e\cdot a=a\cdot e=a\)；
+      \item \textbf{逆元}：每个 \(a\) 都有 \(a^{-1}\)，使 \(a\cdot a^{-1}=a^{-1}\cdot a=e\)；
+      \item \textbf{结合律}：\((ab)c=a(bc)\)。
+    \end{enumerate}
+  \end{theorem}
+  \pause
+  \begin{center}
+    {\large 数、动作、置换——只要满足这四条，数学家就把它们归到一起研究。}
+  \end{center}
+\end{frame}
+
+% ============================================================================
+\section{抽查}
+
+\begin{frame}{用手指回答}
+  \begin{itemize}
+    \item 模 \(12\) 加法里，\(5\) 的逆元是谁？
+    \item 正三角形有 \(6\) 个对称动作，那正方形有几个？
+    \item 三角形的对称里，\(rf\) 和 \(fr\) 一样吗？
+    \item \(2^{100}\) 除以 \(7\) 余几？
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{对着主线图说一句话}
+  \begin{itemize}
+    \item 从黑板上任选一个点，说出它是什么意思，再举一个例子；
+    \item 说不出来就先听别人说，不用慌——今天不考试。
+  \end{itemize}
+  \pause
+  \begin{center}
+    {\large 整门课，你只需要记住一件事：这些例子满足同样的四条规则。}
+  \end{center}
+\end{frame}
+
+% ============================================================================
+\section{前面还有什么}
+
+\begin{frame}{加法与乘法，放一起}
+  \begin{definition}[环]
+    一个集合上同时有加法和乘法，两种运算各自守规矩，又能互相配合，就叫做\textbf{环}。
+  \end{definition}
+  \pause
+  \begin{definition}[域]
+    如果环里每个非零元素还能做除法（有乘法逆元），就叫做\textbf{域}。
+  \end{definition}
+  \pause
+  \begin{center}
+    整数是环，不是域；有理数是域。
+  \end{center}
+\end{frame}
+
+\begin{frame}{五次方程的故事}
+  \begin{itemize}
+    \item 一次、二次方程：有求根公式；
+    \item 三次、四次方程：十六世纪也找到了公式；
+    \item 五次方程：数学家找了三百多年。
+  \end{itemize}
+  \pause
+  \begin{center}
+    {\large 十九世纪，伽罗瓦证明：五次方程\textbf{没有}求根公式。}
+  \end{center}
+  \pause
+  \begin{center}
+    {\large 他用的工具，正是这门课讲的——\textbf{群}。\quad 他去世时只有二十岁。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{黑板上的最后一行}
+  \begin{center}
+    \vspace{0.5cm}
+    {\Large 群不是新东西，}\\[0.5em]
+    {\Large 它就是「绕圈」这件事的名字。}\\[1.2em]
+    \pause
+    {\Large\textcolor{textgreen}{\bfseries 而它，解开了三百年的谜。}}
+  \end{center}
+\end{frame}
+
+% ---------------- 结尾页 ----------------
+\begin{frame}
+  \begin{center}
+    \vspace{1.6cm}
+    {\Large\textcolor{textgreen}{\bfseries 全课终}}
+
+    \vspace{1.0cm}
+    {\large\textcolor{accentgreen}{谢谢这一学期，一起去绕圈。}}
+  \end{center}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,216 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 9 课　D₄ 的子群与二面体群的关系
+% ----------------------------------------------------------------------------
+%  编译        XeLaTeX，编译两遍
+%  样式        ../../00-共享/preamble.tex
+%  说明        本课不发单页
+%  约定        同第 8 课：r 转 90°，f 沿对角线 1—3 翻；
+%              八个元素 e, r, r², r³, f, rf, r²f, r³f
+%  图片        纸片演示一律 \imgph 占位，不要在这里手画 tikz
+% ============================================================================
+
+\documentclass[10pt]{beamer}
+\input{../../00-共享/preamble.tex}
+
+% ==================== 每份课件只改这一段 ====================
+\title{从数数开始的抽象代数生活}
+\subtitle{第 9 课　\(D_4\) 的子群与二面体群的关系}
+\author{姜博瀚}
+\institute{厦门大学附属实验中学}
+\date{\today}
+% ============================================================
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ============================================================================
+\section{回顾}
+
+\begin{frame}{回顾：上节课在三角形里是怎么做的}
+  找子群，只用一条办法：
+  \begin{block}{}
+    圈出一小堆动作，把它们的复合填成一张表。\\[2pt]
+    结果全在里面，\textbf{没有跑出去}，它就是子群。
+  \end{block}
+  \pause
+  \begin{center}
+    {\large 今天把这条办法照搬到正方形上。}
+  \end{center}
+\end{frame}
+
+% ============================================================================
+\section{找 D₄ 的子群}
+
+\begin{frame}{先从最简单的一个开始}
+  圈出 \(H=\{e,\ r^2\}\)——「不动」和「转 \(180^\circ\)」。
+  \pause
+  \[
+  \begin{array}{@{}c|cc@{}}
+    \toprule
+    & e & r^2 \\
+    \midrule
+    e & e & r^2 \\
+    r^2 & r^2 & e \\
+    \bottomrule
+  \end{array}
+  \]
+  \pause
+  \begin{center}
+    \(r^2\) 连做两次就回来（\(r^2\) 的阶是 \(2\)），表里没有跑出去。\quad 是子群。
+  \end{center}
+\end{frame}
+
+\begin{frame}{几个动作凑成的圈子}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{block}{四个转动}
+        \(H=\{e,\ r,\ r^2,\ r^3\}\)
+        \begin{itemize}
+          \item 转来转去还是转，跑不出去；
+          \item 大小 \(4\)。
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{block}{不动 \(+\) 一次翻折}
+        \(H=\{e,\ f\}\)
+        \begin{itemize}
+          \item 翻两次就回来；
+          \item \(f,\ rf,\ r^2f,\ r^3f\) 各自生成一个，一共 \(4\) 个；
+          \item 每个大小 \(2\)。
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{再看 \(r^2\) 和两条对角线}
+  圈出 \(H=\{e,\ r^2,\ f,\ r^2f\}\)：
+  \pause
+  \[
+  \begin{array}{@{}c|cccc@{}}
+    \toprule
+    & e & r^2 & f & r^2f \\
+    \midrule
+    r^2 & r^2 & e & r^2f & f \\
+    f & f & r^2f & e & r^2 \\
+    r^2f & r^2f & f & r^2 & e \\
+    \bottomrule
+  \end{array}
+  \]
+  \pause
+  \begin{center}
+    四个结果全在里面。\quad 是子群，大小 \(4\)。
+  \end{center}
+\end{frame}
+
+\begin{frame}{还有一个，长得一样}
+  把「两条对角线」换成「两条中线」：
+  \[
+    H=\{e,\ r^2,\ rf,\ r^3f\}
+  \]
+  \pause
+  算出来的表也全在里面——同样是大小 \(4\) 的子群。
+\end{frame}
+
+\begin{frame}{一共能找到几个}
+  \begin{center}
+  \begin{tabular}{@{}clc@{}}
+    \toprule
+    大小 & 子群 & 个数 \\
+    \midrule
+    \(1\) & \(\{e\}\) & \(1\) \\
+    \(2\) & \(\{e,r^2\}\)；\(\{e,f\}\)；\(\{e,rf\}\)；\(\{e,r^2f\}\)；\(\{e,r^3f\}\) & \(5\) \\
+    \(4\) & \(\{e,r,r^2,r^3\}\)；\(\{e,r^2,f,r^2f\}\)；\(\{e,r^2,rf,r^3f\}\) & \(3\) \\
+    \(8\) & \(D_4\)（全部八个） & \(1\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  \begin{center}
+    {\large 一共 \(1+5+3+1=10\) 个子群。\quad 大小 \(1,2,4,8\) 都能整除 \(8\)。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{用手指回答}
+  \begin{itemize}
+    \item \(\{e,\ r^2\}\) 是子群吗？
+    \item \(\{e,\ r\}\) 是子群吗？
+    \item 一个群的大小是 \(8\)，它的子群大小可能是 \(3\) 吗？
+  \end{itemize}
+  \pause
+  \begin{block}{答案}
+    是；\quad 不是（\(r\cdot r=r^2\) 不在里面，跑出去了）；\quad 不可能，\(3\) 不能整除 \(8\)。
+  \end{block}
+\end{frame}
+
+% ============================================================================
+\section{旋转与翻折的关系}
+
+\begin{frame}{左边走一遍，右边走一遍}
+  \imgph[4.2cm]{正方形纸片两次演示：左「先翻、再转 \(90^\circ\)」，右「先转 \(270^\circ\)、再翻」，\\两个终点用不同颜色标出}
+  \pause
+  \begin{center}
+    两条路走到的终点，是同一个位置。
+  \end{center}
+\end{frame}
+
+\begin{frame}{写成等式}
+  \[
+    fr = r^{-1}f
+  \]
+  \pause
+  \begin{center}
+    {\large 「先翻后转，等于先\textbf{倒着}转、再翻。」}
+  \end{center}
+  \pause
+  在正方形里，\(r\) 的倒着做是 \(r^3\)（转 \(270^\circ\)），所以这个式子也可以写成
+  \[
+    fr=r^3f .
+  \]
+\end{frame}
+
+\begin{frame}{这类群有个名字}
+  \begin{definition}[二面体群]
+    正 \(n\) 边形的全部对称动作，按复合构成一个群，叫做\textbf{二面体群}，
+    记作 \(D_n\)。
+  \end{definition}
+  \pause
+  \begin{itemize}
+    \item 三角形：\(D_3\)，有 \(6\) 个动作（就是我们的 \(S_3\)）；
+    \item 正方形：\(D_4\)，有 \(8\) 个动作。
+  \end{itemize}
+  \pause
+  \begin{center}
+    {\large 正 \(n\) 边形，一共 \(2n\) 个对称动作：\(n\) 个转动加 \(n\) 个翻折。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{这节课要带走的两句话}
+  \begin{itemize}
+    \item \(D_4\) 里能找到 \(10\) 个子群，它们的大小都能整除 \(8\)。
+    \item 旋转与翻折之间有一条关系：\(fr=r^{-1}f\)。
+  \end{itemize}
+  \pause
+  \begin{center}
+    {\large \(8\) 个动作，其实两个（\(r\) 和 \(f\)）就够生成了。}\\[0.6em]
+    {\large\textcolor{textgreen}{\bfseries 下节课：专门讲「生成」。}}
+  \end{center}
+\end{frame}
+
+% ---------------- 结尾页 ----------------
+\begin{frame}
+  \begin{center}
+    \vspace{1.6cm}
+    {\Large\textcolor{textgreen}{\bfseries 下课}}
+
+    \vspace{1.0cm}
+    {\large\textcolor{accentgreen}{下节课：生成元、循环群与循环群的子群}}
+  \end{center}
+\end{frame}
+
+\end{document}

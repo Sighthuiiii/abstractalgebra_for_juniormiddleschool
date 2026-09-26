@@ -1,0 +1,87 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 14 课　复习、总结与展望　—— 学生版讲义
+%  与 02-课件/第14课-复习总结与展望/第14课-复习总结与展望.tex 同步
+% ============================================================================
+
+\xhlesson{14}{复习、总结与展望}{}
+
+\begin{mubiao}
+  \begin{itemize}
+    \item 能自己说出这门课学过的三类「绕圈」。
+    \item 能把它们和群的四条规则对上。
+    \item 知道群之后还有环和域。
+  \end{itemize}
+\end{mubiao}
+
+\section*{一、把 14 节课串成一条线}
+
+\noindent 今天不学新东西。老师会在黑板中间写一个大字「群」，往三个方向拉线，
+你要做的是一边听，一边把这张图补到下面。
+
+\begin{dongshou}[画出主线图]
+  在下面空白处画出三条线，每条线上写两个你记得住的例子。
+
+  \liukong{7}
+\end{dongshou}
+
+\begin{sikao}
+  三条线为什么会汇到一起？它们共同满足的，是哪四条规则？\\
+  提示：想想「运算的结果还在不在里面」「有没有什么都不做的元」「能不能撤回一步」「两次三次怎么合并」。
+  \liukong{4}
+\end{sikao}
+
+\begin{definition}[群]
+  一个集合配上一种运算，如果满足下面四条，就叫\textbf{群}：
+  \begin{enumerate}
+    \item \textbf{封闭}：任意两个元素运算的结果还在这个集合里；
+    \item \textbf{单位元}：存在 \(e\)，使 \(e\cdot a=a\cdot e=a\)；
+    \item \textbf{逆元}：每个 \(a\) 都有 \(a^{-1}\)，使 \(a\cdot a^{-1}=a^{-1}\cdot a=e\)；
+    \item \textbf{结合律}：\((ab)c=a(bc)\)。
+  \end{enumerate}
+\end{definition}
+
+\section*{二、抽查}
+
+\begin{dongshou}[合上书，把答案写在横线上]
+  \begin{enumerate}
+    \item 模 \(12\) 加法里，\(5\) 的逆元是 \underline{\hspace{3em}}。
+    \item 正三角形有 \underline{\hspace{2em}} 个对称动作；正方形有 \underline{\hspace{2em}} 个。
+    \item 三角形的对称里，\(rf\) 和 \(fr\) 一样吗？\underline{\hspace{4em}}
+    \item \(2^{100}\) 除以 \(7\) 余 \underline{\hspace{2em}}。
+  \end{enumerate}
+\end{dongshou}
+
+\begin{sikao}
+  上面四个答案，各属于三条主线里的哪一支？在每条答案后面写一个「左 / 右 / 下」。
+  \liukong{2}
+\end{sikao}
+
+\section*{三、前面还有什么}
+
+\begin{definition}[环]
+  一个集合上同时有加法和乘法，两种运算各自守规矩，又能互相配合，就叫做\textbf{环}。
+\end{definition}
+
+\begin{definition}[域]
+  如果环里每个非零元素还能做除法（有乘法逆元），就叫做\textbf{域}。
+\end{definition}
+
+\begin{example}
+  整数 \(\mathbb{Z}\) 是环，但不是域；有理数 \(\mathbb{Q}\) 是域。
+\end{example}
+
+\begin{sikao}
+  为什么说「整数是环，不是域」？在整数里举一个除不了法的例子。
+  \liukong{2}
+\end{sikao}
+
+\noindent 一次、二次方程有求根公式，三次、四次方程也有。五次方程，数学家找了三百多年。
+十九世纪，伽罗瓦证明：五次方程\textbf{没有}求根公式。他用到的工具，就是群。
+
+\begin{xiaojie}
+  用自己的话，写下这门课里「群」到底是「什么」的名字。
+  \liukong{4}
+\end{xiaojie}
+
+\noindent\textbf{全课终}：群不是新东西，它就是「绕圈」这件事的名字。而它，解开了三百年的谜。

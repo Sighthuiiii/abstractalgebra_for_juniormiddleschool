@@ -1,0 +1,119 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 6 课　复合作为运算：S₃ 是个群　—— 学生版讲义
+%  与 02-课件/第06课-复合作为运算/第06课-复合作为运算.tex 同步
+%  记号：复合 xy 读作「先做 x，再做 y」
+% ============================================================================
+
+\xhlesson{6}{复合作为运算：\texorpdfstring{\(S_3\)}{S3} 是个群}{}
+
+\begin{mubiao}
+  \begin{itemize}
+    \item 能把「先做一个再做另一个」当成一种运算（复合）。
+    \item 会一条一条验证这 \(6\) 个动作满足群的四条规则。
+    \item 能看懂乘法表，并发现「每一行都是一次重排」。
+  \end{itemize}
+\end{mubiao}
+
+\section*{一、给六个动作起名字}
+
+\begin{example}
+  \begin{center}
+  \begin{tabular}{@{}clc@{}}
+    \toprule
+    名字 & 动作 & 两行式 \\
+    \midrule
+    \(e\) & 不动 & \(\begin{pmatrix}A&B&C\\A&B&C\end{pmatrix}\) \\[6pt]
+    \(r\) & 顺时针转 \(120^\circ\) & \(\begin{pmatrix}A&B&C\\B&C&A\end{pmatrix}\) \\[6pt]
+    \(r^2\) & 顺时针转 \(240^\circ\) & \(\begin{pmatrix}A&B&C\\C&A&B\end{pmatrix}\) \\[6pt]
+    \(f\) & 沿过 \(A\) 的轴翻 & \(\begin{pmatrix}A&B&C\\A&C&B\end{pmatrix}\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+\end{example}
+
+\begin{definition}[复合]
+  两个动作 \(x\) 和 \(y\)，先做 \(x\)、再做 \(y\)，合起来还是一个动作，记作 \(xy\)。
+  这个动作叫做 \(x\) 与 \(y\) 的\textbf{复合}。
+\end{definition}
+
+\section*{二、先做哪个，结果一样吗}
+
+\begin{dongshou}[跟老师一起算]
+  用两行式一路推下去（先 \(x\)，后 \(y\)，就是接着往下走）：
+
+  \(rf\)：\(A\to\underline{\hspace{1.6em}}\to\underline{\hspace{1.6em}}\)，
+  \(B\to\underline{\hspace{1.6em}}\to\underline{\hspace{1.6em}}\)，
+  \(C\to\underline{\hspace{1.6em}}\to\underline{\hspace{1.6em}}\)。
+
+  \(fr\)：\(A\to\underline{\hspace{1.6em}}\to\underline{\hspace{1.6em}}\)，
+  \(B\to\underline{\hspace{1.6em}}\to\underline{\hspace{1.6em}}\)，
+  \(C\to\underline{\hspace{1.6em}}\to\underline{\hspace{1.6em}}\)。
+  \liukong{3}
+  我的结论：\(rf\) 与 \(fr\) 一样吗？\underline{\hspace{3em}}
+\end{dongshou}
+
+\begin{example}
+  \[
+    rf=\begin{pmatrix}A&B&C\\C&B&A\end{pmatrix}\ (\text{沿过 }B\text{ 的轴翻}), \qquad
+    fr=\begin{pmatrix}A&B&C\\B&A&C\end{pmatrix}\ (\text{沿过 }C\text{ 的轴翻}).
+  \]
+  两个结果不一样，所以 \(rf\neq fr\)。
+\end{example}
+
+\section*{三、四条规则，一条一条验}
+
+\begin{dongshou}[在每一条后面写上「成立」或「不成立」]
+
+  \begin{enumerate}
+    \item \textbf{封闭}：两个动作连着做，还是这 \(6\) 个之一吗？\underline{\hspace{3em}}
+    \item \textbf{结合}：\((xy)z\) 和 \(x(yz)\) 都是「先 \(x\)、再 \(y\)、再 \(z\)」吗？\underline{\hspace{3em}}
+    \item \textbf{单位元}：谁是那个「做了等于没做」的动作？\underline{\hspace{3em}}
+    \item \textbf{逆元}：填一填——
+      \(r\) 的逆是 \underline{\hspace{1.6em}}，\(r^2\) 的逆是 \underline{\hspace{1.6em}}，
+      \(f\) 的逆是 \underline{\hspace{1.6em}}。
+  \end{enumerate}
+\end{dongshou}
+
+\begin{dingli}[三角形动作群]
+  正三角形的 \(6\) 个对称动作，连同复合这个运算，构成一个群，记作 \(S_3\)。
+  它\textbf{不满足交换律}。
+\end{dingli}
+
+\section*{四、填乘法表}
+
+\begin{dongshou}[只填 \(r\) 行和 \(f\) 行]
+  格子里的动作是「\textbf{先横排的，再做竖排的}」。
+
+  \begin{center}
+  \begin{tabular}{@{}l|cccccc@{}}
+    \toprule
+     & \(e\) & \(r\) & \(r^2\) & \(f\) & \(rf\) & \(r^2f\) \\
+    \midrule
+    \rule{0pt}{2.8ex}先 \(r\) & & & & & & \\
+    \rule{0pt}{2.8ex}先 \(f\) & & & & & & \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+\end{dongshou}
+
+\begin{sikao}
+  把 \(r\) 那一行读一遍：有没有哪个动作出现了两次？有没有哪个动作没出现？
+  \liukong{2}
+  所以每一行都是\underline{\hspace{8em}}。
+\end{sikao}
+
+\begin{example}
+  从 \(f\) 那一行的第二个格子可以读出一个关系：
+  \[
+    fr=r^2f .
+  \]
+  白话：「先翻后转，等于先\textbf{倒着}转再翻。」
+\end{example}
+
+\begin{xiaojie}
+  用自己的话回答：为什么说 \(S_3\)「是一个群，但不是交换的群」？
+  \liukong{4}
+\end{xiaojie}
+
+\noindent\textbf{下节课}：在 \(S_3\) 里圈出能自成一体的小圈——阶与子群。

@@ -1,0 +1,222 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 11 课　幂的尾巴转圈了：从现象到猜想
+% ----------------------------------------------------------------------------
+%  编译        XeLaTeX，编译两遍
+%  样式        ../../00-共享/preamble.tex
+%  说明        本节发一页单页（见 04-单页/），原 14+15 合并
+%  图片        一律 \imgph 占位，不要在这里手画 tikz
+% ============================================================================
+
+\documentclass[10pt]{beamer}
+\input{../../00-共享/preamble.tex}
+
+% ==================== 每份课件只改这一段 ====================
+\title{从数数开始的抽象代数生活}
+\subtitle{第 11 课　幂的尾巴转圈了：从现象到猜想}
+\author{姜博瀚}
+\institute{厦门大学附属实验中学}
+\date{\today}
+% ============================================================
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ============================================================================
+\section{先看一个怪现象}
+
+\begin{frame}{回顾：我们已经见过三种「绕圈」}
+  \begin{itemize}
+    \item 钟表：走满 \(12\) 格回到原地；
+    \item 三角形、正方形：做几次动作回到原位；
+    \item 圆的盘上一直加同一个数：\(\langle 3\rangle\) 只圈住 \(4\) 个。
+  \end{itemize}
+  \pause
+  \begin{center}
+    {\large 今天看第四种：\textbf{幂的尾巴}也会绕圈。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{\(2\) 的幂，除以 \(7\) 看余数}
+  \begin{center}
+  \begin{tabular}{@{}lcccccc@{}}
+    \toprule
+    \(n\) & \(1\) & \(2\) & \(3\) & \(4\) & \(5\) & \(6\) \\
+    \midrule
+    \(2^n\) & \(2\) & \(4\) & \(8\) & \(16\) & \(32\) & \(64\) \\
+    除以 \(7\) 的余数 & \(2\) & \(4\) & \(\mathbf{1}\) & \(2\) & \(4\) & \(\mathbf{1}\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  \begin{center}
+    {\large 余数在 \(2,4,1\) 三个数里打转——从第 \(4\) 个开始，原样重复。}
+  \end{center}
+  \pause
+  \begin{center}
+    {\large 第 \(3\) 个就到 \(1\) 了：\(2^3=8\equiv1\pmod 7\)。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{换一个数：\(3\) 的幂除以 \(7\)}
+  全班一起往下算：
+  \begin{center}
+  \begin{tabular}{@{}lcccccc@{}}
+    \toprule
+    \(n\) & \(1\) & \(2\) & \(3\) & \(4\) & \(5\) & \(6\) \\
+    \midrule
+    \(3^n\) & \(3\) & \(9\) & \(27\) & \(81\) & \(243\) & \(729\) \\
+    除以 \(7\) 的余数 & \(3\) & \(2\) & \(6\) & \(4\) & \(5\) & \(\mathbf{1}\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  \begin{center}
+    {\large 这一次要走到第 \(6\) 个才回到 \(1\)。}
+  \end{center}
+  \pause
+  \begin{center}
+    {\large 但还在绕圈：\(3^6=729=104\times7+1\equiv1\pmod 7\)。}
+  \end{center}
+\end{frame}
+
+% ============================================================================
+\section{自己算几组}
+
+\begin{frame}{跟做：算出「第几步回到 1」}
+  请在单页上把下面几组的余数算出来，并圈出第一次出现 \(1\) 的位置。
+  \begin{center}
+  \begin{tabular}{@{}ccl@{}}
+    \toprule
+    \(p\) & \(a\) & 要算的 \\
+    \midrule
+    \(5\) & \(2\) & \(2,2^2,2^3,2^4,\dots\) 除以 \(5\) \\
+    \(5\) & \(3\) & \(3,3^2,3^3,3^4,\dots\) 除以 \(5\) \\
+    \(7\) & \(2\) & （上面已经算过） \\
+    \(7\) & \(3\) & （上面已经算过） \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  \begin{center}
+    提醒：算完一个就写下「第几步第一次到 \(1\)」，不用算到后面。
+  \end{center}
+\end{frame}
+
+\begin{frame}{对答案}
+  \begin{center}
+  \begin{tabular}{@{}ccc@{}}
+    \toprule
+    \(p\) & \(a\) & 余数序列（直到第一次出现 \(1\)） \\
+    \midrule
+    \(5\) & \(2\) & \(2,\ 4,\ 3,\ \mathbf{1}\) \\
+    \(5\) & \(3\) & \(3,\ 4,\ 2,\ \mathbf{1}\) \\
+    \(7\) & \(2\) & \(2,\ 4,\ \mathbf{1}\) \\
+    \(7\) & \(3\) & \(3,\ 2,\ 6,\ 4,\ 5,\ \mathbf{1}\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  \begin{center}
+    每一步都用了「乘 \(a\) 再取余」——和上节课在圆盘上一直加是一样的，只是把加换成了乘。
+  \end{center}
+\end{frame}
+
+% ============================================================================
+\section{归纳}
+
+\begin{frame}{把结果摆在一起看}
+  \begin{center}
+  \begin{tabular}{@{}ccc@{}}
+    \toprule
+    \(p\) & \(a\) & 第几步第一次回到 \(1\) \\
+    \midrule
+    \(7\) & \(2\) & \(3\) \\
+    \(7\) & \(3\) & \(6\) \\
+    \(5\) & \(2\) & \(4\) \\
+    \(5\) & \(3\) & \(4\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  \begin{center}
+    {\large 这些步数之间，有没有共同的规律？}
+  \end{center}
+\end{frame}
+
+\begin{frame}{自己找规律}
+  \begin{block}{看第一列的两组：\(p=7\)}
+    步数是 \(3\) 和 \(6\)。\pause 都整除 \(p-1=6\)。
+  \end{block}
+  \pause
+  \begin{block}{看第二列的两组：\(p=5\)}
+    步数是 \(4\) 和 \(4\)。\pause 都整除 \(p-1=4\)。
+  \end{block}
+  \pause
+  \begin{center}
+    {\large 不管 \(a\) 取几，回到 \(1\) 的步数都整除 \(p-1\)。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{再往前推一步}
+  既然步数整除 \(p-1\)，那么：
+  \pause
+  \begin{center}
+    {\large 走满 \(p-1\) 步的时候，一定是 \(1\)。}
+  \end{center}
+  \pause
+  \begin{itemize}
+    \item \(p=7\)：\(2^6=64\equiv1\)，\(3^6=729\equiv1\)；
+    \item \(p=5\)：\(2^4=16\equiv1\)，\(3^4=81\equiv1\)。
+  \end{itemize}
+  \pause
+  \begin{center}
+    这不是巧合——\(10\) 个例子里，\(10\) 个都对。
+  \end{center}
+\end{frame}
+
+\begin{frame}{把猜想写清楚}
+  \begin{theorem}[猜想]
+    设 \(p\) 是素数，\(a\) 不是 \(p\) 的倍数。那么
+    \[
+      a^{\,p-1}\equiv1 \pmod p .
+    \]
+    用大白话说：\(a\) 连乘 \(p-1\) 次，除以 \(p\) 一定余 \(1\)。
+  \end{theorem}
+  \pause
+  \begin{center}
+    {\large 我们试出来的都成立。\pause 但「试出来的」还不算数。}
+  \end{center}
+  \pause
+  \begin{center}
+    {\Large\textcolor{textgreen}{\bfseries 下节课：证明它。}}
+  \end{center}
+\end{frame}
+
+\begin{frame}{这节课要带走的三句话}
+  \begin{itemize}
+    \item 幂的余数会绕圈，且一定会回到 \(1\)。
+    \item 回到 \(1\) 的步数，整除 \(p-1\)。
+    \item 由此猜到：\(a^{p-1}\equiv1\pmod p\)（\(p\) 素数，\(a\) 不被 \(p\) 整除）。
+  \end{itemize}
+  \pause
+  \begin{center}
+    {\large\textcolor{textgreen}{\bfseries 下节课：把「猜」换成「证」。}}
+  \end{center}
+\end{frame}
+
+% ---------------- 结尾页 ----------------
+\begin{frame}
+  \begin{center}
+    \vspace{1.6cm}
+    {\Large\textcolor{textgreen}{\bfseries 下课}}
+
+    \vspace{1.0cm}
+    {\large\textcolor{accentgreen}{下节课：费马小定理的证明}}
+  \end{center}
+\end{frame}
+
+\end{document}

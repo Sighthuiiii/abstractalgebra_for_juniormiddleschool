@@ -1,0 +1,112 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 7 课　群里的小世界：阶与子群　—— 学生版讲义
+%  与 02-课件/第07课-阶与子群/第07课-阶与子群.tex 同步
+% ============================================================================
+
+\xhlesson{7}{群里的小世界：阶与子群}{}
+
+\begin{mubiao}
+  \begin{itemize}
+    \item 知道元素的\textbf{阶}就是「这个动作重复几次回到原位」。
+    \item 能在 \(S_3\) 里圈出能自成一体的小群（子群）。
+    \item 会用一个办法检查：看它会不会「跑出去」。
+  \end{itemize}
+\end{mubiao}
+
+\section*{一、元素的阶}
+
+\begin{definition}[元素的阶]
+  一个动作 \(g\) 连续做 \(n\) 次，\textbf{第一次}回到「不动」，这个 \(n\)
+  就叫做 \(g\) 的\textbf{阶}。
+\end{definition}
+
+\begin{dongshou}[数一数，把阶填上去]
+  \begin{center}
+  \begin{tabular}{@{}lccc|c@{}}
+    \toprule
+    动作 & 连做 \(1\) 次 & 连做 \(2\) 次 & 连做 \(3\) 次 & 阶 \\
+    \midrule
+    \rule{0pt}{2.8ex}\(e\)（不动） & \(e\) & \(e\) & \(e\) & \hspace{1.4em} \\
+    \rule{0pt}{2.8ex}\(r\)（转 \(120^\circ\)） & \(r\) & \(r^2\) & \(e\) & \hspace{1.4em} \\
+    \rule{0pt}{2.8ex}\(f\)（沿过 \(A\) 的轴翻） & \(f\) & \(e\) & \(e\) & \hspace{1.4em} \\
+    \rule{0pt}{2.8ex}\(r^2\)（转 \(240^\circ\)） & & & & \hspace{1.4em} \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+\end{dongshou}
+
+\begin{sikao}
+  阶 \(2\) 的动作有什么共同点？阶 \(3\) 的动作呢？
+  \liukong{3}
+\end{sikao}
+
+\begin{example}[顺便看一眼循环记法]
+  \[
+    \begin{pmatrix}A&B&C\\B&C&A\end{pmatrix}
+    \quad\rightsquigarrow\quad
+    (A\ B\ C)
+  \]
+  读作「\(A\) 去 \(B\)，\(B\) 去 \(C\)，\(C\) 回 \(A\)」。\\
+  圈里有几个字母，阶就是几。这个写法只是省事，看一眼就行。
+\end{example}
+
+\section*{二、子群}
+
+\begin{definition}[子群]
+  设 \(H\) 是群 \(G\) 的一部分。如果 \(H\) 按同一个运算\textbf{自己也构成一个群}，
+  就说 \(H\) 是 \(G\) 的一个\textbf{子群}。
+\end{definition}
+
+\noindent 检查的办法只有一条：\textbf{会不会跑出去}。
+
+\begin{dongshou}[填表检查 \(\{e,r,r^2\}\)]
+  \begin{center}
+  \begin{tabular}{@{}c|ccc@{}}
+    \toprule
+    & \(e\) & \(r\) & \(r^2\) \\
+    \midrule
+    \rule{0pt}{3ex}\(e\) & & & \\
+    \rule{0pt}{3ex}\(r\) & & & \\
+    \rule{0pt}{3ex}\(r^2\) & & & \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  跑出去了吗？\underline{\hspace{3em}}\quad 所以它\underline{\hspace{2em}}（是／不是）子群。
+\end{dongshou}
+
+\begin{dongshou}[再试一个]
+  圈出 \(H=\{e,\ r,\ f\}\)，算一算 \(r\cdot r=\) \underline{\hspace{1.6em}}，
+  \(r\cdot f=\) \underline{\hspace{1.6em}}。\\
+  这两个结果都在 \(H\) 里吗？\underline{\hspace{3em}}
+  \quad 所以 \(H\)\underline{\hspace{2em}}（是／不是）子群。
+\end{dongshou}
+
+\begin{example}[\(S_3\) 里的全部子群]
+  \begin{center}
+  \begin{tabular}{@{}llc@{}}
+    \toprule
+    子群 & 是谁 & 大小 \\
+    \midrule
+    \(\{e\}\) & 只有不动 & \(1\) \\
+    \(\{e,\ r,\ r^2\}\) & 三个转动 & \(3\) \\
+    \(\{e,\ f\}\) & 不动加一条轴的翻折 & \(2\) \\
+    \(\{e,\ rf\}\) & 同上 & \(2\) \\
+    \(\{e,\ r^2f\}\) & 同上 & \(2\) \\
+    \(S_3\) & 全部六个 & \(6\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+\end{example}
+
+\begin{sikao}
+  看最后一列：\(1,2,3,6\)。它们和 \(S_3\) 的大小 \(6\) 有什么关系？
+  \liukong{2}
+\end{sikao}
+
+\begin{xiaojie}
+  用一句话说清：什么叫「阶」，什么叫「子群」。
+  \liukong{4}
+\end{xiaojie}
+
+\noindent\textbf{下节课}：换一张更大的纸——正方形的 \(8\) 个对称动作。

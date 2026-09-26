@@ -1,0 +1,87 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 9 课　D₄ 的子群与二面体群的关系　—— 学生版讲义
+%  与 02-课件/第09课-D4的子群/第09课-D4的子群.tex 同步
+% ============================================================================
+
+\xhlesson{9}{\texorpdfstring{\(D_4\)}{D4} 的子群与二面体群的关系}{}
+
+\begin{mubiao}
+  \begin{itemize}
+    \item 能找出 \(D_4\) 里面能自成一体的小群（子群）。
+    \item 能说出旋转与翻折之间那条关系：\(fr=r^{-1}f\)。
+    \item 知道 \(D_n\) 叫二面体群，正 \(n\) 边形有 \(2n\) 个对称动作。
+  \end{itemize}
+\end{mubiao}
+
+\section*{一、找 \(D_4\) 的子群}
+
+\noindent 办法照旧：圈出一小堆动作，把复合填成一张表。全在里面，就是子群。
+
+\begin{dongshou}[先检查两个]
+  \begin{enumerate}
+    \item \(H=\{e,\ r^2\}\)：
+      \(r^2\cdot r^2=\) \underline{\hspace{2em}}，跑出去了吗？\underline{\hspace{3em}}
+      \quad 所以它\underline{\hspace{2em}}（是／不是）子群。
+    \item \(H=\{e,\ r\}\)：
+      \(r\cdot r=\) \underline{\hspace{2em}}，这个结果在 \(H\) 里吗？\underline{\hspace{3em}}
+      \quad 所以它\underline{\hspace{2em}}（是／不是）子群。
+  \end{enumerate}
+\end{dongshou}
+
+\begin{example}[\(D_4\) 里全部的子群]
+  \begin{center}
+  \begin{tabular}{@{}clc@{}}
+    \toprule
+    大小 & 子群 & 个数 \\
+    \midrule
+    \(1\) & \(\{e\}\) & \(1\) \\
+    \(2\) & \(\{e,r^2\}\)；\(\{e,f\}\)；\(\{e,rf\}\)；\(\{e,r^2f\}\)；\(\{e,r^3f\}\) & \(5\) \\
+    \(4\) & \(\{e,r,r^2,r^3\}\)；\(\{e,r^2,f,r^2f\}\)；\(\{e,r^2,rf,r^3f\}\) & \(3\) \\
+    \(8\) & \(D_4\)（全部八个） & \(1\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  一共 \(10\) 个。
+\end{example}
+
+\begin{sikao}
+  看最大子群和最小子群的大小：\(1,2,4,8\)。它们和 \(D_4\) 的大小 \(8\) 有什么关系？\\[4pt]
+  （和上节课 \(S_3\) 里的发现比一比。）
+  \liukong{3}
+\end{sikao}
+
+\section*{二、旋转与翻折的关系}
+
+\begin{dongshou}[左右各走一条路]
+  拿纸片做两遍，把终点记下来：
+  \begin{itemize}
+    \item 先翻 \(f\)，再转 \(90^\circ\)（\(r\)）：终点在 \underline{\hspace{3em}}；
+    \item 先转 \(270^\circ\)（\(r^3\)），再翻 \(f\)：终点在 \underline{\hspace{3em}}。
+  \end{itemize}
+  两次的终点一样吗？\underline{\hspace{3em}}
+\end{dongshou}
+
+\begin{example}
+  \[
+    fr=r^{-1}f, \qquad\text{也就是}\qquad fr=r^3f .
+  \]
+  白话：「先翻后转，等于先\textbf{倒着}转、再翻。」
+\end{example}
+
+\begin{dingli}[二面体群]
+  正 \(n\) 边形的全部对称动作，按复合构成一个群，叫做\textbf{二面体群}，记作 \(D_n\)，
+  一共有 \(2n\) 个动作：\(n\) 个转动加 \(n\) 个翻折。
+\end{dingli}
+
+\begin{sikao}
+  \(D_3\) 有多少个动作？\(D_5\)（正五边形）呢？\(D_{12}\) 呢？
+  \liukong{2}
+\end{sikao}
+
+\begin{xiaojie}
+  用一句话回答：为什么说「\(D_4\) 的 \(8\) 个动作，两个就够生成了」？
+  \liukong{3}
+\end{xiaojie}
+
+\noindent\textbf{下节课}：生成元、循环群与循环群的子群——为什么两个就够。

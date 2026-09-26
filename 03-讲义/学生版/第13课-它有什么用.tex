@@ -1,0 +1,152 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 13 课　它有什么用　—— 学生版讲义
+%  与 02-课件/第13课-它有什么用/第13课-它有什么用.tex 同步
+% ============================================================================
+
+\xhlesson{13}{它有什么用}{}
+
+\begin{mubiao}
+  \begin{itemize}
+    \item 会用费马小定理快速求大幂的余数。
+    \item 能回答第 1 课留下的问题：\(999999\) 为什么能被 \(7\) 整除。
+    \item 知道身份证校验码怎么算，RSA 大致在做什么。
+  \end{itemize}
+\end{mubiao}
+
+\section*{一、回答第 1 课的问题}
+
+\noindent 第 1 课，我们在黑板最右边写下 \(999999\div7=?\)。今天，把它划掉。
+
+\begin{dongshou}[一步一步写]
+  第一步，改写：
+  \[
+    999999=1000000-1=10^{6}-\underline{\hspace{2em}} .
+  \]
+  第二步，用定理。\(7\) 是素数，\(10\) 不是 \(7\) 的倍数，取 \(p=7\)、\(a=10\)：
+  \[
+    10^{\,7-1}=10^{6}\equiv\underline{\hspace{2em}} \pmod 7 .
+  \]
+  第三步，代回去：
+  \[
+    10^{6}-1\equiv\underline{\hspace{2em}}-\underline{\hspace{2em}}
+    =\underline{\hspace{2em}} \pmod 7 .
+  \]
+\end{dongshou}
+
+\begin{sikao}
+  余数是 \(0\)，说明什么？\\
+  从头到尾，我们做过一次除法、用过一次计算器吗？
+  \liukong{2}
+\end{sikao}
+
+\section*{二、快速求大幂的余数}
+
+\begin{example}[\(2^{100}\) 除以 \(7\)]
+  不用把 \(2^{100}\) 算出来，看指数：
+  \[
+    100=6\times16+4 .
+  \]
+  由费马小定理 \(2^{6}\equiv1\pmod 7\)，于是
+  \[
+    2^{100}=2^{6\times16+4}=(2^{6})^{16}\times2^{4}
+    \equiv1^{16}\times16\equiv16\equiv2 \pmod 7 .
+  \]
+\end{example}
+
+\begin{dongshou}[自己练：\(3^{200}\) 除以 \(11\)]
+  \(11\) 是素数，由费马小定理 \(3^{10}\equiv1\pmod{11}\)。
+  \[
+    200=10\times\underline{\hspace{1.6em}},
+    \qquad
+    3^{200}=(3^{10})^{\underline{\hspace{1.6em}}}
+    \equiv\underline{\hspace{1.6em}}^{\,\underline{\hspace{1.2em}}}
+    =\underline{\hspace{1.6em}} \pmod{11} .
+  \]
+\end{dongshou}
+
+\begin{sikao}
+  求 \(5^{2026}\) 除以 \(7\) 的余数，第一步应该看什么？\\
+  提示：\(5^{6}\equiv1\pmod 7\)，先算 \(2026\div6\) 的余数。
+  \liukong{3}
+\end{sikao}
+
+\section*{三、身份证最后一位，是怎么算出来的}
+
+\noindent 身份证前 \(17\) 位，每一位乘一个固定的\textbf{权重}，加起来，再除以 \(11\) 取余；
+余数查表换成最后一位。
+
+\begin{center}
+\begin{tabular}{@{}lc*{17}{c}@{}}
+  \toprule
+  位数 & \(1\) & \(2\) & \(3\) & \(4\) & \(5\) & \(6\) & \(7\) & \(8\) & \(9\) & \(10\) & \(11\) & \(12\) & \(13\) & \(14\) & \(15\) & \(16\) & \(17\) \\
+  \midrule
+  权重 & \(7\) & \(9\) & \(10\) & \(5\) & \(8\) & \(4\) & \(2\) & \(1\) & \(6\) & \(3\) & \(7\) & \(9\) & \(10\) & \(5\) & \(8\) & \(4\) & \(2\) \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{@{}l*{11}{c}@{}}
+  \toprule
+  余数 & \(0\) & \(1\) & \(2\) & \(3\) & \(4\) & \(5\) & \(6\) & \(7\) & \(8\) & \(9\) & \(10\) \\
+  \midrule
+  校验码 & \(1\) & \(0\) & X & \(9\) & \(8\) & \(7\) & \(6\) & \(5\) & \(4\) & \(3\) & \(2\) \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+\begin{dongshou}[跟着老师算一遍]
+  取前 \(17\) 位 \(3\,5\,0\,1\,0\,2\,1\,9\,9\,0\,0\,3\,0\,7\,0\,0\,1\)，
+  每一位乘上对应权重再相加：
+  \[
+    21+45+0+5+0+8+2+9+54+0+0+27+0+35+0+0+2=\underline{\hspace{3em}} .
+  \]
+  \[
+    208=11\times\underline{\hspace{1.4em}}+\underline{\hspace{1.4em}}
+    \quad\Longrightarrow\quad \text{余数是 }\underline{\hspace{1.4em}}
+    \quad\Longrightarrow\quad \text{校验码是 }\underline{\hspace{1.4em}} .
+  \]
+\end{dongshou}
+
+\begin{sikao}
+  为什么改掉前 \(17\) 位里的任意一位，机器就能发现号码不对？
+  \liukong{3}
+\end{sikao}
+
+\section*{四、RSA：一个极小的例子}
+
+\noindent 取两个素数 \(p=3\)、\(q=11\)，令 \(n=3\times11=33\)。
+「公钥」是谁都能拿到的 \(n=33\) 和加密钥匙 \(e=3\)：加密就是把数取三次方，再除以 \(33\) 取余。
+「私钥」是只有收信人知道的解密钥匙 \(d=7\)：解密就是把收到的数取七次方，再除以 \(33\) 取余。
+
+\begin{dongshou}[把 \(5\) 加密，再解开]
+  \begin{center}
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+    步骤 & 算法 & 结果 \\
+    \midrule
+    要送出去的数 & \(x\) & \(5\) \\
+    加密 & \(5^{3}=125\)，再除以 \(33\) 取余 & \underline{\hspace{2.4em}} \\
+    传过去 & & \underline{\hspace{2.4em}} \\
+    解密 & \(\underline{\hspace{2.4em}}^{\,7}\) 除以 \(33\) 取余 & \underline{\hspace{2.4em}} \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+\end{dongshou}
+
+\begin{sikao}
+  收到的又是 \(5\)。那别人偷看到了 \(26\)，为什么还是打不开？
+  \liukong{2}
+\end{sikao}
+
+\begin{xiaojie}
+  这节课要带走的三句话：
+  \begin{itemize}
+    \item 费马小定理回答了 \(999999\div7\)：\(10^{6}\equiv1\pmod 7\)，所以 \(7\) 整除它。
+    \item 它还能把巨大的幂「缩」小：\(2^{100}\equiv2\pmod 7\)。
+    \item 身份证校验码、手机里的加密，用的都是这套「取余」的算术。
+  \end{itemize}
+\end{xiaojie}
+
+\noindent\textbf{下节课}：复习、总结与展望——把整门课串成一条线。

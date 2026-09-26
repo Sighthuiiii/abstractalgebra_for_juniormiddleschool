@@ -1,0 +1,117 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 10 课　生成元、循环群与循环群的子群　—— 学生版讲义（原 12+13 合并）
+%  与 02-课件/第10课-生成元与循环群/第10课-生成元与循环群.tex 同步
+% ============================================================================
+
+\xhlesson{10}{生成元、循环群与循环群的子群}{}
+
+\begin{mubiao}
+  \begin{itemize}
+    \item 知道什么是生成元，能说出 \(D_4\) 里哪两个够用。
+    \item 能找出模 \(12\) 加法里由 \(3\)、由 \(5\) 生成的子群。
+    \item 会求模 \(12\) 各元素的阶，并发现子群大小都是 \(12\) 的因数。
+  \end{itemize}
+\end{mubiao}
+
+\section*{一、生成元}
+
+\begin{definition}[由 \(a\) 生成的子群]
+  在群 \(G\) 里，把元素 \(a\) 和它反复做出来的所有结果放在一起，
+  得到的那个小群，叫做\textbf{由 \(a\) 生成的子群}，记作 \(\langle a\rangle\)。
+\end{definition}
+
+\begin{definition}[生成元、循环群]
+  如果整个群 \(G\) 能由一个元素 \(a\) 生成，也就是 \(G=\langle a\rangle\)，
+  就说 \(a\) 是 \(G\) 的一个\textbf{生成元}，而 \(G\) 是一个\textbf{循环群}。
+\end{definition}
+
+\begin{dongshou}[走两遍圆盘]
+  \begin{enumerate}
+    \item 从 \(0\) 开始一直加 \(3\)：
+      \(0\to3\to\underline{\hspace{1.4em}}\to\underline{\hspace{1.4em}}\to\underline{\hspace{1.4em}}\)（回到 \(0\)）。
+      \quad \(\langle3\rangle=\)\underline{\hspace{5.4cm}}，一共 \underline{\hspace{1.2em}} 个。
+    \item 从 \(0\) 开始一直加 \(5\)：
+      \(0\to5\to10\to\underline{\hspace{1.4em}}\to\underline{\hspace{1.4em}}\to\underline{\hspace{1.4em}}
+        \to\underline{\hspace{1.4em}}\to\underline{\hspace{1.4em}}\to\underline{\hspace{1.4em}}
+        \to\underline{\hspace{1.4em}}\to\underline{\hspace{1.4em}}\to\underline{\hspace{1.4em}}\to0\)。
+      \quad 它走遍了 \underline{\hspace{1.2em}} 个数。
+  \end{enumerate}
+\end{dongshou}
+
+\begin{sikao}
+  为什么 \(3\) 只圈住 \(4\) 个，\(5\) 却圈住 \(12\) 个？\\
+  （提示：看看它们和 \(12\) 的公因数。）
+  \liukong{2}
+\end{sikao}
+
+\begin{example}
+  \begin{center}
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+     & 和 \(12\) 的公因数 & 圈住几个 \\
+    \midrule
+    \(3\) & \(1,3\)（最大的是 \(3\)） & \(12\div3=4\) \\
+    \(5\) & 只有 \(1\) & \(12\div1=12\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  公因数越大，圈住的越少；只有公因数 \(1\) 时，整整一圈都被圈住。
+\end{example}
+
+\section*{二、每个数的阶}
+
+\begin{dongshou}[数几次回到 \(0\)，把阶填进表里]
+  \begin{center}
+  {\small
+  \begin{tabular}{@{}l*{12}{c}@{}}
+    \toprule
+    \(a\) & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 0 \\
+    \midrule
+    阶 & & & & & & & & & & & & \\
+    \bottomrule
+  \end{tabular}}
+  \end{center}
+\end{dongshou}
+
+\begin{dingli}[阶与生成子群]
+  元素 \(a\) 的阶，正好等于由它生成的子群 \(\langle a\rangle\) 的大小。
+\end{dingli}
+
+\begin{sikao}
+  \(\langle4\rangle\) 和 \(\langle8\rangle\) 是同一个子群吗？说说理由。
+  \liukong{2}
+\end{sikao}
+
+\section*{三、循环群里的所有小圈}
+
+\begin{example}[模 \(12\) 加法里的全部子群]
+  \begin{center}
+  \begin{tabular}{@{}clc@{}}
+    \toprule
+    子群 & 是谁 & 大小 \\
+    \midrule
+    \(\{0\}\) & 只有 \(0\) & \(1\) \\
+    \(\{0,6\}\) & 加 \(6\) 来回走 & \(2\) \\
+    \(\{0,4,8\}\) & 由 \(4\) 生成 & \(3\) \\
+    \(\{0,3,6,9\}\) & 由 \(3\) 生成 & \(4\) \\
+    \(\{0,2,4,6,8,10\}\) & 由 \(2\) 生成 & \(6\) \\
+    \(\{0,1,2,\dots,11\}\) & 全部十二个 & \(12\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  一共就这 \(6\) 个。
+\end{example}
+
+\begin{sikao}
+  最后一列是 \(1,2,3,4,6,12\)，和 \(12\) 有什么关系？\\[4pt]
+  再想想：\(S_3\) 里是哪些数？\(D_4\) 里又是哪些数？三次的结论一样吗？
+  \liukong{3}
+\end{sikao}
+
+\begin{xiaojie}
+  用一句话说说：什么叫「生成元」，为什么要说「循环群」。
+  \liukong{4}
+\end{xiaojie}
+
+\noindent\textbf{下节课}：回头去看幂的尾巴——\(2\) 的幂除以 \(7\)，余数会转圈。

@@ -1,0 +1,234 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 6 课　复合作为运算：S₃ 是个群
+% ----------------------------------------------------------------------------
+%  编译        XeLaTeX，编译两遍
+%  样式        ../../00-共享/preamble.tex
+%  说明        本节发一页单页（见 04-单页/）
+%  记号        六个动作：e 不动，r 转 120°，r² 转 240°，f 沿过 A 的轴翻，
+%              rf 沿过 B 的轴翻，r²f 沿过 C 的轴翻
+%              复合 xy 读作「先做 x，再做 y」
+%  图片        纸片演示一律 \imgph 占位，不要在这里手画 tikz
+% ============================================================================
+
+\documentclass[10pt]{beamer}
+\input{../../00-共享/preamble.tex}
+
+% ==================== 每份课件只改这一段 ====================
+\title{从数数开始的抽象代数生活}
+\subtitle{第 6 课　复合作为运算：\(S_3\) 是个群}
+\author{姜博瀚}
+\institute{厦门大学附属实验中学}
+\date{\today}
+% ============================================================
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ============================================================================
+\section{回顾}
+
+\begin{frame}{回顾：六个动作，六张两行式}
+  \begin{center}
+  \begin{tabular}{@{}lc@{}}
+    \toprule
+    动作 & 两行式 \\
+    \midrule
+    不动 & \(\begin{pmatrix}A&B&C\\A&B&C\end{pmatrix}\) \\[6pt]
+    顺时针转 \(120^\circ\) & \(\begin{pmatrix}A&B&C\\B&C&A\end{pmatrix}\) \\[6pt]
+    顺时针转 \(240^\circ\) & \(\begin{pmatrix}A&B&C\\C&A&B\end{pmatrix}\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  \begin{center}
+    今天把「\textbf{先做这个，再做那个}」当成一种运算。
+  \end{center}
+\end{frame}
+
+% ============================================================================
+\section{复合是一种运算}
+
+\begin{frame}{给六个动作起名字}
+  剩下的三个动作，名字一会儿就自然有了。
+  \begin{center}
+  \begin{tabular}{@{}clc@{}}
+    \toprule
+    名字 & 动作 & 两行式 \\
+    \midrule
+    \(e\) & 不动 & \(\begin{pmatrix}A&B&C\\A&B&C\end{pmatrix}\) \\[6pt]
+    \(r\) & 顺时针转 \(120^\circ\) & \(\begin{pmatrix}A&B&C\\B&C&A\end{pmatrix}\) \\[6pt]
+    \(r^2\) & 顺时针转 \(240^\circ\) & \(\begin{pmatrix}A&B&C\\C&A&B\end{pmatrix}\) \\[6pt]
+    \(f\) & 沿过 \(A\) 的轴翻 & \(\begin{pmatrix}A&B&C\\A&C&B\end{pmatrix}\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}{「先做一个，再做另一个」也是一种运算}
+  \begin{definition}[复合]
+    两个动作 \(x\) 和 \(y\)，先做 \(x\)、再做 \(y\)，合起来还是一个动作，记作 \(xy\)。
+    这个动作叫做 \(x\) 与 \(y\) 的\textbf{复合}。
+  \end{definition}
+  \pause
+  \begin{example}
+    \(rf\) 读作「先做 \(r\)，再做 \(f\)」：先顺时针转 \(120^\circ\)，再沿过 \(A\) 的轴翻折。
+  \end{example}
+\end{frame}
+
+\begin{frame}{现场做两遍}
+  \imgph[4.2cm]{三角形纸片演示：左图「先 \(f\) 后 \(r\)」，右图「先 \(r\) 后 \(f\)」，\\两个终点用不同颜色标出}
+  \pause
+  \begin{center}
+    先做甲再做乙，和先做乙再做甲，结果会一样吗？
+  \end{center}
+\end{frame}
+
+\begin{frame}{一个一个算出来}
+  \(x\) 写在上排，下排写它去了哪；两个动作连着做，就是接着往下走。
+  \pause
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{block}{先 \(r\) 后 \(f\)：\(rf\)}
+        \[
+          \begin{pmatrix}A&B&C\\C&B&A\end{pmatrix}
+        \]
+        是「沿过 \(B\) 的轴翻折」。
+      \end{block}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{block}{先 \(f\) 后 \(r\)：\(fr\)}
+        \[
+          \begin{pmatrix}A&B&C\\B&A&C\end{pmatrix}
+        \]
+        是「沿过 \(C\) 的轴翻折」。
+      \end{block}
+    \end{column}
+  \end{columns}
+  \pause
+  \begin{center}
+    {\large 两个结果不一样：\(\mathbf{rf\neq fr}\)。}
+  \end{center}
+\end{frame}
+
+\begin{frame}{用手指回答}
+  \begin{itemize}
+    \item \(rf\neq fr\)，说明复合不满足哪一条规则？
+    \item 「转 \(120^\circ\)」的倒着做是哪个动作？
+    \item 「沿过 \(A\) 的轴翻折」的倒着做是哪个动作？
+  \end{itemize}
+  \pause
+  \begin{block}{答案}
+    交换律；\quad 转 \(240^\circ\)，也就是 \(r^2\)；\quad 还是它自己，因为再翻一次就翻回来了。
+  \end{block}
+\end{frame}
+
+% ============================================================================
+\section{验证四条规则}
+
+\begin{frame}{一条一条验}
+  \begin{block}{封闭}
+    两个动作连着做，结果还是这 \(6\) 个动作之一。\\
+    比如 \(rf\) 是「沿过 \(B\) 的轴翻」，\(fr\) 是「沿过 \(C\) 的轴翻」，都没有跑出这 \(6\) 个。\quad \(\checkmark\)
+  \end{block}
+  \pause
+  \begin{block}{结合}
+    三个动作连着做：\((xy)z\) 和 \(x(yz)\) 都是「先 \(x\)，再 \(y\)，再 \(z\)」。\quad \(\checkmark\)
+  \end{block}
+\end{frame}
+
+\begin{frame}{单位元与逆元}
+  \begin{block}{单位元}
+    \(e\)（不动）就是单位元：\(xe=ex=x\)，什么也没改。\quad \(\checkmark\)
+  \end{block}
+  \pause
+  \begin{block}{逆元}
+    每个动作都有倒着做的动作：
+    \begin{itemize}
+      \item \(r\) 的逆是 \(r^2\)，\(r^2\) 的逆是 \(r\)；
+      \item \(f\)、\(rf\)、\(r^2f\) 的逆都是它们自己——翻折翻两次就回来了。
+    \end{itemize}
+    \(\checkmark\)
+  \end{block}
+  \pause
+  \begin{center}
+    {\large 四条齐了：这 \(6\) 个动作构成一个群。}
+  \end{center}
+\end{frame}
+
+% ============================================================================
+\section{乘法表}
+
+\begin{frame}{乘法表：只填两行}
+  横排、竖排都按 \(e,r,r^2,f,rf,r^2f\) 排。格子里的动作是「\textbf{先横排的，再做竖排的}」。
+  \imgph[3.0cm]{\(6\times 6\) 乘法表：只填好 \(r\) 行与 \(f\) 行，其余留空（课后贴教室墙）}
+  \pause
+  \[
+  \begin{array}{@{}l|cccccc@{}}
+    \toprule
+     & e & r & r^2 & f & rf & r^2f \\
+    \midrule
+    \text{先 }r & r & r^2 & e & rf & r^2f & f \\
+    \text{先 }f & f & r^2f & rf & e & r^2 & r \\
+    \bottomrule
+  \end{array}
+  \]
+\end{frame}
+
+\begin{frame}{乘法表里最值钱的一句话}
+  \begin{block}{看这两行}
+    \(r\) 那一行是 \(r,\ r^2,\ e,\ rf,\ r^2f,\ f\)；\quad
+    \(f\) 那一行是 \(f,\ r^2f,\ rf,\ e,\ r^2,\ r\)。
+  \end{block}
+  \pause
+  \begin{center}
+    {\large 每一行都是同样 \(6\) 个动作，只是\textbf{重新排了一遍}。}
+  \end{center}
+  \pause
+  \begin{att}
+    每一列也是一样。乘法表里没有一个动作重复出现，也没有一个动作漏掉。
+  \end{att}
+\end{frame}
+
+\begin{frame}{顺便记住一个关系}
+  对着这两行读出来：
+  \[
+    fr = r^2f .
+  \]
+  \pause
+  \begin{center}
+    {\large 「先翻后转，等于先\textbf{倒着}转再翻。」}
+  \end{center}
+  \pause
+  \begin{att}
+    \(r^2\) 就是 \(r\) 的倒着做。所以这句话也可以写成 \(fr=r^{-1}f\)——下节课要用到。
+  \end{att}
+\end{frame}
+
+\begin{frame}{这节课要带走的三句话}
+  \begin{itemize}
+    \item 「先做一个，再做另一个」也是一种运算，叫\textbf{复合}。
+    \item 这 \(6\) 个动作满足群的四条规则，所以它们构成一个群，叫 \(S_3\)。
+    \item 复合不满足交换律：\(rf\neq fr\)。
+  \end{itemize}
+  \pause
+  \begin{center}
+    {\large\textcolor{textgreen}{\bfseries 下节课：群里面还能装小群。}}
+  \end{center}
+\end{frame}
+
+% ---------------- 结尾页 ----------------
+\begin{frame}
+  \begin{center}
+    \vspace{1.6cm}
+    {\Large\textcolor{textgreen}{\bfseries 下课}}
+
+    \vspace{1.0cm}
+    {\large\textcolor{accentgreen}{下节课：群里的小世界——阶与子群}}
+  \end{center}
+\end{frame}
+
+\end{document}
