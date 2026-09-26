@@ -55,6 +55,7 @@
 \usepackage{booktabs,array,multirow}
 \PassOptionsToPackage{dvipsnames,svgnames}{xcolor}
 \usepackage{graphicx,tikz}
+\usetikzlibrary{calc}
 \usepackage{enumitem}
 \usepackage{fancyhdr}
 \usepackage[many]{tcolorbox}
@@ -204,6 +205,65 @@
     \vspace{-0.82cm}%
   \end{minipage}%
   \par\vspace{4pt}%
+}
+% ---------------- 操作纸：一张可以裁下来的纸（正面正三角形、反面正方形）----------------
+% 用法：\zhipianye{课次}      放在某一课的开头，册子里就会多出这一张纸。
+% 这一张纸有两个面：正面印正三角形，反面印正方形，都带虚线轮廓（裁切用）。
+% 两个图形分别落在上半页和下半页，所以沿轮廓各裁一次，能同时得到两张纸片。
+% 纸的左边缘有一条贯穿上下的竖直虚线：那是把整页从册子上裁下来的裁切线。
+% 正面一定落在奇数页（即这张纸的正面），这样反面才真的是它的背面。
+\newcommand{\zhipianye}[1]{%
+  \clearpage
+  \ifodd\value{page}\else \null\thispagestyle{empty}\clearpage \fi
+  \begingroup
+  \setlength{\parindent}{0pt}%
+  \thispagestyle{empty}%
+  \begin{tikzpicture}[remember picture, overlay]
+    \draw[dashed, xhline, line width=0.9pt]
+      ([xshift=1.5cm]current page.north west) -- ([xshift=1.5cm]current page.south west);
+    \node[rotate=90, font=\tiny, text=xhline]
+      at ([xshift=1.5cm, yshift=-1.7cm]current page.north west) {裁切线};
+  \end{tikzpicture}%
+  \vspace*{0.2cm}
+  \begin{center}
+    {\heiti\small\color{xhteal} 第 #1 课\quad 操作纸（正面）}\\[3pt]
+    {\songti\footnotesize
+     （1）沿左边那条虚线，把这一页从册子上裁下来。\\
+     （2）沿下面三角形的轮廓，裁出一张三角形纸片。}
+  \end{center}
+  \vspace{0.4cm}
+  \begin{center}
+  \begin{tikzpicture}
+    \draw[dashed, xhline, line width=1.1pt, fill=xhgreen!10]
+      (0,8.66) -- (5,0) -- (-5,0) -- cycle;
+    \node[above left, font=\small] at (0,8.66) {\(A\)};
+    \node[below right, font=\small] at (5,0) {\(B\)};
+    \node[below left, font=\small] at (-5,0) {\(C\)};
+  \end{tikzpicture}
+  \end{center}
+  \clearpage
+  \thispagestyle{empty}%
+  \begin{tikzpicture}[remember picture, overlay]
+    \draw[dashed, xhline, line width=0.9pt]
+      ([xshift=1.5cm]current page.north west) -- ([xshift=1.5cm]current page.south west);
+    \node[rotate=90, font=\tiny, text=xhline]
+      at ([xshift=1.5cm, yshift=-1.7cm]current page.north west) {裁切线};
+  \end{tikzpicture}%
+  \vspace*{15.0cm}
+  \begin{center}
+  \begin{tikzpicture}
+    \draw[dashed, xhline, line width=1.1pt, fill=xhteal!10]
+      (-3.8,3.8) -- (3.8,3.8) -- (3.8,-3.8) -- (-3.8,-3.8) -- cycle;
+    \node[above left, font=\small] at (-3.8,3.8) {\(1\)};
+    \node[above right, font=\small] at (3.8,3.8) {\(2\)};
+    \node[below right, font=\small] at (3.8,-3.8) {\(3\)};
+    \node[below left, font=\small] at (-3.8,-3.8) {\(4\)};
+  \end{tikzpicture}\\[5pt]
+  {\songti\footnotesize
+     （3）翻到这一面，沿正方形的轮廓，裁出一张正方形纸片。}
+  \end{center}
+  \clearpage
+  \endgroup
 }
 % ---------------- 图片占位符 ----------------
 \newcommand{\imgph}[2][4cm]{%
