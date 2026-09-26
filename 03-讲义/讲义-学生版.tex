@@ -1,0 +1,56 @@
+% !TeX program = xelatex
+% ============================================================================
+%  学生版讲义 · 整册主文件（可以写字的册子）
+% ----------------------------------------------------------------------------
+%  编译（在 03-讲义 目录下运行，两遍，目录才正确）
+%      xelatex -interaction=nonstopmode 讲义-学生版.tex
+%      xelatex -interaction=nonstopmode 讲义-学生版.tex
+% ----------------------------------------------------------------------------
+%  每一课的内容放在 03-讲义/学生版/第NN课-主题.tex，开头写
+%      \xhlesson{课次}{课题}{本课信息}
+%  还没写的课会自动跳过（编译日志里会留一行提示），主文件不用改。
+%
+%  下面几处故意不留空行，也不重复分页：封面、目录、正文之间连续两次分页
+%  会在册子里多出一张空白页。\xhlesson 自己判断要不要翻页，所以不用管。
+% ============================================================================
+
+\documentclass[12pt,fontset=none,openany]{ctexbook}
+\input{../00-共享/xuesheng-preamble.tex}
+
+\xhsetbook{从数数开始的抽象代数生活}{学生用书}
+\hypersetup{
+  pdftitle={从数数开始的抽象代数生活 · 学生用书},
+  pdfauthor={姜博瀚},
+  pdfsubject={厦门大学附属实验中学 校本课程}
+}
+
+\newcommand{\xhkemu}[1]{%
+  \IfFileExists{学生版/#1.tex}%
+    {\input{学生版/#1}}%
+    {\typeout{*** 学生版还没有讲义：03-讲义/学生版/#1.tex，已跳过}}%
+}
+
+\begin{document}
+\xhcover
+  {学生用书}
+  {不考试、不背定义，但请你把想到的都写下来}
+\pagestyle{empty}%
+\tableofcontents
+\clearpage
+\pagestyle{fancy}%
+\pagenumbering{arabic}%
+\xhkemu{第01课-先导课}
+\xhkemu{第02课-从余数到模运算}
+\xhkemu{第03课-撤回一步逆元}
+\xhkemu{第04课-群的四条规则}
+\xhkemu{第05课-三角形的对称与置换记号}
+\xhkemu{第06课-复合作为运算}
+\xhkemu{第07课-阶与子群}
+\xhkemu{第08课-正方形的对称D4}
+\xhkemu{第09课-D4的子群}
+\xhkemu{第10课-生成元与循环群}
+\xhkemu{第11课-幂的尾巴转圈了}
+\xhkemu{第12课-费马小定理}
+\xhkemu{第13课-它有什么用}
+\xhkemu{第14课-复习总结与展望}
+\end{document}

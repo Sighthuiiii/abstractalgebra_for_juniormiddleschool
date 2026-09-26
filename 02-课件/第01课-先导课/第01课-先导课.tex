@@ -1,0 +1,250 @@
+% !TeX program = xelatex
+% ============================================================================
+%  第 1 课　先导课：抽象代数是什么
+% ----------------------------------------------------------------------------
+%  编译        XeLaTeX，编译两遍（顶部导航栏的节名与小圆点需要第二遍才更新）
+%  样式        ../../00-共享/preamble.tex（想改配色、字体只改那一个文件）
+%  校徽        ../../00-共享/logo_white.png（preamble 里的 \graphicspath 已配好）
+%  图片        暂时用 \imgph{说明} 占位；有图以后换成
+%              \includegraphics[width=0.7\textwidth]{图片名}
+% ============================================================================
+
+\documentclass[10pt]{beamer}
+\input{../../00-共享/preamble.tex}
+
+% ==================== 每份课件只改这一段 ====================
+\title{从数数开始的抽象代数生活}
+\subtitle{第 1 课　先导课：抽象代数是什么}
+\author{姜博瀚}
+\institute{厦门大学附属实验中学}
+\date{\today}
+% ============================================================
+
+\begin{document}
+
+% ---------------- 标题页 ----------------
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ============================================================================
+\section{一个吓人的名字}
+\begin{frame}{从数数开始的抽象代数生活}
+  \begin{center}
+    \includegraphics[width=3cm]{re0.png}
+  \end{center}
+  这门课的名字化用了动画片《Re：从零开始的的异世界生活》，但很遗憾这门课和Re0
+  没有任何关系！
+\end{frame}
+\begin{frame}{抽象代数}
+  如果不起一个有梗的名字，这门课只有四个字——\pause
+  \begin{block}{抽象代数}
+    \begin{itemize}
+      \item 它是大学数学系的专业课，一般大二才开。
+      \item 它研究的不是“数怎么算”，而是“算”本身。
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+\begin{frame}
+  大学里的抽象代数是什么样子的？
+  \begin{center}
+    \includegraphics[width=4.6cm]{抽代1.png}
+    \includegraphics[width=4.6cm]{抽代2.png}
+  \end{center}
+  各位猜猜我们能讲多少？
+\end{frame}
+
+\begin{frame}{三个台阶}
+  先回到各位能看懂的语言，数字的世界是怎么一点点变抽象的？
+  \begin{block}{我们是怎么一步步走上来的}
+    \begin{itemize}
+      \item 小学：只用数字。\quad $3 + 5 = 8$
+      \item 初中：开始用字母代替数。\quad $a + b = b + a$
+      \item 抽象代数：连「运算」本身也用字母代替。
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{这门课有两个约定}
+  \begin{block}{约定}
+    \begin{itemize}
+      \item 我们尽量少记忆一些术语和定义；
+      \item 只看生活里的例子：钟表、体育课、三角形、正方形、身份证。
+    \end{itemize}
+  \end{block}
+
+  \begin{att}
+    最后一节课，你要自己证明一个二百多年前的结论。
+  \end{att}
+\end{frame}
+
+% ============================================================================
+\section{生活里的两个例子}
+
+\begin{frame}{例子一：体育课上的队形}
+  \begin{block}{问题}
+    体育课上，老师要把两列纵队变成四列纵队，他做了什么？
+  \end{block}
+
+\end{frame}
+
+\begin{frame}{例子二：半夜 12 点}
+  \begin{block}{问题}
+    为什么半夜 12 点，既叫 0 点，又叫 24 点？
+  \end{block}
+\begin{center}
+  \includegraphics[width=4cm]{时钟.png}
+\end{center}
+
+\end{frame}
+
+\begin{frame}{两个例子有什么关系？}
+  \begin{itemize}
+    \item 队形：人没变，位置上重新排了一遍。
+    \item 时间：表没变，指针绕了一圈。
+  \end{itemize}
+
+  \begin{block}{共同点}
+    东西没变，只是“重新排了一下”。
+  \end{block}
+    这门课要做的，就是把这句话说清楚。
+\end{frame}
+
+% ============================================================================
+\section{集合初步}
+
+\begin{frame}{集合是什么}
+  \begin{definition}[集合]
+    把确定的一堆东西放在一起，就叫做一个集合，用大括号写出来。
+  \end{definition}
+
+  \begin{example}
+    \(\{1, 2, 3\}\)；\quad \{甲, 乙, 丙\}；\quad \{红, 黄, 蓝\}
+
+    所有的有理数放在一起也是集合；
+
+    自然数、整数也都可以看作集合。
+  \end{example}
+
+\end{frame}
+
+\begin{frame}{这节课立刻就能用的写法}
+  \begin{itemize}
+    \item \(\{1, 2, 3, \dots, 12\}\) —— 钟面上的 12 个时刻
+    \item \(\{A, B, C\}\) —— 三角形的三个顶点
+    \item \{原地不动, 转 \(90^\circ\), 转 \(180^\circ\), 转 \(270^\circ\)\} —— 正方形的四种转法
+  \end{itemize}
+
+  \begin{att}
+    注意最后一行：那四个“动作”本身被装进了一个集合里。
+  \end{att}
+\end{frame}
+
+% ============================================================================
+\section{一个悬念}
+
+\begin{frame}{999999 能被 7 整除吗？}
+
+  \begin{block}{问题}
+    \[
+      999999 \div 7 = ？
+    \]
+  \end{block}
+  \begin{block}{答案}
+    \[
+      999999 \div 7 = 142857
+    \]
+    正好整除，一点不剩。
+  \end{block}
+\end{frame}
+
+\begin{frame}{为什么？}
+  \begin{block}{关键线索}
+    \[
+      999999 = 1000000 - 1 = 10^{6} - 1
+    \]
+  \end{block}
+
+  \begin{itemize}
+    \item 于是问题变成：为什么 \(10^{6} - 1\) 能被 7 整除？
+    \item 这件事和 7 有什么关系？把7换成别的会管用吗？
+  \end{itemize}
+
+
+\end{frame}
+
+\begin{frame}{顺便看一个把戏}
+
+  \begin{block}{把 142857 乘上\(k\)看看}
+
+     \begin{columns}[T]  % T=顶部对齐, c=居中, b=底部
+       \begin{column}{0.48\textwidth}
+          \begin{itemize}
+            \item $142857 \times 1 = 142857$
+            \item $142857 \times 2 = 285714$
+            \item $142857 \times 3 = 428571$
+          \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \pause
+ \begin{itemize}
+      \item $142857 \times 4 = 571428$
+      \item $142857 \times 5 = 714285$
+      \item $142857 \times 6 = 857142$
+    \end{itemize}
+    \end{column}
+  \end{columns}
+  \end{block}
+  \pause
+    数字还是那六个，只是换了个位置。
+\end{frame}
+
+% ============================================================================
+\section{这门课要去哪}
+
+\begin{frame}{四站路——课程大纲}
+  \begin{itemize}
+    \item \textbf{第一站　钟表与取余}：数着数着，会绕回来。
+    \item \textbf{第二站　三角形与正方形}：位置换一换，还是那几个样子。
+    \item \textbf{第三站　换位置的算术}：先做这个再做那个，结果会不一样。
+    \item \textbf{第四站　费马小定理}：回到今天那个 999999。
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{最后一节课，你会带走三样东西}
+  \begin{itemize}
+    \item 一个能自己证明的结论（费马小定理）；
+    \item 一套看世界的办法：把不同事情里相同的规矩挑出来；
+    \item 一个终于能回答的问题：999999 为什么能被 7 整除。
+  \end{itemize}
+
+  \vspace{0.6em}
+  \begin{center}
+    {\large\textcolor{textgreen}{\bfseries 我们从一个最笨的动作开始——数数。}}
+  \end{center}
+\end{frame}
+\begin{frame}{如果你想读一点参考书}
+  这些书你大概率是读不懂的，至少也得上了高中：
+  \begin{itemize}
+    \item 人民教育出版社, 普通高中课程标准实验教科书 数学 选修 3-4 A版 对称与群[M]. 北京: 人民教育出版社, 2007.
+    \item 韩士安, 林磊. 近世代数[M]. 2版. 北京: 科学出版社, 2009.
+    \item 内森·卡特. 群论: 彩图版[M]. 郭小强, 罗翠玲, 译. 北京: 机械工业出版社, 2019.
+    \item LEE G T. Abstract algebra: an introductory course[M]. Cham: Springer, 2018.
+  \end{itemize}
+  
+\end{frame}
+% ---------------- 结尾页 ----------------
+\begin{frame}
+  \begin{center}
+    \vspace{1.6cm}
+    {\Large\textcolor{textgreen}{\bfseries 下课}}
+
+    \vspace{1.0cm}
+    {\large\textcolor{accentgreen}{下节课：从余数到模运算}}
+  \end{center}
+\end{frame}
+
+\end{document}

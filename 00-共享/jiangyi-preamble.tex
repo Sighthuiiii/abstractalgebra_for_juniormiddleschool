@@ -1,0 +1,192 @@
+% ============================================================================
+%  教师版讲义样式（整册小册子）
+% ----------------------------------------------------------------------------
+%  用法：主文件 03-讲义/讲义-教师版.tex 已经写好，一般不用动。
+%        每课一个文件放在 03-讲义/教师版/ 下，开头写
+%            \jhlesson{课次}{课题}{本课信息}
+%        主文件里用 \input 引进来。
+%  编译：XeLaTeX，编译两遍（目录需要第二遍才正确）
+% ----------------------------------------------------------------------------
+%  设计原则：务实，少加不必要的框。
+%    只保留 4 个方框：mubiao 本课目标 / definition 定义 / example 例 / xiaojie 本课小结
+%    其余一律排成普通段落：caozuo 讲台操作 / zhu 注 / jielun 结论
+% ============================================================================
+
+% ---------------- 字体（跨平台自动选）----------------
+\IfFontExistsTF{SimSun}{
+  \setCJKmainfont{SimSun}[BoldFont=SimHei,ItalicFont=KaiTi,BoldItalicFont=SimHei]
+  \setCJKsansfont{Microsoft YaHei}
+  \setCJKmonofont{FangSong}
+  \setCJKfamilyfont{zhsong}{SimSun}
+  \setCJKfamilyfont{zhhei}{SimHei}
+  \setCJKfamilyfont{zhkai}{KaiTi}
+  \setCJKfamilyfont{zhfs}{FangSong}
+}{
+  \IfFontExistsTF{Songti SC}{
+    \setCJKmainfont{Songti SC}[BoldFont=Heiti SC,ItalicFont=Kaiti SC,BoldItalicFont=Heiti SC]
+    \setCJKsansfont{PingFang SC}
+    \setCJKmonofont{STFangsong}
+    \setCJKfamilyfont{zhsong}{Songti SC}
+    \setCJKfamilyfont{zhhei}{Heiti SC}
+    \setCJKfamilyfont{zhkai}{Kaiti SC}
+    \setCJKfamilyfont{zhfs}{STFangsong}
+  }{
+    \setCJKmainfont{FandolSong-Regular.otf}[BoldFont=FandolHei-Regular.otf,ItalicFont=FandolKai-Regular.otf,BoldItalicFont=FandolHei-Regular.otf]
+    \setCJKsansfont{FandolHei-Regular.otf}
+    \setCJKmonofont{FandolFang-Regular.otf}
+    \setCJKfamilyfont{zhsong}{FandolSong-Regular.otf}
+    \setCJKfamilyfont{zhhei}{FandolHei-Regular.otf}
+    \setCJKfamilyfont{zhkai}{FandolKai-Regular.otf}
+    \setCJKfamilyfont{zhfs}{FandolFang-Regular.otf}
+  }
+}
+\providecommand{\songti}{}\renewcommand{\songti}{\CJKfamily{zhsong}}
+\providecommand{\heiti}{}\renewcommand{\heiti}{\CJKfamily{zhhei}}
+\providecommand{\kaishu}{}\renewcommand{\kaishu}{\CJKfamily{zhkai}}
+\providecommand{\fangsong}{}\renewcommand{\fangsong}{\CJKfamily{zhfs}}
+\IfFontExistsTF{TeX Gyre Pagella}{%
+  \setmainfont{TeX Gyre Pagella}%
+}{\setmainfont{Latin Modern Roman}}
+
+% ---------------- 宏包 ----------------
+\usepackage[a4paper,left=2.3cm,right=2.3cm,top=2.5cm,bottom=2.2cm,headheight=15pt]{geometry}
+\usepackage{amsmath,amssymb,mathtools,bm}
+\usepackage{booktabs,array,multirow}
+\PassOptionsToPackage{dvipsnames,svgnames}{xcolor}
+\usepackage{graphicx,tikz}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[many]{tcolorbox}
+\tcbuselibrary{breakable,skins}
+\usepackage[hidelinks]{hyperref}
+
+% ---------------- 图片搜索路径 ----------------
+\graphicspath{{./}{./图片/}{../../00-共享/}{../00-共享/}{00-共享/}{00-共享/图片/}}
+
+% ---------------- 配色（与课件同一族绿色）----------------
+\definecolor{jyblue}{RGB}{0,90,160}
+\definecolor{jygreen}{RGB}{0,100,0}
+\definecolor{jyteal}{RGB}{0,121,107}
+\definecolor{jygray}{RGB}{85,85,85}
+\definecolor{jydark}{RGB}{20,90,20}
+
+% ---------------- 页眉页脚 ----------------
+\newcommand{\jhcourse}{从数数开始的抽象代数生活}
+\newcommand{\jhbookname}{教师用书}
+\newcommand{\jhauthor}{姜博瀚}
+\newcommand{\jhsetbook}[2]{\renewcommand{\jhcourse}{#1}\renewcommand{\jhbookname}{#2}}
+\newcommand{\jhcurrentlesson}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\songti\jhcourse}
+\fancyhead[R]{\small\songti\jhcurrentlesson}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+% 章首页/目录页用的 plain 样式：不写页眉页脚（目录页因此不带页码）
+\fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}}
+
+% ---------------- 封面 ----------------
+% 主文件里写： \jhcover{教师用书}{给站在讲台上的你}{一句副题}
+\newcommand{\jhcover}[3]{%
+  \thispagestyle{empty}%
+  \begingroup
+  \centering
+  \vspace*{1.4cm}
+  {\color{jydark}\rule{\textwidth}{1.8pt}}\\[5pt]
+  {\color{jydark}\rule{\textwidth}{0.6pt}}\\[2.5cm]
+  {\heiti\fontsize{31pt}{40pt}\selectfont 从数数开始的抽象代数生活}\\[18pt]
+  {\songti\fontsize{13pt}{20pt}\selectfont\color{jygray} 厦门大学附属实验中学\quad 校本课程}\\[2.1cm]
+  {\color{jydark}\rule{0.42\textwidth}{0.8pt}}\\[16pt]
+  {\heiti\fontsize{23pt}{30pt}\selectfont\color{jydark} #1}\\[10pt]
+  {\songti\fontsize{12.5pt}{19pt}\selectfont\color{jygray} #2}\\[14pt]
+  {\color{jydark}\rule{0.42\textwidth}{0.8pt}}\\[3.1cm]
+  {\songti\fontsize{12pt}{18pt}\selectfont 授课教师：\jhauthor}\\[6pt]
+  {\songti\fontsize{11pt}{17pt}\selectfont\color{jygray} \today}\\[1.5cm]
+  {\kaishu\fontsize{13pt}{20pt}\selectfont\color{jydark} #3}%
+  \vfill
+  \par
+  \endgroup
+}
+
+% ---------------- 目录 ----------------
+\renewcommand{\contentsname}{目\hspace{1em}录}
+
+% ---------------- 每课的开头 ----------------
+% \jhlesson{课次}{课题}{本课信息（时长、教具、是否发单页等，不写就留空 {}）}
+\newcommand{\jhlessonhead}[2]{%
+  \begin{center}
+    {\color{jydark}\rule{0.92\textwidth}{1.1pt}}\\[13pt]
+    {\heiti\fontsize{19pt}{24pt}\selectfont 第 #1 课}\\[9pt]
+    {\heiti\fontsize{16pt}{23pt}\selectfont #2}\\[13pt]
+    {\color{jydark}\rule{0.92\textwidth}{1.1pt}}
+  \end{center}
+}
+\newcommand{\jhlesson}[3]{%
+  \par
+  \ifdim\pagetotal>0pt\clearpage\fi
+  \phantomsection
+  \addcontentsline{toc}{chapter}{第 #1 课\quad #2}%
+  \renewcommand{\jhcurrentlesson}{第 #1 课\quad #2}%
+  \markboth{\jhcourse}{\jhcurrentlesson}%
+  \vspace*{0.4cm}%
+  \jhlessonhead{#1}{#2}%
+  \vspace{-4pt}%
+  \ifx\relax#3\relax\else
+    \begin{center}{\small\songti\color{jygray} #3}\end{center}%
+  \fi
+  \vspace{6pt}%
+}
+
+% ---------------- 四个方框 ----------------
+\tcbset{
+  jybase/.style={
+    enhanced, breakable, sharp corners,
+    boxsep=3pt, left=9pt, right=8pt, top=6pt, bottom=6pt,
+    before skip=9pt, after skip=9pt,
+    fonttitle=\heiti,
+    attach title to upper={\ },
+  }
+}
+\newcommand{\jysub}[1]{\ifx\relax#1\relax\else（#1）\fi}
+
+\newtcolorbox{mubiao}[1][]{jybase,
+  colback=jyblue!6!white, colframe=jyblue!6!white, coltitle=jyblue!60!black,
+  title={本课目标\jysub{#1}},
+  overlay={\draw[line width=2.6pt, jyblue] (frame.north west) -- (frame.south west);}}
+\newtcolorbox{definition}[1][]{jybase,
+  colback=jyblue!6!white, colframe=jyblue!6!white, coltitle=jyblue!60!black,
+  title={定义\jysub{#1}},
+  overlay={\draw[line width=2.6pt, jyblue] (frame.north west) -- (frame.south west);}}
+\newtcolorbox{example}[1][]{jybase,
+  colback=jyteal!6!white, colframe=jyteal!6!white, coltitle=jyteal!60!black,
+  title={例\jysub{#1}},
+  overlay={\draw[line width=2.6pt, jyteal] (frame.north west) -- (frame.south west);}}
+\newtcolorbox{xiaojie}[1][]{jybase,
+  colback=jydark!7!white, colframe=jydark!7!white, coltitle=jydark!60!black,
+  title={本课小结\jysub{#1}},
+  overlay={\draw[line width=2.6pt, jydark] (frame.north west) -- (frame.south west);}}
+
+% ---------------- 不加框的三类段落 ----------------
+% 讲台操作、注、结论：只留文本本身，不加框、不上色
+\newenvironment{caozuo}[1][]{\par\vspace{1pt}\ignorespaces}{\par\vspace{1pt}}
+\newenvironment{zhu}[1][]{\par\vspace{1pt}\ignorespaces}{\par\vspace{1pt}}
+\newenvironment{jielun}[1][]{\par\vspace{1pt}\ignorespaces}{\par\vspace{1pt}}
+
+% ---------------- 图片占位符 ----------------
+\newcommand{\imgph}[2][4cm]{%
+  \begin{center}%
+  \begin{tikzpicture}%
+    \node[draw=jydark, densely dashed, line width=1pt, rounded corners=4pt,
+          fill=jydark!5!white, inner sep=8pt, align=center, text width=0.72\textwidth,
+          minimum height=#1, font=\small]
+      {\textcolor{jydark}{\bfseries 【图片占位】}\\[4pt] #2};%
+  \end{tikzpicture}%
+  \end{center}%
+}
+
+% ---------------- 列表与行距 ----------------
+\setlist[itemize]{itemsep=2pt,topsep=3pt,parsep=0pt,leftmargin=1.6em}
+\setlist[enumerate]{itemsep=2pt,topsep=3pt,parsep=0pt,leftmargin=2.0em}
+\linespread{1.15}

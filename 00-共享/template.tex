@@ -1,0 +1,106 @@
+% !TeX program = xelatex
+% ============================================================================
+%  课件模板：新建一课时把本文件复制到 02-课件\第NN课-主题\ 下，
+%            改名为「第NN课-主题.tex」，只改标注的那一段即可。
+% ----------------------------------------------------------------------------
+%  文件分工（都在 00-共享\ 里，改样式只改 preamble.tex）
+%      preamble.tex          所有样式：字体、配色、校徽栏、顶部导航栏、页脚、方框
+%      template.tex          本文件，新课件从它开始
+%      jiangyi-preamble.tex  配套讲义的样式（另一套，轻量版）
+%      logo_white.png        顶部校徽
+%  编译
+%      必须用 XeLaTeX，而且必须编译两遍（顶部导航栏的节名与小圆点存在 .nav 文件里）
+%      在课件所在文件夹里运行：
+%          xelatex -interaction=nonstopmode 第NN课-主题.tex
+%          xelatex -interaction=nonstopmode 第NN课-主题.tex
+% ----------------------------------------------------------------------------
+%  常用写法
+%      \section{节名}              一节（会出现在顶部导航栏）
+%      \begin{frame}{页面标题}    一页幻灯片
+%      \begin{block}{标题}        普通方框
+%      \imgph{说明}               图片占位框（绿色虚线），有图后换成 \includegraphics
+%      定理、定义、例、证明等专用方框清单见 preamble.tex 末尾的速查表
+%      方框都支持补充名：\begin{definition}[集合] → 标题显示「定义（集合）」
+% ============================================================================
+
+\documentclass[10pt]{beamer}
+% 下面两行让本文件在原地（00-共享）和复制到课时文件夹后都能编译，不用改
+\IfFileExists{../../00-共享/preamble.tex}
+  {\input{../../00-共享/preamble.tex}}
+  {\input{preamble.tex}}
+
+% ==================== 每份课件只改这一段 ====================
+\title{从数数开始的抽象代数生活}
+\subtitle{第 NN 课　在这里写课题}
+\author{姜博瀚}
+\institute{厦门大学附属实验中学}
+\date{\today}
+% ============================================================
+
+\begin{document}
+
+% ---------------- 标题页 ----------------
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ---------------- 目录页（不需要就整块注释掉）----------------
+% \begin{frame}{目录}
+%   \tableofcontents
+% \end{frame}
+
+% ============================================================================
+\section{第一节：在这里写节名}
+
+\begin{frame}{在这里写页面标题}
+  \begin{block}{问题}
+    这里写正文。行内公式写成 \(a+b=b+a\)，行间公式写成
+    \[
+      8+7=15\equiv 3 \pmod{12}
+    \]
+  \end{block}
+
+  \begin{itemize}
+    \item 第一条
+    \item 第二条
+  \end{itemize}
+
+  \imgph[3.0cm]{图片占位：说明这张图要画什么\\第二行写清重点}
+\end{frame}
+
+\begin{frame}{专用方框举例}
+  \begin{definition}[单位元]
+    在一种运算里，和任何元素结合都不改变对方的那个元素。
+  \end{definition}
+
+  \begin{example}
+    钟面上，\(0\) 就是加法的单位元。
+  \end{example}
+
+  \begin{zhu}
+    提醒一句：这门课一个定义都不背，看例子就够了。
+  \end{zhu}
+\end{frame}
+
+% ============================================================================
+\section{第二节：在这里写节名}
+
+\begin{frame}{在这里写页面标题}
+  \begin{itemize}
+    \item 每节课至少安排 4 次「用手指回答」。
+    \item 节奏：0—6 回顾 / 6—28 演示 / 28—40 跟做 / 40—45 收尾。
+  \end{itemize}
+\end{frame}
+
+% ---------------- 结尾页 ----------------
+\begin{frame}
+  \begin{center}
+    \vspace{1.6cm}
+    {\Large\textcolor{textgreen}{\bfseries 下课}}
+
+    \vspace{1.0cm}
+    {\large\textcolor{accentgreen}{下节课：在这里写下节课的课题}}
+  \end{center}
+\end{frame}
+
+\end{document}
