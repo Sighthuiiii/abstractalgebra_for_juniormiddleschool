@@ -6,7 +6,7 @@
 %        rf 沿过 B 的轴翻，r²f 沿过 C 的轴翻；复合 xy 读作「先做 x，再做 y」
 % ============================================================================
 
-\jhlesson{6}{复合作为运算：\texorpdfstring{\(S_3\)}{S3} 是个群}{时长 45 分钟\quad·\quad 教具：正三角形纸片\quad·\quad 本课发单页}
+\jhlesson{6}{复合作为运算：\texorpdfstring{\(S_3\)}{S3} 是个群}{时长 45 分钟\quad·\quad 教具：正三角形纸片\quad·\quad 本课不发单页}
 
 \begin{mubiao}
   \begin{itemize}
@@ -16,7 +16,7 @@
   \end{itemize}
 \end{mubiao}
 
-\noindent{\small 本课节奏：0—6 回顾｜6—20 把复合当运算｜20—34 验证是群｜34—43 乘法表（发单页，跟做）｜43—45 收尾。全程至少 4 次「用手指回答」。}
+\noindent{\small 本课节奏：0—6 回顾｜6—20 把复合当运算｜20—34 验证是群｜34—43 乘法表（跟做）｜43—45 收尾。}
 
 \section*{一、回顾（0—6 分钟）}
 
@@ -51,7 +51,11 @@
 \end{zhu}
 
 \begin{caozuo}
-  拿纸片当场做两遍，两个终点用不同颜色标出来：
+  先板书一个示范（学生版里有同样的一行）：一路跟着 \(A\) 走——
+  \(A\xrightarrow{\ r\ }B\xrightarrow{\ f\ }C\)，所以 \(A\to B\to C\)。
+  剩下的 \(B\)、\(C\) 让学生照着推。学生版这一处最容易卡住，示范必须给。
+
+  再拿纸片当场做两遍，两个终点用不同颜色标出来：
   \begin{itemize}
     \item 先 \(r\) 后 \(f\)：算出 \(rf=\begin{pmatrix}A&B&C\\C&B&A\end{pmatrix}\)，是沿过 \(B\) 的轴翻折；
     \item 先 \(f\) 后 \(r\)：算出 \(fr=\begin{pmatrix}A&B&C\\B&A&C\end{pmatrix}\)，是沿过 \(C\) 的轴翻折。
@@ -95,7 +99,7 @@
 \section*{四、乘法表（34—43 分钟）}
 
 \begin{caozuo}
-  \textbf{先发单页。}在黑板上画一张 \(6\times6\) 的空表，横竖都按
+  在黑板上画一张 \(6\times6\) 的空表，横竖都按
   \(e,r,r^2,f,rf,r^2f\) 排好。告诉全班：格子里的动作是「\textbf{先横排的，再做竖排的}」。
   只填 \(r\) 行和 \(f\) 行，一行一行报答案，你只管往格子里写。
 \end{caozuo}
@@ -107,9 +111,17 @@
   \midrule
   先 \(r\) & \(r\) & \(r^2\) & \(e\) & \(rf\) & \(r^2f\) & \(f\) \\
   先 \(f\) & \(f\) & \(r^2f\) & \(rf\) & \(e\) & \(r^2\) & \(r\) \\
+  \midrule
+  \textcolor{gray}{先 \(r^2\)（挑战）} & \textcolor{gray}{\(r^2\)} & \textcolor{gray}{\(e\)} & \textcolor{gray}{\(r\)} & \textcolor{gray}{\(r^2f\)} & \textcolor{gray}{\(f\)} & \textcolor{gray}{\(rf\)} \\
   \bottomrule
 \end{tabular}
 \end{center}
+
+\begin{zhu}
+  第三行「先 \(r^2\)」是学生版里的挑战行，答案就是上面这一行。
+  时间不够就只报答案，不解释；时间够可以让学生自己验一格：
+  \(r^2\) 再做一次 \(r^2\) 等于 \(r^4=r\)，所以「先 \(r^2\) 后 \(r^2\)」那一格填 \(r\)。
+\end{zhu}
 
 \begin{zhu}
   \textbf{不要填满 \(36\) 格}，会把后面的内容挤掉。乘法表真正值钱的地方是下面这一句观察。
@@ -128,7 +140,7 @@
 \]
 
 白话是：「先翻后转，等于先\textbf{倒着}转再翻。」因为 \(r^2\) 就是 \(r\) 的倒着做，
-这句话也可以写成 \(fr=r^{-1}f\)——下节课要用到。
+\(r^2\) 就是 \(r\) 的逆元——下节课要用到。
 
 板书三句话收尾：复合是一种运算；这 \(6\) 个动作构成群 \(S_3\)；\(rf\neq fr\)。
 

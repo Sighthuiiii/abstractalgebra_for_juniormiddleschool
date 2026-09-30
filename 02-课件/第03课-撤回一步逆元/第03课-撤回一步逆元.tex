@@ -55,6 +55,26 @@
   \end{block}
 \end{frame}
 
+\begin{frame}{先把上节课的账补上}
+  在模 \(12\) 加法里，每个数都有搭档（逆元）。把这张表填满：
+  \pause
+  \begin{center}
+  \begin{tabular}{@{}l*{12}{c}@{}}
+    \toprule
+    \(a\) & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\
+    \midrule
+    \(\text{搭档}\) & 0 & 11 & 10 & 9 & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 1 \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \pause
+  \(1\) 配 \(11\)（\(1+11=12\equiv 0\)），\(2\) 配 \(10\)，\(3\) 配 \(9\)，\(\dots\)
+  \pause
+  \begin{att}
+    有两个数只配自己：\textbf{\(0\)}（\(0+0=0\)）和 \textbf{\(6\)}（\(6+6=12\equiv 0\)）。
+  \end{att}
+\end{frame}
+
 % ============================================================================
 \section{乘 3 的转盘}
 
@@ -159,6 +179,18 @@
   \begin{center}
     {\large 所以 \(3\) 的逆元是 \(\mathbf{5}\)：乘 \(3\) 的逆动作，就是乘 \(5\)。}
   \end{center}
+\end{frame}
+
+\begin{frame}{给它一个名字：可逆}
+  \begin{definition}[可逆]
+    设 \(e\) 是运算 \(*\) 的单位元。如果元素 \(a\) 有逆元，
+    就说 \(a\) 在这种运算下是\textbf{可逆的}。
+  \end{definition}
+  \pause
+  \begin{att}
+    有逆元，就叫可逆。模 \(12\) 加法里人人可逆，模 \(7\) 乘法里也人人可逆。
+    所以接下来要问一句：\textbf{是不是换到哪里都人人可逆？}
+  \end{att}
 \end{frame}
 
 \begin{frame}{换一个：模 6}

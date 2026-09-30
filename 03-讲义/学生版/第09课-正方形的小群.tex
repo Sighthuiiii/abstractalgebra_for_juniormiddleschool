@@ -1,15 +1,15 @@
 % !TeX program = xelatex
 % ============================================================================
-%  第 9 课　D₄ 的子群与二面体群的关系　—— 学生版讲义
-%  与 02-课件/第09课-D4的子群/第09课-D4的子群.tex 同步
+%  第 9 课　正方形里的小群：子群与二面体群　—— 学生版讲义
+%  与 02-课件/第09课-正方形的小群/第09课-正方形的小群.tex 同步
 % ============================================================================
 
-\xhlesson{9}{\texorpdfstring{\(D_4\)}{D4} 的子群与二面体群的关系}{}
+\xhlesson{9}{正方形里的小群：子群与二面体群}{}
 
 \begin{mubiao}
   \begin{itemize}
     \item 能找出 \(D_4\) 里面能自成一体的小群（子群）。
-    \item 能说出旋转与翻折之间那条关系：\(fr=r^{-1}f\)。
+    \item 能说出旋转与翻折之间那条关系：\(fr=r^3f\)（先翻后转 \(=\) 先倒着转再翻）。
     \item 知道 \(D_n\) 叫二面体群，正 \(n\) 边形有 \(2n\) 个对称动作。
   \end{itemize}
 \end{mubiao}
@@ -54,25 +54,31 @@
 \section*{二、旋转与翻折的关系}
 
 \begin{dongshou}[左右各走一条路]
-  拿纸片做两遍，把终点记下来：
-  \begin{itemize}
-    \item 先翻 \(f\)，再转 \(90^\circ\)（\(r\)）：终点在 \underline{\hspace{3em}}；
-    \item 先转 \(270^\circ\)（\(r^3\)），再翻 \(f\)：终点在 \underline{\hspace{3em}}。
-  \end{itemize}
-  两次的终点一样吗？\underline{\hspace{3em}}
+  先把两条路写成两行式（提示：\(r\) 是转 \(90^\circ\)，\(r^3\) 是转 \(270^\circ\)，
+  \(f\) 是沿对角线 \(1\text{—}3\) 翻）：
+  \[
+    fr=\begin{pmatrix}1&2&3&4\\ \hspace{1.2em}&\hspace{1.2em}&\hspace{1.2em}&\hspace{1.2em}\end{pmatrix},
+    \qquad
+    r^3f=\begin{pmatrix}1&2&3&4\\ \hspace{1.2em}&\hspace{1.2em}&\hspace{1.2em}&\hspace{1.2em}\end{pmatrix}
+  \]
+  两次的终点一样吗？\quad 一样 \(\square\)\qquad 不一样 \(\square\)
 \end{dongshou}
 
 \begin{example}
   \[
-    fr=r^{-1}f, \qquad\text{也就是}\qquad fr=r^3f .
+    fr=r^3f .
   \]
-  白话：「先翻后转，等于先\textbf{倒着}转、再翻。」
+  白话：「先翻后转，等于先\textbf{倒着}转（转 \(270^\circ\)）、再翻。」
+  \(r^3\) 就是 \(r\) 的\textbf{逆元}——把 \(r\) 转的 \(90^\circ\) 倒回去。
 \end{example}
 
 \begin{dingli}[二面体群]
   正 \(n\) 边形的全部对称动作，按复合构成一个群，叫做\textbf{二面体群}，记作 \(D_n\)，
   一共有 \(2n\) 个动作：\(n\) 个转动加 \(n\) 个翻折。
 \end{dingli}
+
+\noindent 提醒一句：三角形的 \(D_3\)，就是我们前面一直写的 \(S_3\)——同一批 \(6\) 个动作，
+数学家只是给了它两个名字。
 
 \begin{sikao}
   \(D_3\) 有多少个动作？\(D_5\)（正五边形）呢？\(D_{12}\) 呢？

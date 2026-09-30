@@ -97,13 +97,13 @@
 \end{center}
 
 \begin{dongshou}[跟着老师算一遍]
-  取前 \(17\) 位 \(3\,5\,0\,1\,0\,2\,1\,9\,9\,0\,0\,3\,0\,7\,0\,0\,1\)，
+  取前 \(17\) 位 \(3\,5\,0\,6\,0\,4\,2\,0\,1\,3\,0\,5\,2\,0\,1\,2\,3\)（虚构示例），
   每一位乘上对应权重再相加：
   \[
-    21+45+0+5+0+8+2+9+54+0+0+27+0+35+0+0+2=\underline{\hspace{3em}} .
+    21+45+0+30+0+16+4+0+6+9+0+45+20+0+8+8+6=\underline{\hspace{3em}} .
   \]
   \[
-    208=11\times\underline{\hspace{1.4em}}+\underline{\hspace{1.4em}}
+    218=11\times\underline{\hspace{1.4em}}+\underline{\hspace{1.4em}}
     \quad\Longrightarrow\quad \text{余数是 }\underline{\hspace{1.4em}}
     \quad\Longrightarrow\quad \text{校验码是 }\underline{\hspace{1.4em}} .
   \]
@@ -114,31 +114,27 @@
   \liukong{3}
 \end{sikao}
 
-\section*{四、RSA：一个极小的例子}
+\section*{四、RSA：现在最有名的用处}
 
-\noindent 取两个素数 \(p=3\)、\(q=11\)，令 \(n=3\times11=33\)。
-「公钥」是谁都能拿到的 \(n=33\) 和加密钥匙 \(e=3\)：加密就是把数取三次方，再除以 \(33\) 取余。
-「私钥」是只有收信人知道的解密钥匙 \(d=7\)：解密就是把收到的数取七次方，再除以 \(33\) 取余。
+\noindent 上网的时候，浏览器和网站之间要先悄悄商量一把「钥匙」，靠的就是 RSA。
+它做的是这样一件事：
 
-\begin{dongshou}[把 \(5\) 加密，再解开]
-  \begin{center}
-  \begin{tabular}{@{}lcc@{}}
-    \toprule
-    步骤 & 算法 & 结果 \\
-    \midrule
-    要送出去的数 & \(x\) & \(5\) \\
-    加密 & \(5^{3}=125\)，再除以 \(33\) 取余 & \underline{\hspace{2.4em}} \\
-    传过去 & & \underline{\hspace{2.4em}} \\
-    解密 & \(\underline{\hspace{2.4em}}^{\,7}\) 除以 \(33\) 取余 & \underline{\hspace{2.4em}} \\
-    \bottomrule
-  \end{tabular}
-  \end{center}
-\end{dongshou}
+\begin{itemize}
+  \item 有一把\textbf{公钥}，像一把谁都能拿到的「锁」：谁都可以用它把消息锁上；
+  \item 有一把\textbf{私钥}，像一把只有收信人才有的钥匙：只有它能打开锁上的消息。
+\end{itemize}
+
+\noindent 别人半路偷看也没用：公钥只能锁、不能开。
+而钥匙是用两个很大的素数\emph{乘}出来的——想反过来把一个大数\emph{拆回}两个素数，非常难。
 
 \begin{sikao}
-  收到的又是 \(5\)。那别人偷看到了 \(26\)，为什么还是打不开？
-  \liukong{2}
+  课上的例子是 \(3\times11=33\)，小到一眼就能拆开。\\
+  如果换成两个五十位的大素数相乘呢？想一想：拆开它，难在哪里？
+  \liukong{3}
 \end{sikao}
+
+\noindent\textbf{一点数学史}：\(1977\) 年，美国的 Rivest、Shamir、Adleman 三人提出这套方法，
+名字就取三人姓氏的首字母，叫 RSA；\(2002\) 年，他们因此获得了图灵奖。
 
 \begin{xiaojie}
   这节课要带走的三句话：

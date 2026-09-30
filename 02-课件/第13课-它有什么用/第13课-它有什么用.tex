@@ -128,7 +128,7 @@
   \pause
   \begin{block}{答案}
     \(2\)；\quad 先把 \(2026\) 除以 \(6\)（因为 \(5^6\equiv1\pmod 7\)），
-    \(2026=6\times337+4\)，所以答案与 \(5^4\equiv4\) 相同。
+    \(2026=6\times337+4\)，所以答案与 \(5^4\equiv2\) 相同。
   \end{block}
 \end{frame}
 
@@ -162,19 +162,20 @@
 \begin{frame}{算一个给你看}
   取一个例子编号的前 \(17\) 位：
   \[
-    3\ 5\ 0\ 1\ 0\ 2\ 1\ 9\ 9\ 0\ 0\ 3\ 0\ 7\ 0\ 0\ 1
+    3\ 5\ 0\ 6\ 0\ 4\ 2\ 0\ 1\ 3\ 0\ 5\ 2\ 0\ 1\ 2\ 3
   \]
   每一位乘上对应的权重，加起来：
   \[
-    21+45+0+5+0+8+2+9+54+0+0+27+0+35+0+0+2=208 .
+    21+45+0+30+0+16+4+0+6+9+0+45+20+0+8+8+6=218 .
   \]
   \pause
   \[
-    208=11\times18+10 \quad\Longrightarrow\quad \text{余数 }10 \;\longrightarrow\; \text{校验码 }2 .
+    218=11\times19+9 \quad\Longrightarrow\quad \text{余数 }9 \;\longrightarrow\; \text{校验码 }3 .
   \]
   \pause
   \begin{center}
-    所以完整的编号是 \quad \(\mathbf{350102199003070012}\)。
+    所以完整的编号是 \quad \(\mathbf{350604201305201233}\)。\\[0.3em]
+    {\small （虚构示例。前六位 \(350604\) 是漳州市龙海区——漳州港开发区就在龙海区境内。）}
   \end{center}
 \end{frame}
 
@@ -190,50 +191,50 @@
 \end{frame}
 
 % ============================================================================
-\section{RSA：一个极小的例子}
+\section{RSA：现在最有名的用处}
 
-\begin{frame}{怎么「锁」，怎么「开」}
-  取两个素数 \(p=3\)、\(q=11\)，令 \(n=3\times11=33\)。
+\begin{frame}{一把谁都能用的锁}
+  想让别人安全地给你寄消息，又不想把钥匙交出去——怎么办？
   \pause
   \begin{block}{公钥（谁都能拿）}
-    \(n=33\) 和加密钥匙 \(e=3\)。\quad 加密规则：把数 \(x\) 变成 \(x^{3}\) 除以 \(33\) 的余数。
+    一把公开的「锁」。谁都能拿到它，把消息锁上。
   \end{block}
   \pause
   \begin{block}{私钥（只有收信人有）}
-    解密钥匙 \(d=7\)。\quad 解密规则：把收到的数 \(y\) 变成 \(y^{7}\) 除以 \(33\) 的余数。
+    开锁的钥匙。只有它能打开被锁上的消息。
   \end{block}
-\end{frame}
-
-\begin{frame}{把 5 加密，再解开}
-  \begin{center}
-  \begin{tabular}{@{}lcc@{}}
-    \toprule
-    步骤 & 算法 & 结果 \\
-    \midrule
-    要送出去的数 & \(x\) & \(5\) \\
-    加密 & \(5^{3}=125\)，再除以 \(33\) 取余 & \(26\) \\
-    传过去 & & \(26\) \\
-    解密 & \(26^{7}\) 除以 \(33\) 取余 & \(5\) \\
-    \bottomrule
-  \end{tabular}
-  \end{center}
   \pause
   \begin{center}
-    {\large 收到的又是 \(5\)。锁上、打开，都对。}
+    {\large 锁谁都能用，开锁的钥匙只有一把——这就是 RSA。}
   \end{center}
 \end{frame}
 
 \begin{frame}{这门课为什么讲得到它}
   \begin{itemize}
-    \item 「锁」和「开」用的都是\textbf{取余}；
-    \item 为什么 \(d=7\) 就对、别人猜不出来？——这里藏着费马小定理的推广；
-    \item 真正在用的 \(n\) 有几百度长，靠的是「拆开容易、合起来难」。
+    \item 「锁」和「开」用的都是\textbf{取余}这类绕圈的算术；
+    \item 为什么它安全？——把两个大素数\emph{乘起来}很容易，
+          把一个很大的数\emph{拆回两个素数}却难得多；
+    \item 课上算的 \(33=3\times11\) 小得可怜，真正在用的 \(n\) 有几百位长。
   \end{itemize}
   \pause
   \begin{center}
     {\large 手机里、网页上，每一次「https」用的都是这类\textbf{绕圈的算术}。}
   \end{center}
 \end{frame}
+
+\begin{frame}{一点数学史}
+  \begin{itemize}
+    \item \(1977\) 年，三位美国学者 Rivest、Shamir、Adleman 提出这套方法，
+          名字就取三人姓氏的首字母：\textbf{RSA}；
+    \item 它的老祖宗是费马小定理（第 \(12\) 课），欧拉在 \(18\) 世纪把它推广到了更一般的情形；
+    \item \(2002\) 年，三人因为这项工作获得计算机领域的最高奖——图灵奖。
+  \end{itemize}
+  \pause
+  \begin{center}
+    {\large 你们证的这条定理，三百多年后还在守着我们每一次上网。}
+  \end{center}
+\end{frame}
+
 
 \begin{frame}{这节课要带走的三句话}
   \begin{itemize}

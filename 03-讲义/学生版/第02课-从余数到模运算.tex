@@ -11,8 +11,9 @@
 \begin{mubiao}
   \begin{itemize}
     \item 会取余数，会写同余的记号 \(a\equiv b\pmod n\)。
-    \item 能找到模 \(12\) 加法的单位元，以及每个元素的逆元。
-    \item 能说出有理数加法、有理数乘法里的单位元和逆元。
+    \item 知道什么叫「运算」：任取两个，合起来还是一个，答案唯一。
+    \item 能找到模 \(12\) 加法的单位元，能说出有理数加法、乘法里的单位元。
+    \item 知道「逆元」这个词的意思——就是能把动作\textbf{撤回}的那一步。
   \end{itemize}
 \end{mubiao}
 
@@ -59,7 +60,7 @@
 \section*{三、模 12 的加法}
 
 \noindent 把 \(0,1,2,\dots,11\) 顺时针写成一圈，走满 \(12\) 格就回到原地。
-（单页上印好了这个圆盘，可以拿出来对着看。）
+（课上老师会在黑板上画这个圆盘，你也可以在本页空白处自己画一个。）
 
 \begin{example}
   \(8+7=15\)，走满一圈回到原点，所以 \(8+7\equiv3\pmod{12}\)。
@@ -80,7 +81,39 @@
   \end{center}
 \end{dongshou}
 
-\section*{四、单位元}
+\section*{四、什么叫「运算」}
+
+\begin{definition}[运算]
+  设 \(S\) 是一个集合。如果有一种办法，把 \(S\) 里任意两个元素 \(a,b\) 合起来，
+  得到 \(S\) 里\textbf{唯一确定}的一个元素，记作 \(a*b\)，
+  就说 \(*\) 是 \(S\) 上的一个\textbf{运算}。
+\end{definition}
+
+\noindent 一句话版：\textbf{任取两个，合起来还是一个，答案唯一}——这就叫运算。
+
+\begin{example}[同一个意思，可以写成一堆样子]
+  \(3+5\) 用 \(+\)：这是加法。
+
+  \(3\times5\)、\(3\cdot5\)、\(3*5\)：都是乘法，随便挑一个写。
+
+  \(3a\)：数字和字母相乘，干脆把乘号省掉。
+
+  \(a*b\)：想强调「这是某套运算的规则」，就用 \(*\)。
+
+  用哪个符号，只看当下写起来方不方便，\textbf{和规则本身没关系}。
+\end{example}
+
+\begin{sikao}
+  在有理数上规定：\(a*b\) 取 \(a\)、\(b\) 里\textbf{较大的那一个}。
+
+  算一算：\(3*5=\underline{\hspace{2.5em}}\)，\(\quad(-2)*1=\underline{\hspace{2.5em}}\)。
+
+  （提示：3 和 5 合起来是几？有没有可能既是 \(5\)、又是 \(3\)？）
+
+  所以它算不算运算？\underline{\hspace{4em}}
+\end{sikao}
+
+\section*{五、单位元}
 
 \begin{sikao}
   在模 \(12\) 的加法里，哪一个数 \(e\) 满足「加进去等于没加」，
@@ -97,27 +130,23 @@
   对集合里\textbf{每一个}元素 \(a\) 都成立，就称 \(e\) 是这种运算的\textbf{单位元}。
 \end{definition}
 
-\section*{五、逆元}
+\begin{dongshou}[单位元不止 \(0\) 一个]
+  把下面这张表补完：
+  \begin{center}
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+    运算 & 单位元 & 检验 \\
+    \midrule
+    模 \(12\) 加法 & \hspace{1.8em} & \(a+\underline{\hspace{1.4em}}=a\) \\
+    有理数加法 & \hspace{1.8em} & \(a+\underline{\hspace{1.4em}}=a\) \\
+    有理数乘法 & \hspace{1.8em} & \(a\times\underline{\hspace{1.4em}}=a\) \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  加法的单位元是 \underline{\hspace{2.2em}}；乘法的单位元是 \underline{\hspace{2.2em}}。
+\end{dongshou}
 
-\begin{sikao}
-  每个数要走几格，才能回到 \(0\)？把搭档填在下表里：
-\end{sikao}
-
-\begin{center}
-{\small
-\begin{tabular}{@{}l*{12}{c}@{}}
-  \toprule
-  \(a\) & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\
-  \midrule
-  搭档 & \hspace{0.6em} & \hspace{0.6em} & \hspace{0.6em} & \hspace{0.6em} & \hspace{0.6em} & \hspace{0.6em} & \hspace{0.6em} & \hspace{0.6em} & \hspace{0.6em} & \hspace{0.6em} & \hspace{0.6em} & \hspace{0.6em} \\
-  \bottomrule
-\end{tabular}}
-\end{center}
-
-\begin{sikao}
-  有没有哪个数，它的搭档是它自己？
-  \liukong{2}
-\end{sikao}
+\section*{六、逆元}
 
 \begin{definition}[逆元]
   设 \(e\) 是运算 \(*\) 的单位元。如果对元素 \(a\) 能找到一个元素 \(b\)，使得
@@ -127,7 +156,25 @@
   就称 \(b\) 是 \(a\) 的\textbf{逆元}，也说 \(a\) 与 \(b\) \textbf{互逆}。
 \end{definition}
 
-\section*{六、和有理数对上}
+\noindent 大白话：逆元就是能把动作\textbf{撤回}的那一步。
+
+\begin{dongshou}[逆元，你们早就在用了]
+  \begin{center}
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+    运算 & 单位元 & \(a\) 的逆元 \\
+    \midrule
+    有理数加法 & \hspace{1.8em} & \hspace{4em} \\
+    有理数乘法 & \hspace{1.8em} & \hspace{4em} \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  提示：「加上 \(3\)」要撤回，就再加上 \(3\) 的 \underline{\hspace{2.8em}}；
+  「乘上 \(3\)」要撤回，就再乘上 \(3\) 的 \underline{\hspace{2.8em}}。
+  \liukong{2}
+\end{dongshou}
+
+\section*{七、把几套运算放在一起看}
 
 \begin{example}[把这张表补完整]
   \begin{center}
@@ -135,9 +182,9 @@
     \toprule
      & \textbf{单位元} & \textbf{逆元} \\
     \midrule
-    有理数加法 & \hspace{1.6em} & \hspace{3.2em} \\
-    有理数乘法 & \hspace{1.6em} & \hspace{3.2em} \\
-    模 \(12\) 加法 & \hspace{1.6em} & \hspace{3.2em} \\
+    有理数加法 & \hspace{1.8em} & \hspace{3.6em} \\
+    有理数乘法 & \hspace{1.8em} & \hspace{3.6em} \\
+    模 \(12\) 加法 & \hspace{1.8em} & \hspace{3.6em} \\
     \bottomrule
   \end{tabular}
   \end{center}
@@ -148,4 +195,4 @@
   \liukong{4}
 \end{xiaojie}
 
-\noindent\textbf{下节课}：换一个运算试试——乘法还能不能找到逆元？
+\noindent\textbf{下节课}：先把模 \(12\) 加法里的搭档找齐，再回头问一句——乘法里也能找到逆元吗？
