@@ -27,6 +27,29 @@
       \(r\cdot r=\) \underline{\hspace{2em}}，这个结果在 \(H\) 里吗？\underline{\hspace{3em}}
       \quad 所以它\underline{\hspace{2em}}（是／不是）子群。
   \end{enumerate}
+  对一下答案：\(\{e,r^2\}\) \textbf{是}子群；\(\{e,r\}\) \textbf{不是}——\(r\cdot r=r^2\) 跑出去了。
+\end{dongshou}
+
+\begin{dongshou}[再填一张 \(4\) 阶的表：\(H=\{e,\ r^2,\ f,\ r^2f\}\)]
+  横竖都按 \(e,\ r^2,\ f,\ r^2f\) 排。格子里的动作还是「\textbf{先横排的，再做竖排的}」。
+  四行都填，看看有没有哪个格子跑出这四个动作。
+
+  \begin{center}
+  \begin{tabular}{@{}c|cccc@{}}
+    \toprule
+     & \(e\) & \(r^2\) & \(f\) & \(r^2f\) \\
+    \midrule
+    \rule{0pt}{3ex}\(e\) & & & & \\
+    \midrule
+    \rule{0pt}{3ex}\(r^2\) & & & & \\
+    \midrule
+    \rule{0pt}{3ex}\(f\) & & & & \\
+    \midrule
+    \rule{0pt}{3ex}\(r^2f\) & & & & \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  跑出去了吗？\underline{\hspace{3em}}\quad 所以它\underline{\hspace{2em}}（是／不是）子群，大小是 \underline{\hspace{1.2em}}。
 \end{dongshou}
 
 \begin{example}[\(D_4\) 里全部的子群]
@@ -72,10 +95,10 @@
   \(r^3\) 就是 \(r\) 的\textbf{逆元}——把 \(r\) 转的 \(90^\circ\) 倒回去。
 \end{example}
 
-\begin{dingli}[二面体群]
-  正 \(n\) 边形的全部对称动作，按复合构成一个群，叫做\textbf{二面体群}，记作 \(D_n\)，
+\begin{definition}[二面体群]
+  正 \(n\) 边形（\(n\ge 3\)）的全部对称动作，按复合构成一个群，叫做\textbf{二面体群}，记作 \(D_n\)，
   一共有 \(2n\) 个动作：\(n\) 个转动加 \(n\) 个翻折。
-\end{dingli}
+\end{definition}
 
 \noindent 提醒一句：三角形的 \(D_3\)，就是我们前面一直写的 \(S_3\)——同一批 \(6\) 个动作，
 数学家只是给了它两个名字。
@@ -86,7 +109,7 @@
 \end{sikao}
 
 \begin{xiaojie}
-  用一句话回答：为什么说「\(D_4\) 的 \(8\) 个动作，两个就够生成了」？
+  猜一猜：只用 \(r\) 和 \(f\) 反复复合，能不能造出全部 \(8\) 个动作？（下节课揭晓）
   \liukong{3}
 \end{xiaojie}
 

@@ -1,0 +1,53 @@
+% 图 7：6×6 乘法表（只填 r 行与 f 行）—— 第 06 课 f10
+% 行列标题都按 e, r, r^2, f, rf, r^2f 排；格内 = 先做横排的那个、再做竖排的那个
+% 用 TikZ 画成一张真正的表格：表头有底色，格子和表头一样大，学生可以直接往里写
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{ctex}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\input{common.tex}
+
+\newcommand{\tuW}{1.02cm}   % 一格宽（带单位，TikZ 的 minimum width 要用长度）
+\newcommand{\tuH}{0.82cm}   % 一格高
+\newcommand{\tuWx}{1.02}    % 上面那个的数值，用于坐标计算
+\newcommand{\tuHx}{0.82}
+
+\tikzset{
+  tuheadcell/.style={draw=tugrid, line width=0.5pt, fill=tuhead,
+                     minimum width=\tuW, minimum height=\tuH, inner sep=0pt,
+                     outer sep=0pt, anchor=center},
+  tubody/.style={draw=tugrid, line width=0.5pt, fill=white,
+                 minimum width=\tuW, minimum height=\tuH, inner sep=0pt,
+                 outer sep=0pt, anchor=center},
+}
+% #1 = 行号（0 为表头行），#2 = 该行内容（逗号分隔，第一项是行标题）
+\newcommand{\tutable}[2]{%
+  \foreach \tuc [count=\tui from 0] in {#2} {%
+    \ifnum#1=0
+      \node[tuheadcell] at (\tui*\tuWx,{-#1*\tuHx}) {\tufont \tuc};
+    \else
+      \ifnum\tui=0
+        \node[tuheadcell] at (\tui*\tuWx,{-#1*\tuHx}) {\tufont \tuc};
+      \else
+        \node[tubody] at (\tui*\tuWx,{-#1*\tuHx}) {\tufont \tuc};
+      \fi
+    \fi
+  }%
+}
+\begin{document}
+\begin{tikzpicture}
+  % 表头行
+  \tutable{0}{\(e\),\(e\),\(r\),\(r^2\),\(f\),\(rf\),\(r^2f\)}
+  % r 行
+  \tutable{1}{\(r\),\(r\),\(r^2\),\(e\),\(rf\),\(r^2f\),\(f\)}
+  % f 行
+  \tutable{2}{\(f\),\(f\),\(r^2f\),\(rf\),\(e\),\(r^2\),\(r\)}
+  % 其余 3~6 行只画空格子，留白给学生填 / 老师板书
+  \foreach \tur in {3,4,5,6} {%
+    \foreach \tuc in {0,...,6} {%
+      \node[tubody] at (\tuc*\tuWx,{-\tur*\tuHx}) {};
+    }%
+  }%
+\end{tikzpicture}
+\end{document}

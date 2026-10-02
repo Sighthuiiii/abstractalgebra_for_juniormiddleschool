@@ -1,0 +1,35 @@
+% 图 4：正三角形纸片的正反面示意 —— 第 05 课 f3
+% 左：正面（白底）；右：背面（背面色填充）；中间：翻折箭头
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{ctex}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\input{common.tex}
+\begin{document}
+\begin{tikzpicture}
+  % ---- 左：正面 ----
+  \begin{scope}[shift={(-4.20,0)}]
+    \tricard{\(A\)}{\(B\)}{\(C\)}
+  \end{scope}
+
+  % ---- 右：背面（同一形状，填充背面色）----
+  \begin{scope}[shift={(4.20,0)}]
+    \begin{scope}[scale=\triS]
+      \fill[tubfill] (0,1) -- (-0.86603,-0.5) -- (0.86603,-0.5) -- cycle;
+      \draw[tuback] (0,1) -- (-0.86603,-0.5) -- (0.86603,-0.5) -- cycle;
+      \node[text=tuback] at (0,0.55)      {\tufont \(A\)};%
+      \node[text=tuback] at (0.49,-0.29)  {\tufont \(B\)};%
+      \node[text=tuback] at (-0.49,-0.29) {\tufont \(C\)};%
+    \end{scope}
+  \end{scope}
+
+  % ---- 中间：翻折箭头 ----
+  \draw[tuarrb] (-1.90,0.95) .. controls (-0.90,2.00) and (0.90,2.00) .. (1.90,0.95);
+  \node at (0,2.30) {\tufonts 翻过来};
+
+  % ---- 标注 ----
+  \node at (-4.20,-2.20) {\tufonts 正面};
+  \node at ( 4.20,-2.20) {\tufonts 背面};
+\end{tikzpicture}
+\end{document}

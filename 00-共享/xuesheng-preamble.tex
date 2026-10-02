@@ -63,7 +63,7 @@
 \usepackage[hidelinks]{hyperref}
 
 % ---------------- 图片搜索路径 ----------------
-\graphicspath{{./}{./图片/}{../../00-共享/}{../00-共享/}{00-共享/}{00-共享/图片/}}
+\graphicspath{{./}{./图片/}{../../00-共享/}{../00-共享/}{00-共享/}{00-共享/图片/}{../../00-共享/图片/}{../00-共享/图片/}}
 
 % ---------------- 配色（比教师版鲜亮）----------------
 \definecolor{xhblue}{RGB}{33,102,172}
@@ -274,6 +274,16 @@
           minimum height=#1, font=\small]
       {\textcolor{xhteal}{\bfseries 【图片位置】}\\[4pt] #2};%
   \end{tikzpicture}%
+  \end{center}%
+}
+
+% ---------------- 插图（与课件同名的命令，讲义里也能用）----------------
+% 图放在 00-共享\图片\ 下，由上面的 \graphicspath 找到。
+%      \imgfig{文件名}                  默认宽 0.72\textwidth
+%      \imgfig[0.42\textwidth]{文件名}   指定宽度
+\newcommand{\imgfig}[2][0.72\textwidth]{%
+  \begin{center}%
+    \includegraphics[width=#1]{#2}%
   \end{center}%
 }
 

@@ -33,23 +33,29 @@
   做完一次动作，图形要和原来的位置\textbf{完全重合}——顶点对准顶点，边对准边。
 \end{definition}
 
+% 待插入 \imgfig[0.5\textwidth]{zhipian_sanjiao}：一张正三角形纸片示意（正面 A 在上、B 在右下、C 在左下，背面另一种颜色）
 \begin{dongshou}[边看边记]
-  老师每做一个动作，就把三角形贴回原位。把顶点的新位置记下来：
+  老师每做一个动作，就把三角形贴回原位。\\
+  这张表\textbf{只记 \(A\) 和 \(C\) 去哪}——第三个顶点 \(B\) 的位置，由 \(A\)、\(C\) 两个位置就能推出来。
+  前三个动作跟着老师做、自己填；后三个翻折的动作先空着，等老师翻开这一页\textbf{对答案}。
 
   \begin{center}
   \begin{tabular}{@{}lc@{}}
     \toprule
-    动作 & 顶点去了哪 \\
+    动作 & 顶点去了哪（只记 \(A\) 和 \(C\)） \\
     \midrule
-    不动 & \(A\to\ \), \(B\to\ \), \(C\to\ \) \\
-    顺时针转 \(120^\circ\) & \(A\to\ \), \(B\to\ \), \(C\to\ \) \\
-    顺时针转 \(240^\circ\) & \(A\to\ \), \(B\to\ \), \(C\to\ \) \\
-    沿过 \(A\) 的轴翻 & \(A\to\ \), \(B\to\ \), \(C\to\ \) \\
-    沿过 \(B\) 的轴翻 & \(A\to\ \), \(B\to\ \), \(C\to\ \) \\
-    沿过 \(C\) 的轴翻 & \(A\to\ \), \(B\to\ \), \(C\to\ \) \\
+    不动 & \(A\to\underline{\hspace{1.2em}}\)，\(C\to\underline{\hspace{1.2em}}\) \\[4pt]
+    顺时针转 \(120^\circ\) & \(A\to\underline{\hspace{1.2em}}\)，\(C\to\underline{\hspace{1.2em}}\) \\[4pt]
+    顺时针转 \(240^\circ\) & \(A\to\underline{\hspace{1.2em}}\)，\(C\to\underline{\hspace{1.2em}}\) \\[4pt]
+    \midrule
+    沿过 \(A\) 的轴翻（对答案） & \(A\to A\)，\(C\to B\) \\[4pt]
+    沿过 \(B\) 的轴翻（对答案） & \(A\to C\)，\(C\to A\) \\[4pt]
+    沿过 \(C\) 的轴翻（对答案） & \(A\to B\)，\(C\to C\) \\
     \bottomrule
   \end{tabular}
   \end{center}
+  （完整写法：沿过 \(A\) 的轴翻是 \(A\to A,\ B\to C,\ C\to B\)；沿过 \(B\) 的轴翻是 \(A\to C,\ B\to B,\ C\to A\)。）
+  自查：写完两行式的下排，看\textbf{下排是不是还让 \(A,B,C\) 各出现一次}。
 \end{dongshou}
 
 \begin{sikao}
@@ -75,24 +81,41 @@
   读作「\(A\) 去 \(B\)，\(B\) 去 \(C\)，\(C\) 去 \(A\)」。
 \end{example}
 
+\begin{example}[翻折也照这样来一遍：沿过 \(A\) 的轴翻]
+  过 \(A\) 的那条轴，就是从上顶点 \(A\) 到对边中点的那条线。翻的时候：
+  \begin{itemize}
+    \item \(A\) 正好在这条轴上，所以 \(A\) 不动，\(A\to A\)；
+    \item \(B\) 和 \(C\) 在这条轴的两边，翻过去就\textbf{互相对调}：\(B\to C\)，\(C\to B\)。
+  \end{itemize}
+  把三个答案排成两行式：
+  \[
+    \begin{pmatrix}
+      A & B & C\\
+      A & C & B
+    \end{pmatrix},
+  \]
+  读作「\(A\) 不动，\(B\) 去 \(C\)，\(C\) 去 \(B\)」。
+\end{example}
+
 \begin{dongshou}[跟做，写在下面]
   \begin{enumerate}
     \item 顺时针转 \(240^\circ\)：
       \[
         \begin{pmatrix}
           A & B & C\\[2pt]
-          \hspace{1.5em} & \hspace{1.5em} & \hspace{1.5em}
+          \hspace{1.8em} & \hspace{1.8em} & \hspace{1.8em}
         \end{pmatrix}
       \]
     \item 沿过 \(B\) 的轴翻折：
       \[
         \begin{pmatrix}
           A & B & C\\[2pt]
-          \hspace{1.5em} & \hspace{1.5em} & \hspace{1.5em}
+          \hspace{1.8em} & \hspace{1.8em} & \hspace{1.8em}
         \end{pmatrix}
       \]
   \end{enumerate}
   提示：先问「\(A\) 去哪了」，再问「\(B\) 去哪了」，最后问「\(C\) 去哪了」。
+  写完自查一遍：\textbf{下排是不是还让 \(A,B,C\) 各出现一次？}
 \end{dongshou}
 
 \begin{example}[对一下答案]

@@ -10,7 +10,7 @@
   \begin{itemize}
     \item 能自己说出这门课学过的三类「绕圈」。
     \item 能把它们和群的四条规则对上。
-    \item 知道群之后还有环和域。
+    \item 知道群之后还有环和域，知道五次方程的故事。
   \end{itemize}
 \end{mubiao}
 
@@ -59,16 +59,24 @@
 
 \section*{三、前面还有什么}
 
+\noindent 分配律你们早就在用了：\(3\times(4+5)=3\times4+3\times5\)。
+
 \begin{definition}[环]
-  一个集合上同时有加法和乘法，两种运算各自守规矩，又能互相配合，就叫做\textbf{环}。
+  一个集合上同时有加法和乘法，如果下面三条都满足，就叫做\textbf{环}：
+  \begin{enumerate}
+    \item \textbf{加法}：满足第 4 课那四条规则（封闭、结合、单位元、逆元），而且加法可以交换：\(a+b=b+a\)；
+    \item \textbf{乘法}：封闭、结合、\textbf{有单位元 \(1\)}（\(a\cdot1=1\cdot a=a\)）、而且乘法可以交换：\(a\cdot b=b\cdot a\)——但乘法不要求每个数都有逆元；
+    \item \textbf{乘法对加法有分配律}：\(a\cdot(b+c)=a\cdot b+a\cdot c\)，\((b+c)\cdot a=b\cdot a+c\cdot a\)。
+  \end{enumerate}
+  乘法可以交换，所以它又叫\textbf{交换环}——乘法不交换的环也有，这门课不去碰它。
 \end{definition}
 
 \begin{definition}[域]
-  如果环里每个非零元素还能做除法（有乘法逆元），就叫做\textbf{域}。
+  在上面这个环的基础上，如果每个非零元素都有乘法逆元（能做除法），就叫做\textbf{域}。
 \end{definition}
 
 \begin{example}
-  整数 \(\mathbb{Z}\) 是环，但不是域；有理数 \(\mathbb{Q}\) 是域。
+  整数 \(\mathbb{Z}\) 是环但不是域（\(2\) 没有整数逆元，\(\tfrac12\notin\mathbb{Z}\)）；有理数 \(\mathbb{Q}\) 是域。
 \end{example}
 
 \begin{sikao}
@@ -76,7 +84,66 @@
   \liukong{2}
 \end{sikao}
 
-\noindent 一次、二次方程有求根公式，三次、四次方程也有。五次方程，数学家找了三百多年。
+\section*{四、附：一、二、三、四次方程的公式长什么样（只看个样子，不用记）}
+
+\noindent 下面这几页\textbf{只看个样子，不用记、不用算}。
+（\(\sqrt{\ }\) 是平方根，\(\sqrt[3]{\ }\) 是立方根；这里只要认得这个记号就行。）
+
+\begin{example}[一元二次方程：配方就能解]
+  \[ ax^2+bx+c=0\quad(a\neq0) \]
+  两边除以 \(a\)，再令中间变量
+  \[ t=x+\frac{b}{2a}, \]
+  就化成
+  \[ t^2=\frac{b^2-4ac}{4a^2}. \]
+  令 \(\Delta=b^2-4ac\)（叫\textbf{判别式}），于是
+  \[ t=\pm\frac{\sqrt{\Delta}}{2a},\qquad x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}. \]
+  \textbf{一句话}：先把 \(x\) 平移到 \(t\)，方程就只剩一个平方。
+  （\(\Delta>0\) 两个根，\(\Delta=0\) 一个根，\(\Delta<0\) 没有实数根。）
+
+  真正把这几个公式一条条全写出来，能占满一整块黑板；所以数学家后来才问：
+  五次能不能也有这样一条路？
+  \liukong{1}
+\end{example}
+
+\begin{example}[一元三次方程：卡尔达诺设 \(t=u+v\)]
+  \[ t^3+pt+q=0 \]
+  （任何三次方程都能先平移消掉平方项，变成这个「缺项」的样子。）
+  令
+  \[ t=u+v,\qquad\text{并约定}\ uv=-\frac{p}{3}, \]
+  代入后方程变成
+  \[ u^3+v^3=-q, \]
+  而由约定又有
+  \[ u^3v^3=-\frac{p^3}{27}. \]
+  所以 \(u^3\) 与 \(v^3\) 是一元二次方程
+  \[ z^2+qz-\frac{p^3}{27}=0 \]
+  的两个根。\textbf{解出这个二次方程，就得到 \(u^3,v^3\)，再开立方就得到 \(t=u+v\)。}
+
+  \textbf{一句话}：三次方程被「两个中间变量」降成了一个二次方程。
+
+  真正把这几个公式一条条全写出来，能占满一整块黑板；所以数学家后来才问：
+  五次能不能也有这样一条路？
+  \liukong{1}
+\end{example}
+
+\begin{example}[一元四次方程：费拉里配两次方]
+  \[ t^4+pt^2+qt+r=0 \]
+  （同样先平移消掉三次项。）第一步配方：
+  \[ \left(t^2+\frac{p}{2}\right)^2=-\frac{p^2}{4}+r-qt. \]
+  第二步，\textbf{引入中间变量 \(y\)}，给左边添上 \(2y\left(t^2+\frac p2\right)+y^2\)，
+  让它仍然是完全平方：
+  \[ \left(t^2+\frac{p}{2}+y\right)^2
+     =2y\,t^2-qt+\left(y^2+py-\frac{p^2}{4}+r\right). \]
+  只要右边的判别式为 \(0\)（即 \(q^2=8y^3+8py^2-8ry\)，这是\textbf{一个关于 \(y\) 的三次方程}），
+  右边也是完全平方；于是两边开方，就得到\textbf{两个二次方程}。
+
+  \textbf{一句话}：四次方程靠「中间变量 \(y\)」拆成两个二次方程——而 \(y\) 又要靠上面那个三次方程求出来。
+
+  真正把这几个公式一条条全写出来，能占满一整块黑板；所以数学家后来才问：
+  五次能不能也有这样一条路？
+  \liukong{1}
+\end{example}
+
+\noindent 上面这些公式，二次有、三次有、四次也有。五次方程，数学家找了三百多年。
 十九世纪，伽罗瓦证明：五次方程\textbf{没有}求根公式。他用到的工具，就是群。
 
 \begin{xiaojie}

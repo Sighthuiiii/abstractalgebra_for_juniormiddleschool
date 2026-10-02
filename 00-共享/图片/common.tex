@@ -1,0 +1,84 @@
+% ============================================================================
+%  common.tex —— 校本课插图公共绘图代码
+%  由同目录下的各图 *.tex 用 \input{common.tex} 引入。
+%  改配色 / 改基本图形尺寸，只改这一个文件即可，所有图同步生效。
+%
+%  编译：见同目录 README.md
+% ============================================================================
+
+% ---------- 颜色（只用于两件事：标出重点、区分正反面）----------
+\definecolor{tuline}{RGB}{85,85,85}      % 深灰：普通线条；圆盘（表盘）的外圈与数字
+\definecolor{tuhigh}{RGB}{214,126,0}     % 橙色：标出重点（两次演示的终点卡）
+\definecolor{tuback}{RGB}{170,50,50}     % 深红：背面（翻过来的那一面）
+\definecolor{tubfill}{RGB}{247,225,225}  % 浅红：背面填充
+\definecolor{tugrid}{RGB}{150,150,150}   % 表格细线
+\definecolor{tuhead}{RGB}{236,236,236}   % 表头底色
+
+% ---------- 统一线宽 / 字号 ----------
+% 画出来的图最终会被 \includegraphics[width=8cm] 等缩放，
+% 下面的尺寸按“最终宽度 8cm 左右”设计，缩放比接近 1，字号损失很小。
+\tikzset{
+  tuline/.style={draw=tuline,   line width=0.8pt, line cap=round, line join=round},
+  tuback/.style={draw=tuback,   line width=0.8pt, line cap=round, line join=round},
+  tudot/.style={circle, fill=tuline,  inner sep=0pt, minimum size=1.7pt},
+  tuarrb/.style={draw=tuline, line width=1.0pt, line cap=round, line join=round,
+                -{Stealth[length=2.2mm,width=1.7mm]}},
+}
+\newcommand{\tufont}{\fontsize{13}{15.6}\selectfont}   % 图中主要文字
+\newcommand{\tufonts}{\fontsize{10}{12}\selectfont}    % 图中小字（动作名、说明）
+\newcommand{\tufontb}{\fontsize{17}{20}\selectfont}    % 表格里的算式
+\newcommand{\tufonty}{\fontsize{16}{19.2}\selectfont}  % 圆盘（表盘）上的数字，要比正文字大
+
+% ============================================================================
+%  一、12 格圆盘 = 空表盘（图 1 / 2 / 3 共用同一段代码，保证逐像素一致）
+%      长得像时钟，只有两样东西：外圈 + 一圈数字。
+%      **不要**刻度线、不要高亮扇形、不要外弧、不要箭头。
+%      需要演示的地方（8+7、11+1 之类）上课时由老师在图上手画。
+%
+%      位置约定（与课件、讲义一致）：0 在正上方（12 点），1,2,...,11 顺时针。
+%      TikZ 的 0° 指向右、正角逆时针，所以第 k 个数字的方向角 = 90-30k 度：
+%        k=0 → 90°（正上方）；k=3 → 0°（正右）；k=6 → -90°（正下方）；k=9 → 180°（正左）。
+% ============================================================================
+% 尺寸（改这两个数即可同时改三张圆盘；单位 cm）
+\newcommand{\yuanpanR}{3.30}   % 外圈半径（图幅 = 2\yuanpanR + 一点边框）
+\newcommand{\yuanpanM}{2.05}   % 数字所在半径（外圈以内，数字既不碰外圈也不挤在一起）
+
+% 圆盘本体：外圈 + 一圈数字（空表盘，留给老师上课手画）
+\newcommand{\yuanpanbase}{%
+  \draw[tuline] (0,0) circle (\yuanpanR);
+  \foreach \k in {0,...,11} {%
+    \node at (90-\k*30:\yuanpanM) {\tufonty \(\k\)};
+  }%
+}
+
+% ============================================================================
+%  二、正三角形纸片（A 上、B 右下、C 左下），全套统一尺寸
+%      图形自带一个 scope：把“中心”平移 (0,0) 的原点，再整体 scale=\triS
+%      （内部坐标：circumradius = 1）
+% ============================================================================
+\newcommand{\triS}{1.58}          % 缩放：等边三角形边长 = 1.732*1.58 ≈ 2.74cm
+% #1#2#3 = 上(A)、右下(B)、左下(C) 三个顶点上依次写的标签
+\newcommand{\tricard}[3]{%
+  \begin{scope}[scale=\triS]
+    \draw[tuline] (0,1) -- (-0.86603,-0.5) -- (0.86603,-0.5) -- cycle;
+    \node at (0,0.55)      {\tufont #1};%
+    \node at (0.49,-0.29)  {\tufont #2};%
+    \node at (-0.49,-0.29) {\tufont #3};%
+  \end{scope}%
+}
+
+% ============================================================================
+%  三、正方形纸片（1 左上、2 右上、3 右下、4 左下），全套统一尺寸
+%      \squcard 的 scope 内：中心在原点，半边长 1，整体 scale=\sqS
+% ============================================================================
+\newcommand{\sqS}{1.24}           % 缩放：正方形边长 = 2*1.24 = 2.48cm
+% #1#2#3#4 = 左上、右上、右下、左下 四个顶点上依次写的标签
+\newcommand{\squcard}[4]{%
+  \begin{scope}[scale=\sqS]
+    \draw[tuline] (-1,1) -- (1,1) -- (1,-1) -- (-1,-1) -- cycle;
+    \node at (-0.52,0.52)  {\tufont #1};%
+    \node at (0.52,0.52)   {\tufont #2};%
+    \node at (0.52,-0.52)  {\tufont #3};%
+    \node at (-0.52,-0.52) {\tufont #4};%
+  \end{scope}%
+}

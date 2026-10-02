@@ -72,14 +72,14 @@
 \begin{frame}{下方：幂的尾巴，也绕圈}
   \begin{itemize}
     \item \(2^n\) 除以 \(7\)，余数在 \(2,4,1\) 里打转；
-    \item 试过许多小素数，归纳出猜想：\(a^{\,p-1}\equiv1\pmod p\)；
+    \item 试过许多小质数（也叫素数），归纳出猜想：\(a^{\,p-1}\equiv1\pmod p\)；
     \item 用「余数是重排」把它证出来——费马小定理；
-    \item 回头回答第 1 课：\(10^{6}\equiv1\pmod 7\)，所以 \(7\mid999999\)。
+    \item 回头回答第 1 课：\(10^{6}\equiv1\pmod 7\)，所以 \textbf{\(7\) 整除 \(999999\)}。
   \end{itemize}
 \end{frame}
 
 \begin{frame}{三条线汇到一句}
-  \begin{theorem}[群]
+  \begin{definition}[群]
     一个集合配上一种运算，如果满足下面四条，就叫\textbf{群}：
     \begin{enumerate}
       \item \textbf{封闭}：任取 \(a,b\)，\(a*b\) 还在这里面；
@@ -87,7 +87,7 @@
       \item \textbf{单位元}：存在 \(e\)，使 \(a*e=e*a=a\)；
       \item \textbf{逆元}：每个 \(a\) 都有 \(b\)，使 \(a*b=b*a=e\)。
     \end{enumerate}
-  \end{theorem}
+  \end{definition}
   \pause
   \begin{center}
     {\large 数、动作、置换——只要满足这四条，数学家就把它们归到一起研究。}
@@ -110,6 +110,16 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}{刚才那四问的答案}
+  \begin{itemize}
+    \item \(5\) 的逆元是 \(7\)：因为 \(5+7=12\equiv0\)；
+    \item 正方形有 \(8\) 个对称动作（正三角形是 \(6\) 个）；
+    \item \(rf\) 和 \(fr\) 不一样，\(rf\neq fr\)；
+    \item \(2^{100}\) 除以 \(7\) 余 \(2\)：\(100=6\times16+4\)，所以
+      \((2^{6})^{16}\times2^{4}\equiv1\times16\equiv2\)。
+  \end{itemize}
+\end{frame}
+
 \begin{frame}{对着主线图说一句话}
   \begin{itemize}
     \item 从黑板上任选一个点，说出它是什么意思，再举一个例子；
@@ -125,16 +135,90 @@
 \section{前面还有什么}
 
 \begin{frame}{加法与乘法，放一起}
+  \footnotesize
+  \setlength{\parskip}{0pt}
+  \setlength{\itemsep}{1pt}
+  \noindent 分配律你们早就在用了：\(3\times(4+5)=3\times4+3\times5\)。
   \begin{definition}[环]
-    一个集合上同时有加法和乘法，两种运算各自守规矩，又能互相配合，就叫做\textbf{环}。
+    一个集合上同时有加法和乘法，如果下面三条都满足，就叫做\textbf{环}：
+    \begin{enumerate}
+      \item \textbf{加法}：满足第 4 课那四条规则（封闭、结合、单位元、逆元），而且加法可以交换：\(a+b=b+a\)；
+      \item \textbf{乘法}：封闭、结合、\textbf{有单位元 \(1\)}（\(a\cdot1=1\cdot a=a\)）、而且乘法可以交换：\(a\cdot b=b\cdot a\)——但乘法不要求每个数都有逆元；
+      \item \textbf{乘法对加法有分配律}：\(a\cdot(b+c)=a\cdot b+a\cdot c\)，\((b+c)\cdot a=b\cdot a+c\cdot a\)。
+    \end{enumerate}
+    乘法可以交换，所以它又叫\textbf{交换环}——乘法不交换的环也有，这门课不去碰它。
   \end{definition}
   \pause
   \begin{definition}[域]
-    如果环里每个非零元素还能做除法（有乘法逆元），就叫做\textbf{域}。
+    在上面这个环的基础上，如果每个非零元素都有乘法逆元（能做除法），就叫做\textbf{域}。
   \end{definition}
   \pause
   \begin{center}
-    整数是环，不是域；有理数是域。
+    \small 整数 \(\mathbb{Z}\) 是环但不是域（\(2\) 没有整数逆元，\(\tfrac12\notin\mathbb{Z}\)）；有理数 \(\mathbb{Q}\) 是域。
+  \end{center}
+\end{frame}
+
+\begin{frame}{二次方程：配方就能解}
+  \small
+  \setlength{\abovedisplayskip}{1pt plus 1pt}
+  \setlength{\belowdisplayskip}{1pt plus 1pt}
+  \setlength{\abovedisplayshortskip}{1pt}
+  \setlength{\belowdisplayshortskip}{1pt}
+  \begin{example}[一元二次方程]
+    解 \(ax^2+bx+c=0\quad(a\neq0)\)：两边除以 \(a\)，再令中间变量
+    \(t=x+\frac{b}{2a}\)，就化成
+    \[ t^2=\frac{b^2-4ac}{4a^2}. \]
+    令 \(\Delta=b^2-4ac\)（叫\textbf{判别式}），于是
+    \[ t=\pm\frac{\sqrt{\Delta}}{2a},\qquad x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}. \]
+  \end{example}
+  \begin{center}
+    \small\textbf{一句话}：先把 \(x\) 平移到 \(t\)，方程就只剩一个平方。\\
+    \small \(\Delta>0\) 两个根，\(\Delta=0\) 一个根，\(\Delta<0\) 没有实数根。\\
+    \scriptsize（\(\sqrt{\ }\) 是平方根，\(\sqrt[3]{\ }\) 是立方根；这里只要认得这个记号就行。）\\
+    \scriptsize（只看个样子，不用记。真正把这几个公式一条条全写出来，能占满一整块黑板；所以数学家后来才问：五次能不能也有这样一条路？）
+  \end{center}
+\end{frame}
+
+\begin{frame}{三次方程：卡尔达诺设 \(t=u+v\)}
+  \small
+  \setlength{\abovedisplayskip}{1pt plus 1pt}
+  \setlength{\belowdisplayskip}{1pt plus 1pt}
+  \setlength{\abovedisplayshortskip}{1pt}
+  \setlength{\belowdisplayshortskip}{1pt}
+  \begin{example}[一元三次方程]
+    \(t^3+pt+q=0\)（任何三次方程都能先平移消掉平方项，变成这个「缺项」的样子）。
+    令
+    \[ t=u+v,\qquad\text{并约定}\ uv=-\frac{p}{3}, \]
+    代入后方程变成 \(u^3+v^3=-q\)，而由约定又有
+    \[ u^3v^3=-\frac{p^3}{27}. \]
+    所以 \(u^3\) 与 \(v^3\) 是一元二次方程
+    \[ z^2+qz-\frac{p^3}{27}=0 \]
+    的两个根。\textbf{解出这个二次方程，就得到 \(u^3,v^3\)，再开立方就得到 \(t=u+v\)。}
+  \end{example}
+  \begin{center}
+    \small\textbf{一句话}：三次方程被「两个中间变量」降成了一个二次方程。\\
+    \scriptsize（只看个样子，不用记。真正把这几个公式一条条全写出来，能占满一整块黑板；所以数学家后来才问：五次能不能也有这样一条路？）
+  \end{center}
+\end{frame}
+
+\begin{frame}{四次方程：费拉里配两次方}
+  \small
+  \setlength{\abovedisplayskip}{1pt plus 1pt}
+  \setlength{\belowdisplayskip}{1pt plus 1pt}
+  \setlength{\abovedisplayshortskip}{1pt}
+  \setlength{\belowdisplayshortskip}{1pt}
+  \begin{example}[一元四次方程]
+    \(t^4+pt^2+qt+r=0\)（同样先平移消掉三次项）。第一步配方：
+    \[ \left(t^2+\frac{p}{2}\right)^2=-\frac{p^2}{4}+r-qt. \]
+    第二步，引入中间变量 \(y\)，给左边添上 \(2y\left(t^2+\frac p2\right)+y^2\)，让它仍然是完全平方：
+    \[ \left(t^2+\frac{p}{2}+y\right)^2
+       =2y\,t^2-qt+\left(y^2+py-\frac{p^2}{4}+r\right). \]
+    只要右边的判别式为 \(0\)（即 \(q^2=8y^3+8py^2-8ry\)，这是一个关于 \(y\) 的三次方程），
+    右边也是完全平方；于是两边开方，就得到两个二次方程。
+  \end{example}
+  \begin{center}
+    \small\textbf{一句话}：四次方程靠「中间变量 \(y\)」拆成两个二次方程——而 \(y\) 又要靠上面那个三次方程求出来。\\
+    \scriptsize（只看个样子，不用记。真正把这几个公式一条条全写出来，能占满一整块黑板；所以数学家后来才问：五次能不能也有这样一条路？）
   \end{center}
 \end{frame}
 

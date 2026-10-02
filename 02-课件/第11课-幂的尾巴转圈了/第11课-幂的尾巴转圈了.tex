@@ -36,7 +36,7 @@
   \end{itemize}
   \pause
   \begin{center}
-    {\large 今天看第四种：\textbf{幂的尾巴}也会绕圈。}
+    {\large 上面三种之外，还有第四种：\textbf{幂的尾巴}也会绕圈。}
   \end{center}
 \end{frame}
 
@@ -129,7 +129,7 @@
 \section{归纳}
 
 \begin{frame}{把结果摆在一起看}
-  下面是老师额外算好的几组，和刚才的摆在一起看。
+  下面是摆在一起的 \(10\) 组：前 \(4\) 组是你们自己算的，后 \(6\) 组是老师补的。
   \begin{center}
   \begin{tabular}{@{}ccc@{}}
     \toprule
@@ -158,11 +158,9 @@
   \begin{block}{\(p=5\) 的两组}
     步数是 \(4\) 和 \(4\)。\pause 都整除 \(p-1=4\)。
   \end{block}
-  \pause
-  \begin{block}{\(p=7\) 的两组}
-    步数是 \(3\) 和 \(6\)。\pause 都整除 \(p-1=6\)。
+  \begin{block}{\(p=7\) 的四组}
+    步数是 \(3\)、\(6\)、\(3\)、\(6\)。\pause 都整除 \(p-1=6\)。
   \end{block}
-  \pause
   \begin{block}{\(p=11,13\) 的四组}
     \(10\) 和 \(5\) 都整除 \(10\)；\(12\) 和 \(3\) 都整除 \(12\)。
   \end{block}
@@ -193,7 +191,7 @@
 
 \begin{frame}{把猜想写清楚}
   \begin{theorem}[猜想]
-    设 \(p\) 是素数，\(a\) 不是 \(p\) 的倍数。那么
+    设 \(p\) 是\textbf{质数}（也叫素数——就是只能被 \(1\) 和它自己整除的数），\(a\) 不是 \(p\) 的倍数。那么
     \[
       a^{\,p-1}\equiv1 \pmod p .
     \]
@@ -213,7 +211,7 @@
   \begin{itemize}
     \item 幂的余数会绕圈，且一定会回到 \(1\)。
     \item 回到 \(1\) 的步数，整除 \(p-1\)。
-    \item 由此猜到：\(a^{p-1}\equiv1\pmod p\)（\(p\) 素数，\(a\) 不被 \(p\) 整除）。
+    \item 由此猜到：\(a^{p-1}\equiv1\pmod p\)（\(p\) 是质数，\(a\) 不被 \(p\) 整除）。
   \end{itemize}
   \pause
   \begin{center}

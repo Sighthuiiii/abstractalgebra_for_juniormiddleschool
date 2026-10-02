@@ -61,7 +61,7 @@
 \usepackage[hidelinks]{hyperref}
 
 % ---------------- 图片搜索路径 ----------------
-\graphicspath{{./}{./图片/}{../../00-共享/}{../00-共享/}{00-共享/}{00-共享/图片/}}
+\graphicspath{{./}{./图片/}{../../00-共享/}{../00-共享/}{00-共享/}{00-共享/图片/}{../../00-共享/图片/}{../00-共享/图片/}}
 
 % ---------------- 配色（与课件同一族绿色）----------------
 \definecolor{jyblue}{RGB}{0,90,160}
@@ -173,6 +173,14 @@
   title={本课小结\jysub{#1}},
   overlay={\draw[line width=2.6pt, jyolive] (frame.north west) -- (frame.south west);}}
 
+% 本课弹性预案：放在每课开头「本课节奏」那一行之后。
+% 只写「时间不够先砍哪一段」与「时间富余可以加什么」两件事，不写易错点。
+\newtcolorbox{beifen}[1][]{jybase,
+  colback=jygray!6!white, colframe=jygray!6!white, coltitle=jygray!70!black,
+  title={本课弹性预案\jysub{#1}},
+  before skip=4pt, after skip=4pt,
+  overlay={\draw[line width=2.6pt, jygray] (frame.north west) -- (frame.south west);}}
+
 % ---------------- 不加框的两类段落 ----------------
 % 讲台操作、注：只留文本本身，不加框、不上色
 \newenvironment{caozuo}[1][]{\par\vspace{1pt}\ignorespaces}{\par\vspace{1pt}}
@@ -187,6 +195,16 @@
           minimum height=#1, font=\small]
       {\textcolor{jydark}{\bfseries 【图片占位】}\\[4pt] #2};%
   \end{tikzpicture}%
+  \end{center}%
+}
+
+% ---------------- 插图（与课件同名的命令，讲义里也能用）----------------
+% 图放在 00-共享\图片\ 下，由上面的 \graphicspath 找到。
+%      \imgfig{文件名}                  默认宽 0.72\textwidth
+%      \imgfig[0.42\textwidth]{文件名}   指定宽度
+\newcommand{\imgfig}[2][0.72\textwidth]{%
+  \begin{center}%
+    \includegraphics[width=#1]{#2}%
   \end{center}%
 }
 

@@ -12,7 +12,7 @@
   \begin{itemize}
     \item 能说清为什么两边可以划掉相同的部分。
     \item 能从具体数字过渡到用字母写的一般形式。
-    \item 能写出 \(a^{\,p-1}\equiv1\pmod p\)。
+    \item 能写出 \(a^{\,p-1}\equiv1\pmod p\)，并知道它叫费马小定理。
   \end{itemize}
 \end{mubiao}
 
@@ -85,27 +85,29 @@
 \end{example}
 
 \begin{dingli}[费马小定理]
-  设 \(p\) 是素数，\(a\) 是不被 \(p\) 整除的整数，那么
+  设 \(p\) 是质数，\(a\) 是不被 \(p\) 整除的整数，那么
   \[
     a^{\,p-1}\equiv1 \pmod p .
   \]
 \end{dingli}
 
 \begin{sikao}
-  整个证明用了两块砖，各是什么？
+  整个证明用了两块砖，各是什么？\\
+  （提示：一块砖说「余数是重排」，另一块砖说「可以划掉」。）
   \liukong{3}
 \end{sikao}
 
 \begin{xiaojie}
   不看上面的内容，凭记忆把证明的四个步骤写一遍：
   \liukong{6}
-  写完后自己对一遍，缺哪一条就补哪一条：
-  \begin{itemize}
-    \item 有没有写出「乘 \(a\) 再取余，是 \(1,\dots,p-1\) 的一次重排」？
-    \item 有没有写出「两边的 \((p-1)!\) 可以划掉」？说清为什么能划掉（它有逆元）。
-    \item 有没有得到 \(a^{\,p-1}\equiv1\pmod p\)？
-    \item 条件有没有写全——\(p\) 是素数，\(a\) 不是 \(p\) 的倍数？
-  \end{itemize}
+  写完后按下面四条对一遍，缺哪一条就补哪一条：
+  \begin{enumerate}
+    \item 把 \(1,2,\dots,p-1\) 每个都乘 \(a\) 再取余——得到的还是 \(1,2,\dots,p-1\) 的一次\textbf{重排}；
+    \item 两边\textbf{各自相乘}：左边是 \(a^{\,p-1}\times(p-1)!\)，右边是 \((p-1)!\)；
+    \item 两边同时\textbf{划掉} \((p-1)!\)——靠它有逆元（它不是 \(p\) 的倍数）；
+    \item 得到 \(a^{\,p-1}\equiv1\pmod p\)。
+  \end{enumerate}
+  最后别忘了条件：\(p\) 是质数，\(a\) 不是 \(p\) 的倍数。
 \end{xiaojie}
 
 \noindent\textbf{下节课}：它有什么用——先去回答第 1 课黑板右边那个问题。\\

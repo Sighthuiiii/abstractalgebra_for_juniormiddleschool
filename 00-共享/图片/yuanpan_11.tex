@@ -1,0 +1,15 @@
+% 图 3：12 格圆盘 —— 空表盘 —— 第 02 课 f8（11+1 那一处）
+% 内容与 yuanpan.tex 完全一样（同为空表盘）：只有外圈 + 数字，无刻度线、无高亮、无箭头。
+% 原来的「高亮 11 格 + 外弧 11→0 + 橙色箭头走 1 格 + 「1 格」标注」已按要求全部删除，
+% 上课时由老师在图上手画。三张圆盘都只调用 common.tex 的 \yuanpanbase，改一处三张同步。
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{ctex}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\input{common.tex}
+\begin{document}
+\begin{tikzpicture}
+  \yuanpanbase
+\end{tikzpicture}
+\end{document}

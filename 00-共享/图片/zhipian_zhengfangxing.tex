@@ -1,0 +1,36 @@
+% 图 8：正方形纸片的正反面示意 —— 第 08 课 f3
+% 版式照图 4，换成正方形：1 左上、2 右上、3 右下、4 左下
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{ctex}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\input{common.tex}
+\begin{document}
+\begin{tikzpicture}
+  % ---- 左：正面 ----
+  \begin{scope}[shift={(-4.20,0)}]
+    \squcard{\(1\)}{\(2\)}{\(3\)}{\(4\)}
+  \end{scope}
+
+  % ---- 右：背面 ----
+  \begin{scope}[shift={(4.20,0)}]
+    \begin{scope}[scale=\sqS]
+      \fill[tubfill] (-1,1) -- (1,1) -- (1,-1) -- (-1,-1) -- cycle;
+      \draw[tuback] (-1,1) -- (1,1) -- (1,-1) -- (-1,-1) -- cycle;
+      \node[text=tuback] at (-0.52,0.52)  {\tufont \(1\)};%
+      \node[text=tuback] at (0.52,0.52)   {\tufont \(2\)};%
+      \node[text=tuback] at (0.52,-0.52)  {\tufont \(3\)};%
+      \node[text=tuback] at (-0.52,-0.52) {\tufont \(4\)};%
+    \end{scope}
+  \end{scope}
+
+  % ---- 中间：翻折箭头 ----
+  \draw[tuarrb] (-1.90,0.95) .. controls (-0.90,2.00) and (0.90,2.00) .. (1.90,0.95);
+  \node at (0,2.30) {\tufonts 翻过来};
+
+  % ---- 标注 ----
+  \node at (-4.20,-2.20) {\tufonts 正面};
+  \node at ( 4.20,-2.20) {\tufonts 背面};
+\end{tikzpicture}
+\end{document}

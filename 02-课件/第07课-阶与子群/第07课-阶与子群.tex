@@ -67,7 +67,7 @@
     \midrule
     \(e\)（不动） & \(e\) & \(e\) & \(e\) \\
     \(r\)（转 \(120^\circ\)） & \(r\) & \(r^2\) & \(\mathbf{e}\) \\
-    \(f\)（沿过 \(A\) 的轴翻） & \(f\) & \(\mathbf{e}\) & \(e\) \\
+    \(f\)（沿过 \(A\) 的轴翻） & \(f\) & \(\mathbf{e}\) & \(\mathbf{f}\) \\
     \bottomrule
   \end{tabular}
   \end{center}
@@ -178,15 +178,20 @@
     & e & r & f \\
     \midrule
     e & e & r & f \\
-    r & r & r^2 & \mathbf{rf} \\
+    r & r & r^2 & \mathbf{r^2f} \\
     f & f & \mathbf{rf} & e \\
     \bottomrule
   \end{array}
   \]
   \pause
   \begin{center}
-    \(r\cdot r=r^2\) 不在里面，\(r\cdot f=rf\) 也不在里面。\\[0.4em]
+    \(r\cdot r=r^2\) 不在里面，\(r\cdot f=fr=r^2f\) 也不在里面。\\[0.4em]
     \textbf{跑出去了}，所以 \(\{e,r,f\}\) 不是子群。
+  \end{center}
+  \pause
+  \begin{center}
+    {\small 看仔细：\(r\cdot f=r^2f\)，可 \(f\cdot r=rf\)——两个结果不一样。\\
+    这和第 6 课那句 \(rf\neq fr\) 是同一件事。}
   \end{center}
 \end{frame}
 

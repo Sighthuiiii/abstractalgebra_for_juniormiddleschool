@@ -1,0 +1,54 @@
+% 图 6：三角形两次演示对照 —— 第 06 课 f5
+% 左：先 f 后 r；右：先 r 后 f。两个终点落在同一个位置，卡片完全一样
+% 卡内写的是此刻各顶点上挂的是原来的哪个字母
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{ctex}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\input{common.tex}
+
+% 普通三角形卡：#1#2#3 = A/B/C 位置上的标签；#4 = 标签颜色
+\newcommand{\tcard}[4]{%
+  \begin{scope}[scale=\triS]
+    \draw[tuline] (0,1) -- (-0.86603,-0.5) -- (0.86603,-0.5) -- cycle;
+    \node[text=#4] at (0,0.55)      {\tufont #1};%
+    \node[text=#4] at (0.49,-0.29)  {\tufont #2};%
+    \node[text=#4] at (-0.49,-0.29) {\tufont #3};%
+  \end{scope}%
+}
+% 带背面颜色的三角形卡
+\newcommand{\tcardb}[3]{%
+  \begin{scope}[scale=\triS]
+    \fill[tubfill] (0,1) -- (-0.86603,-0.5) -- (0.86603,-0.5) -- cycle;
+    \draw[tuback] (0,1) -- (-0.86603,-0.5) -- (0.86603,-0.5) -- cycle;
+    \node[text=tuback] at (0,0.55)      {\tufont #1};%
+    \node[text=tuback] at (0.49,-0.29)  {\tufont #2};%
+    \node[text=tuback] at (-0.49,-0.29) {\tufont #3};%
+  \end{scope}%
+}
+
+\begin{document}
+\begin{tikzpicture}
+% ================= 左：先 f 后 r =================
+\node at (0,1.90) {\tufonts 先做 \(f\)，再做 \(r\)};\begin{scope}[shift={(-3.00,0)}] \tcard{\(A\)}{\(B\)}{\(C\)}{black}  \end{scope}
+\begin{scope}[shift={(0,0)}]     \tcardb{\(A\)}{\(C\)}{\(B\)}        \end{scope}
+\begin{scope}[shift={(3.00,0)}]  \tcard{\(B\)}{\(A\)}{\(C\)}{tuhigh} \end{scope}
+\draw[tuarrb] (-1.82,0) -- (-1.52,0);
+\draw[tuarrb] (1.52,0)  -- (1.82,0);
+\node at (-3.00,-1.55) {\tufonts 起点};
+\node at (0,-1.55)     {\tufonts 做完 \(f\)};
+\node at (3.00,-1.55)  {\tufonts 终点};
+
+% ================= 右：先 r 后 f =================
+\node at (8.60,1.90) {\tufonts 先做 \(r\)，再做 \(f\)};
+\begin{scope}[shift={(5.60,0)}]  \tcard{\(A\)}{\(B\)}{\(C\)}{black}  \end{scope}
+\begin{scope}[shift={(8.60,0)}]  \tcard{\(C\)}{\(A\)}{\(B\)}{tuback} \end{scope}
+\begin{scope}[shift={(11.60,0)}] \tcard{\(B\)}{\(A\)}{\(C\)}{tuhigh} \end{scope}
+\draw[tuarrb] (6.78,0)  -- (7.08,0);
+\draw[tuarrb] (10.12,0) -- (10.42,0);
+\node at (5.60,-1.55)  {\tufonts 起点};
+\node at (8.60,-1.55)  {\tufonts 做完 \(r\)};
+\node at (11.60,-1.55) {\tufonts 终点};
+\end{tikzpicture}
+\end{document}
